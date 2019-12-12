@@ -21,10 +21,11 @@ $ git remote -v
 5. Jika sudah muncul sama seperti dibawah ini, maka sudah tersambung
 
 ```sh
-origin      https://github.com/dipadana/client-3.git (fetch)
-origin	    https://github.com/dipadana/client-3.git (push)
-upstreamhttps://github.com/Book-E-Commerce/client.git (fetch)
-upstreamhttps://github.com/Book-E-Commerce/client.git (push)
+origin  https://github.com/dipadana/client-3.git (fetch)
+origin  https://github.com/dipadana/client-3.git (push)
+
+upstream  https://github.com/Book-E-Commerce/client.git (fetch)
+upstream  https://github.com/Book-E-Commerce/client.git (push)
 ```
 
 6. Happy Coding :)
