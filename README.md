@@ -23,8 +23,8 @@ $ git remote -v
 ```sh
 origin      https://github.com/dipadana/client-3.git (fetch)
 origin	    https://github.com/dipadana/client-3.git (push)
-upstream	https://github.com/Book-E-Commerce/client.git (fetch)
-upstream	https://github.com/Book-E-Commerce/client.git (push)
+upstreamhttps://github.com/Book-E-Commerce/client.git (fetch)
+upstreamhttps://github.com/Book-E-Commerce/client.git (push)
 ```
 
 6. Happy Coding :)
