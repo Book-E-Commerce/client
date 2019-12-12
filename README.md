@@ -9,7 +9,7 @@ Repositori For Client Book E-Commerce
 3. Tambahkan upstream pada hasil clone tersebut
 
 ```sh
- $ git remote add upstream https://github.com/Book-E-Commerce/client.git
+$ git remote add upstream https://github.com/Book-E-Commerce/client.git
 ```
 
 4. Cek dan pastikan repo sudah tersambung ke organization
@@ -21,7 +21,10 @@ $ git remote -v
 5. Jika sudah muncul sama seperti dibawah ini, maka sudah tersambung
 
 ```sh
-p
+origin	https://github.com/dipadana/client-3.git (fetch)
+origin	https://github.com/dipadana/client-3.git (push)
+upstream	https://github.com/Book-E-Commerce/client.git (fetch)
+upstream	https://github.com/Book-E-Commerce/client.git (push)
 ```
 
 6. Happy Coding :)
