@@ -1,0 +1,43 @@
+.card-modif {
+  width: 100%;
+  transition: 0.15s ease-in;
+
+  &:hover {
+    box-shadow: 5px 5px 10px lightgrey;
+  }
+}
+
+.navigation-title {
+  background-color: #006266;
+  color: white;
+  font-size: 20px;
+}
+
+.navigation-active {
+  background-color: #003335;
+  color: #fff;
+  cursor: pointer;
+}
+
+.navigation-text {
+  background-color: #fff;
+  color: #006266;
+  transition: 0.15s ease-in;
+
+  &:hover {
+    background-color: #006266;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.log-out-text {
+  color: #006266;
+  transition: 0.15s ease-in;
+
+  &:hover {
+    background-color: darkred;
+    color: white;
+    cursor: pointer;
+  }
+}
