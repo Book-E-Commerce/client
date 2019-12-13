@@ -1,0 +1,9 @@
+$maincolor: salmon;
+
+.text {
+  color: $maincolor;
+
+  &--subtext {
+    color: red;
+  }
+}
