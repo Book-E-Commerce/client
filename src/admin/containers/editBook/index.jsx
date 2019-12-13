@@ -1,10 +1,10 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
 import './style.scss'
 
 function EditBook (props) {
 
-  const history = useHistory()
+  // const history = useHistory()
 
   return (
     <div className="mb-5 mt-2">
@@ -40,7 +40,7 @@ function EditBook (props) {
         <button type="submit" className="btn btn-green mr-2">Submit</button>
         <button className="btn btn-salmon">Reset</button>
       </form>
-        <img className="mt-3" width="100%" src="https://storage.googleapis.com/dipaecommerce/1574025942759-death_stranding_sam" />
+        <img alt="book" className="mt-3" width="100%" src="http://books.google.com/books/content?id=kztrAwAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE71WwjdniapJBEWl3Q0tTYm0Sh_dbGyY-TReSX-FaZnLx2wNDsv7UnmUkPfTFALS2GplAZ1GO5Ajlzsd2rrJF6IyS8g3mmEFLMwCnpHMDPt2MW7KsAt9649hHq6ezl569JzO9ooK&source=gbs_api" />
     </div>
   )
 }
