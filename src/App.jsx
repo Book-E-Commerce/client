@@ -6,8 +6,8 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import User from './user/home'
-import Admin from './admin/home'
+import User from './user/containers/home'
+import Admin from './admin/containers/home'
 
 function App() {
   return (
