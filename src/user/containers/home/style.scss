@@ -1,5 +1,7 @@
+$maincolor: salmon;
+
 .text {
-  color: salmon;
+  color: $maincolor;
 
   &--subtext {
     color: red;
