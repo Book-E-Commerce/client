@@ -13,7 +13,7 @@ export default function Navigation (props) {
         <li className="list-group-item navigation-title">
           <div className="row justify-content-between">
             <p className="mb-0 pl-3">Navigation Menu</p>
-            <div className="mr-2"><img src={compass} width="22" height="22" alt=""/></div>
+            <div className="mr-2"><img src={compass} style={{width: '22px', height: '22px', marginTop: 0}} width="22" height="22" alt=""/></div>
           </div>
         </li>
         <li onClick={ () => history.push('/admin/history') } className={ history.location.pathname == '/admin/history' ? `list-group-item navigation-active` : `list-group-item navigation-text`}>Transaction History</li>
