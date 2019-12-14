@@ -97,7 +97,8 @@ function History (props) {
         <p className="chart-container--date">Wednesday, 20 December 2019</p>
       </div>
       <div className="chart-container">
-
+      
+      <ResponsiveContainer>
       <AreaChart width={730} height={250} data={data}
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
         <defs>
@@ -117,6 +118,7 @@ function History (props) {
         <Area type="monotone" dataKey="selling" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
         <Area type="monotone" dataKey="books sold" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
       </AreaChart>
+      </ResponsiveContainer>
 
       </div>
       <p className="table-title">Sales Table</p>
