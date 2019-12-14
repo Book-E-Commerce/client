@@ -1,73 +1,144 @@
-// $main-color: #006266;
+$main-color: #006266;
 
-// .main-container {
-//   display: flex;
-//   margin-left: 50px;
-//   margin-right: 50px;
+.main-container {
+  margin-top: 30px;
+  &--sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    background-color: $main-color;
+    color: white;
+    padding: 25px;
 
-//   &--sidebar {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//     height: 479px;
-//     width: 300px;
-//     border-radius: 10px;
-//     margin: 20px;
-//     background-color: $main-color;
-//     color: white;
+    &--btns {
+      margin: 5px;
+      width: 150px;
+    }
+  }
 
-//     &--btns {
-//       margin: 10px;
-//       width: 150px;
-//     }
-//   }
-
-//   &--products {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//     height: 100vh;
-//     width: 1400px;
-//     margin: 20px;
+  &--products {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 
-//     &--carousel {
-//       height: 350px;
-//       width: 900px;
-//       margin: 10px;
-//       border-radius: 20px;
-//       margin-bottom: 100px;
-//       margin-top: -10px;
+    &--carousel {
+      height: 450px;
+      width: 100%;
+      border-radius: 20px;
+      margin-left: 20px;
+      margin-top: -49.5px;
 
-//       img {
-//         border-radius: 20px;
-//         height: 100px;
-//         width: 
-//       }
-//     }
+      img {
+        border-radius: 20px;
+        // margin-top: 0;
+      }
+    }
 
-//     &--hotitems {
-//       height: 300px;
-//       width: 900px;
-//       margin: 10px;
-//       border-radius: 20px;
-//       background-color: yellowgreen;
-//     }
+    &--hotitems {
+      display: flex;
+      height: 400px;
+      justify-content: center;
+      width: 100%;
+      margin: 10px;
+      margin-bottom: 30px;
+      border-radius: 20px;
+      background-color: #b71540;
+      
+      &--item {
+        margin: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
 
-//     &--saleitems {
-//       height: 300px;
-//       width: 900px;
-//       margin: 10px;
-//       border-radius: 20px;
-//       background-color: blue;
-//     }
-//   }
-// }
+        img {
+          height: 180px;
+          width: 140px;
+          margin-top: 0;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+        }
 
-// .products {
-//   display: flex;
-//   justify-content: center;
+        &--bottom-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          background-color: white;
+          width: 140px;
+          height: 1200px;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
 
-// }
+          &--title {
+            font-weight: bold;
+          }
+
+          &--buy {
+            background-color: #C9356E;
+            color: white;
+            font-weight: bold;
+          }
+        }
+      }
+      
+    }
+
+    &--saleitems {
+      display: flex;
+      height: 400px;
+      justify-content: center;
+      width: 100%;
+      margin: 10px;
+      border-radius: 20px;
+      background-color: #0a3d62;
+      
+      &--item {
+        margin: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        img {
+          height: 180px;
+          width: 140px;
+          margin-top: 0;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+        }
+
+        &--bottom-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          background-color: white;
+          width: 140px;
+          height: 1200px;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+
+          &--title {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
+
+#categories-title {
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+
+
+.main-products-text-container {
+  margin-top: 0;
+  height: 100px;
+  width: 300px;
+}

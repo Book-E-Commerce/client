@@ -28,7 +28,7 @@ function Login() {
             <input type="password" className="form-control" id="exampleInputPassword1" />
           </div>
           <div className="login-container--right--loginbox--login-btn-container">
-            <button type="submit" onClick={logins} className="btn container--right--loginbox--login-btn">Login</button>
+            <button type="submit" onClick={logins} className="btn login-container--right--loginbox--login-btn">Login</button>
           </div>  
           <div className="login-container--right--loginbox--register-btn-container">
             <Link to ="/register">

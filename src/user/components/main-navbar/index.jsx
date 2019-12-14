@@ -8,25 +8,31 @@ function MainNavbar() {
     history.push('/')
   }
 
+  const toCart = () => {
+    history.push('/home/cart')
+  }
+
   return (
     <div>
       <nav className="navbar main-navbar">
-        <a className="navbar-brand">Commerce</a>
+      <Link to="/home">
+        <img id="main-navbar-logo" src="https://i.imgur.com/kudvMWt.png" />
+      </Link>
         <div className="main-navbar--menu">
           <form className="form-inline">
             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-            <button className="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+            <button style={{fontWeight: 'bold'}} className="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
           </form>
           <div className="dropdown main-navbar--menu--dropdown">
             <button className="btn dropdown-toggle btn-outline-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-user-md"></i>
+              <i className="fas fa-user-md"></i>
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a className="dropdown-item" href="#"><i style={{marginRight: '4px'}} class="fas fa-shopping-cart"></i> Cart</a>
-              <a className="dropdown-item" href="#"><i style={{marginRight: '4px'}} class="far fa-newspaper"></i> Transaction</a>
+              <a onClick={toCart} className="dropdown-item" href="#"><i style={{marginRight: '4px'}} className="fas fa-shopping-cart"></i> Cart</a>
+              <a className="dropdown-item" href="#"><i style={{marginRight: '4px'}} className="far fa-newspaper"></i> Transaction</a>
             </div>
           </div>
-          <button onClick={logout} style={{marginRight: '70px'}} type="button" class="btn btn-outline-light"><i className="fas fa-power-off"></i></button>
+          <button onClick={logout} style={{marginRight: '70px'}} type="button" className="btn btn-outline-light"><i className="fas fa-power-off"></i></button>
         </div>
       </nav>
     </div>
