@@ -1,17 +1,32 @@
 import React from 'react';
 import './style.scss'
+import { Link } from "react-router-dom";
+import Navbar from '../../components/navbar'
 
-const home = () => {
+function Home() {
   return(
     <>
-      <p className="text">Ini Home User
-        <span className="text--subtext">Home saya</span>
-      </p>
-      <button type="button" class="btn btn-primary">Primary</button>
-      <button type="button" class="btn btn-secondary">Secondary</button>
+      <Navbar />
+      <div className="home-container">
+        <div className="home-container--header">
+          <h1>Be ready whenever, wherever</h1>
+          <h1>your salary strikes.</h1>
+        </div>
+        <div className="home-container--body">
+          <Link to ="/login">
+            <button type="button" className="btn btn-outline-light home-container--body--btns">Login</button>
+          </Link>
+          <Link to ="/register">
+            <button type="button" className="btn btn-outline-light home-container--body--btns">Register</button>
+          </Link>
+        </div>
+        <div className="home-container--footer">
+          <img src="../../../../footer-img.png" />
+        </div>
+      </div>
     </>
   )
 }
 
-export default home
+export default Home
 

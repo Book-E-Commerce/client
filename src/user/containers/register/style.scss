@@ -2,7 +2,7 @@ $main-red: #b71540;
 $main-green: #006266;
 $main-blue: #0a3d62;
 
-.login-container {
+.register-container {
   display: flex;
   flex-direction: row;
   margin: 0;
@@ -21,7 +21,7 @@ $main-blue: #0a3d62;
     justify-content: center;
     align-items: center;
 
-    &--loginbox {
+    &--registerbox {
       width: 500px;
       height: 700px;
       border: 2px solid #95a5a6;
@@ -41,15 +41,9 @@ $main-blue: #0a3d62;
       }
 
       &--form {
-        margin: 12px;
+        margin: 8px;
         margin-right: 40px;
         margin-left: 40px;
-      }
-
-      &--login-btn-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
       }
 
       &--login-btn {
@@ -65,6 +59,12 @@ $main-blue: #0a3d62;
           color: white;
           text-decoration: none;
         }
+      }
+
+      &--register-btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       &--register-btn {
@@ -83,7 +83,7 @@ $main-blue: #0a3d62;
         }
       }
 
-      &--register-btn-container {
+      &--login-btn-container {
         margin-top: 10px;
         display: flex;
         flex-direction: column;

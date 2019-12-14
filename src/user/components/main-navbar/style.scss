@@ -1,0 +1,43 @@
+$main-color: #006266;
+
+.main-navbar {
+  background-color: $main-color;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &--menu {
+    display: flex;
+
+    &--dropdown {
+      margin-left: 15px;
+      margin-right: 15px;
+
+      &--user-btn {
+        background-color: #0a3d62;
+        color: white;
+        font-weight: bold;
+
+        &:hover {
+          color: white;
+        }
+      }
+
+      &--logout-btn {
+        background-color: #b71540;
+        color: white;
+        font-weight: bold;
+
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.navbar-brand {
+  padding-left: 50px;
+}
