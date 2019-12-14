@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import Axios from '../../../api/axios'
 import './style.scss'
+import Swal from 'sweetalert2'
 
 function EditBook (props) {
 
   const {id} = useParams()
+  const history = useHistory()
 
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
@@ -16,41 +18,49 @@ function EditBook (props) {
   const [description, setDescription] = useState('')
   const [image, setImage] = useState([])
   const [imageURL, setImageURL] = useState('')
+  const [bookId, setBookId] = useState('')
 
   async function handleSubmitEdit (e) {
     e.preventDefault()
 
-    let tempAuthor = author.split(',')
-    let finalAuthor = []
-    tempAuthor.forEach(data => finalAuthor.push(data.trim()))
+    Swal.showLoading()
 
-    let tempCategory = category.split(',')
-    let finalCategory = []
-    tempCategory.forEach(data => finalCategory.push(data.trim()))
+    // console.log(author)
+    // let tempAuthor = author.split(',')
+    // let finalAuthor = []
+    // tempAuthor.forEach(data => finalAuthor.push(data.trim()))
+
+    // let tempCategory = category.split(',')
+    // let finalCategory = []
+    // tempCategory.forEach(data => finalCategory.push(data.trim()))
 
     const formData = new FormData()
     formData.append('title',title)
-    formData.append('author',finalAuthor)
-    formData.append('category',finalCategory)
+    formData.append('author',author)
+    formData.append('category',category)
     formData.append('rating',Number(rating))
     formData.append('price', Number(price))
     formData.append('stock', Number(stock))
     formData.append('description', description)
     formData.append('image',image)
 
-    // try{
-    //   const { data } = await Axios({
-    //     method: 'post',
-    //     url: '/',
-    //     data: formData,
-    //     headers: {
-    //       access_token: localStorage.getItem('access_token')
-    //     }
-    //   })
-    // }
-    // catch(err){
-    //   console.log(err.response)
-    // }
+    try{
+      const { data } = await Axios({
+        method: 'patch',
+        url: `/books/${bookId}`,
+        data: formData,
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
+      console.log(data)
+      fetchDetailData()
+      Swal.close()
+    }
+    catch(err){
+      Swal.close()
+      console.log(err.response)
+    }
   }
 
   async function fetchDetailData () {
@@ -71,8 +81,29 @@ function EditBook (props) {
       setStock(data.stock)
       setDescription(data.description)
       setImageURL(data.image)
+      setBookId(data._id)
     }
     catch(err){
+      console.log(err.response)
+    }
+  }
+
+  async function deleteBook () {
+    try{
+      Swal.showLoading()
+      const { data } = Axios({
+        method: 'delete',
+        url: `/books/${bookId}`,
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
+      Swal.close()
+      history.push('/admin/listbook')
+      console.log(data)
+    }
+    catch(err){
+      Swal.close()
       console.log(err.response)
     }
   }
@@ -118,7 +149,8 @@ function EditBook (props) {
             <label className="custom-file-label" htmlFor="inputImage123">{  image.length === 0 ? 'Choose File' : image[0].name }</label>
           </div>
         </div>
-        <button type="submit" className="btn btn-green mr-2">Submit</button>
+        <button type="submit" className="btn btn-green mr-2">Edit</button>
+        <button onClick={ () => deleteBook() } className="btn btn-danger mr-2">Delete</button>
         <button className="btn btn-salmon">Reset</button>
       </form>
         <img alt="book" className="mt-3" width="100%" src={imageURL} />
