@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import Axios from '../../../api/axios'
 import './style.scss'
+import Swal from 'sweetalert2'
 
 function AddBook (props) {
+
+  const history = useHistory()
 
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [category, setCategory] = useState('')
-  const [rating, setRating] = useState(null)
-  const [price, setPrice] = useState(null)
-  const [stock, setStock] = useState(null)
+  const [rating, setRating] = useState('')
+  const [price, setPrice] = useState('')
+  const [stock, setStock] = useState('')
   const [description, setDescription] = useState('')
   const [image, setImage] = useState([])
+  const [imageFile, setImageFile] = useState('')
 
   async function handleSubmit (e) {
     e.preventDefault()
@@ -32,21 +37,27 @@ function AddBook (props) {
     formData.append('price', Number(price))
     formData.append('stock', Number(stock))
     formData.append('description', description)
-    formData.append('image',image)
+    console.log(image)
+    formData.append('image',image[0])
 
-    // try{
-    //   const { data } = await Axios({
-    //     method: 'post',
-    //     url: '/',
-    //     data: formData,
-    //     headers: {
-    //       access_token: localStorage.getItem('access_token')
-    //     }
-    //   })
-    // }
-    // catch(err){
-    //   console.log(err.response)
-    // }
+    try{
+      Swal.showLoading()
+      const { data } = await Axios({
+        method: 'post',
+        url: '/books',
+        data: formData,
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
+      Swal.close()
+      console.log(data)
+      history.push('/admin/listbook')
+    }
+    catch(err){
+      Swal.close()
+      console.log(err.response)
+    }
   }
 
   function topFunction() {
@@ -72,7 +83,7 @@ function AddBook (props) {
           <input value={category} onChange={ (e) => setCategory(e.target.value)} className="form-control" type="text" placeholder="Category"/>
         </div>
         <div className="form-group">
-          <input value={rating} onChange={ (e) => setRating(e.target.value)} className="form-control" type="number" placeholder="Rating max 5.0"/>
+          <input value={rating} onChange={ (e) => setRating(e.target.value)} className="form-control" type="number" max="5" min="1" placeholder="Rating"/>
         </div>
         <div className="form-group">
           <input value={price} onChange={ (e) => setPrice(e.target.value)} className="form-control" type="number" placeholder="Price"/>
@@ -85,7 +96,10 @@ function AddBook (props) {
         </div>
         <div className="input-group mb-3">
           <div className="custom-file">
-            <input onChange={ (e) => setImage(e.target.files) } type="file" className="custom-file-input" id="inputGroupFile03" aria-describedby="inputImage123" />
+            <input onChange={ (e) => {
+              setImageFile(e.target.value)
+              setImage(e.target.files)
+            }} type="file" className="custom-file-input" id="inputGroupFile03" aria-describedby="inputImage123" />
             <label className="custom-file-label" htmlFor="inputImage123">{  image.length === 0 ? 'Choose File' : image[0].name }</label>
           </div>
         </div>

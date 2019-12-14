@@ -53,18 +53,29 @@ function EditBook (props) {
     // }
   }
 
-  // async function fetchDetailData () {
-  //   try{
-  //     const { data } = await Axios({
-  //       method: 'get',
-  //       url: '/',
-  //     })
-
-  //   }
-  //   catch(err){
-  //     console.log(err.response)
-  //   }
-  // }
+  async function fetchDetailData () {
+    try{
+      const { data } = await Axios({
+        method: 'get',
+        url: `/books/find-one/${id}`,
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
+      console.log(data)
+      setTitle(data.title)
+      setAuthor(data.author)
+      setCategory(data.category.join(','))
+      setRating(data.rating)
+      setPrice(data.price)
+      setStock(data.stock)
+      setDescription(data.description)
+      setImageURL(data.image)
+    }
+    catch(err){
+      console.log(err.response)
+    }
+  }
 
   function topFunction() {
     document.body.scrollTop = 0; // For Safari
@@ -72,7 +83,7 @@ function EditBook (props) {
   }
 
   useEffect(() => {
-    // fetchDetailData()
+    fetchDetailData()
     topFunction()
   },[])
 

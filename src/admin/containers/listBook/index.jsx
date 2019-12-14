@@ -2,25 +2,32 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Axios from '../../../api/axios'
 import './style.scss'
+import Swal from 'sweetalert2'
 
 function ListBook (props) {
 
   const history = useHistory()
   const [bookData, setBookData] = useState([])
 
-  // async function fetchBookData () {
-  //   try{
-  //     const { data } = await Axios({
-  //       method: 'get',
-  //       url: '/'
-  //     })
-  //     console.log(data)
-  //     setBookData(data)
-  //   }
-  //   catch(err){
-  //     console.log(err.response)
-  //   }
-  // }
+  async function fetchBookData () {
+    try{
+      const { data } = await Axios({
+        method: 'get',
+        url: '/books/find-all'
+      })
+      console.log(data)
+      setBookData(data)
+      Swal.close()
+    }
+    catch(err){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!'
+      })
+      console.log(err.response)
+    }
+  }
 
   function topFunction() {
     document.body.scrollTop = 0; // For Safari
@@ -28,7 +35,7 @@ function ListBook (props) {
   }
 
   useEffect(() => {
-    // fetchBookData()
+    fetchBookData()
     topFunction()
   },[])
 
@@ -50,60 +57,20 @@ function ListBook (props) {
             </tr>
           </thead>
           <tbody>
-            <tr onClick={ () => history.push('/admin/editbook/1') }>
-              <th scope="row">1</th>
-              <td>Aku ada dipersimpangan jalan untuk selalu dan akan selalu bersama mu </td>
-              <td>20</td>
-              <td>80.000</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Laskar Pelangi</td>
-              <td>15</td>
-              <td>80.000</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Dikala embun menyingsing</td>
-              <td>10</td>
-              <td>80.000</td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>Laskar Pelangi</td>
-              <td>15</td>
-              <td>80.000</td>
-            </tr>
-            <tr>
-              <th scope="row">5</th>
-              <td>Dikala embun menyingsing</td>
-              <td>10</td>
-              <td>80.000</td>
-            </tr>
-            <tr>
-              <th scope="row">6</th>
-              <td>Laskar Pelangi</td>
-              <td>15</td>
-              <td>80.000</td>
-            </tr>
-            <tr>
-              <th scope="row">7</th>
-              <td>Dikala embun menyingsing</td>
-              <td>10</td>
-              <td>80.000</td>
-            </tr>
-            <tr>
-              <th scope="row">8</th>
-              <td>Laskar Pelangi</td>
-              <td>15</td>
-              <td>80.000</td>
-            </tr>
-            <tr>
-              <th scope="row">9</th>
-              <td>Dikala embun menyingsing</td>
-              <td>10</td>
-              <td>80.000</td>
-            </tr>
+            {
+              bookData.length == 0
+              ?
+              Swal.showLoading()
+              :
+              bookData.map((data,i) => 
+                <tr onClick={ () => history.push(`/admin/editbook/${data._id}`) }>
+                  <th scope="row">{i+1}</th>
+                  <td>{data.title}</td>
+                  <td>{data.stock}</td>
+                  <td>{data.price}</td>
+                </tr>
+              )
+            }
           </tbody>
         </table>
       </div>
