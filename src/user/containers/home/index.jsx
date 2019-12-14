@@ -21,7 +21,7 @@ function Home() {
           </Link>
         </div>
         <div className="home-container--footer">
-          <img src="../../../../footer-img.png" />
+          <img id="footer-img" src="../../../../footer-img.png" />
         </div>
       </div>
     </>
