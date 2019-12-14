@@ -20,11 +20,11 @@ function Home (props) {
       <div className="container">
         <p className="admin-title">Admin Dashboard</p>
         <div className="row">
-          <div className="col-3">
+          <div className="col-12 col-md-3 order-2 order-sm-1">
             <Navigation />
             <PopularBook />
           </div>
-          <div className="col-9">
+          <div className="col-12 col-md-9 order-1 order-sm-2">
             <Switch>
               <Route path={`${path}/listbook`}>
                 <ListBook />

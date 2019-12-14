@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Axios from '../../../api/axios'
 import './style.scss'
 
 import {
@@ -30,6 +31,65 @@ const data = [
 ];
 
 function History (props) {
+
+  const [chartData, setChartData] = useState([])
+  const [popularBook, setPopularBook] = useState([])
+  const [historyData, setHistoryData] = useState([])
+
+  // async function fetchChartData () {
+  //   try{
+  //     const { data } = await Axios({
+  //       method: 'get',
+  //       url: '/'
+  //     })
+  //     console.log(data)
+  //     setChartData(data)
+  //   }
+  //   catch(err){
+  //     console.log(err.response)
+  //   }
+  // }
+
+  // async function fetchPopularBook () {
+  //   try{
+  //     const { data } = await Axios({
+  //       method: 'get',
+  //       url: '/'
+  //     })
+  //     console.log(data)
+  //     setPopularBook(data)
+  //   }
+  //   catch(err){
+  //     console.log(err.response)
+  //   }
+  // }
+
+  // async function fetchHistoryData () {
+  //   try{
+  //     const { data } = await Axios({
+  //       method: 'get',
+  //       url: '/'
+  //     })
+  //     console.log(data)
+  //     setHistoryData(data)
+  //   }
+  //   catch(err){
+  //     console.log(err.response)
+  //   }
+  // }
+
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+
+  useEffect(() => {
+    // fetchChartData()
+    // fetchHistoryData()
+    // fetchPopularBook()
+    topFunction()
+  },[])
+
   return (
     <div>
       <div className="row justify-content-between">
@@ -53,13 +113,13 @@ function History (props) {
       </div>
       <p className="table-title">Sales Table</p>
       <div className="table-container">
-        <table className="table table-hover table-borderless">
+        <table className="table table-hover table-borderless table-responsive">
           <thead>
             <tr>
               <th scope="col">#</th>
               <th scope="col">Date</th>
-              <th scope="col">Transactio ID</th>
-              <th scope="col">Total Price (Rp)</th>
+              <th scope="col">Transaction ID</th>
+              <th scope="col">Total(Rp)</th>
             </tr>
           </thead>
           <tbody>

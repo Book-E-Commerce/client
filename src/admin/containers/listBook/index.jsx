@@ -1,10 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import Axios from '../../../api/axios'
 import './style.scss'
 
 function ListBook (props) {
 
   const history = useHistory()
+  const [bookData, setBookData] = useState([])
+
+  // async function fetchBookData () {
+  //   try{
+  //     const { data } = await Axios({
+  //       method: 'get',
+  //       url: '/'
+  //     })
+  //     console.log(data)
+  //     setBookData(data)
+  //   }
+  //   catch(err){
+  //     console.log(err.response)
+  //   }
+  // }
+
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+
+  useEffect(() => {
+    // fetchBookData()
+    topFunction()
+  },[])
 
   return (
     <div>
