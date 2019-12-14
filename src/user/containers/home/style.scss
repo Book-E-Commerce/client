@@ -1,9 +1,49 @@
-$maincolor: salmon;
+@import url('https://fonts.googleapis.com/css?family=Gelasio|Roboto|Titillium+Web&display=swap');
+$main-color: #006266;
 
-.text {
-  color: $maincolor;
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $main-color;
+  height: 100vh;
 
-  &--subtext {
-    color: red;
+    &--header {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      color: white;
+      font-weight: bold;
+      font-family: 'Titillium Web', sans-serif;
+    }
+
+    &--body {
+      margin-top: 15px;
+
+      &--btns {
+        height: 70px;
+        width: 200px;
+        margin: 10px;
+        font-size: 20;
+        font-weight: bold;
+      }
+      
+    &--footer {
+
+      img {
+        margin-top: 50px;
+        width: 690px;
+        height: 380px;
+      }
+    }
   }
 }
+
+img {
+  margin-top: 50px;
+  width: 690px;
+  height: 380px;
+}
+
+
