@@ -8,12 +8,22 @@ $main-color: #006266;
     align-items: center;
     border-radius: 10px;
     background-color: $main-color;
-    color: white;
+    color: rgb(213, 219, 202);
     padding: 25px;
 
     &--btns {
       margin: 5px;
-      width: 150px;
+      width: 120px;
+      background-color: #f5dea3;
+      color: $main-color;
+      font-weight: bold;
+      border: 2px solid #596b6e;
+
+      &:hover {
+        background-color: #f5dea3;
+        color: $main-color;
+        font-weight: bold;
+      }
     }
   }
 
@@ -23,7 +33,6 @@ $main-color: #006266;
     justify-content: center;
     align-items: center;
 
-
     &--carousel {
       height: 450px;
       width: 100%;
@@ -31,57 +40,64 @@ $main-color: #006266;
       margin-left: 20px;
       margin-bottom: 15px;
 
-
       img {
         border-radius: 20px;
-        // margin-top: 0;
       }
     }
 
     &--hotitems {
       display: flex;
-      height: 400px;
+      flex-direction: column;
+      height: 610px;
       justify-content: center;
+      align-items: center;
       width: 100%;
       margin: 10px;
       margin-bottom: 30px;
       border-radius: 20px;
-      background-color: #b71540;
-      
-      &--item {
-        margin: 30px;
+      background-color:#f0f1dc;
+      border: 5px solid $main-color;
+
+      &--items {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-        img {
-          height: 180px;
-          width: 140px;
-          margin-top: 0;
-          border-top-left-radius: 10px;
-          border-top-right-radius: 10px;
-        }
-
-        &--bottom-container {
+        margin-left: 30px;
+        &--item {
+          margin: 30px;
           display: flex;
           justify-content: center;
           align-items: center;
           flex-direction: column;
-          background-color: white;
-          width: 140px;
-          height: 1200px;
-          border-bottom-left-radius: 10px;
-          border-bottom-right-radius: 10px;
-
-          &--title {
-            font-weight: bold;
+          border: 2px solid $main-color;
+          border-radius: 12px;
+  
+          img {
+            height: 190px;
+            width: 148.5px;
+            margin-top: 0;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
           }
 
-          &--buy {
-            background-color: #C9356E;
-            color: white;
-            font-weight: bold;
+          &--bottom-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: white;
+            width: 148.5px;
+            height: 180px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+  
+            &--title {
+              font-weight: bold;
+            }
+  
+            &--buy {
+              background-color: #C9356E;
+              color: white;
+              font-weight: bold;
+            }
           }
         }
       }
@@ -139,7 +155,7 @@ $main-color: #006266;
 
 
 .main-products-text-container {
-  margin-top: 0;
-  height: 100px;
-  width: 300px;
+  margin-top: 25px;
+  height: 160px;
+  width: 460px;
 }

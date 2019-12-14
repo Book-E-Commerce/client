@@ -16,7 +16,7 @@ function MainNavbar() {
     <div>
       <nav className="navbar main-navbar">
       <Link to="/home">
-        <img id="main-navbar-logo" src="https://i.imgur.com/kudvMWt.png" />
+        <img id="main-navbar-logo" src="https://i.imgur.com/kudvMWt.png" alt="HackBookLogo" />
       </Link>
         <div className="main-navbar--menu">
           <form className="form-inline">
