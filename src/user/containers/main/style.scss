@@ -13,7 +13,7 @@ $main-color: #006266;
 
     &--btns {
       margin: 5px;
-      width: 120px;
+      width: 200px;
       background-color: #f0f1dc;
       color: $main-color;
       font-weight: bold;
@@ -47,7 +47,7 @@ $main-color: #006266;
     &--hotitems {
       display: flex;
       flex-direction: column;
-      height: 610px;
+      height: 650px;
       justify-content: center;
       align-items: center;
       width: 100%;
@@ -59,19 +59,18 @@ $main-color: #006266;
 
       &--items {
         display: flex;
-        margin-left: 30px;
+        margin-left: 15px;
         &--item {
           margin: 30px;
           display: flex;
           justify-content: center;
           align-items: center;
           flex-direction: column;
-          border: 2px solid $main-color;
           border-radius: 12px;
   
           img {
-            height: 190px;
-            width: 148.5px;
+            height: 210px;
+            width: 170px;
             margin-top: 0;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
@@ -83,8 +82,8 @@ $main-color: #006266;
             align-items: center;
             flex-direction: column;
             background-color: white;
-            width: 148.5px;
-            height: 180px;
+            width: 170px;
+            height: 170px;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
   

@@ -18,10 +18,10 @@ function Main() {
       <MainNavbar />
       <div className="container main-container">
         <div className="row">
-          <div className="col-2 main-container--sidebar">
+          <div className="col-3 main-container--sidebar">
             <Sidebar />
           </div>
-          <div className="col-10">
+          <div className="col-9">
             <Switch>
               <Route exact path="/home/details">
                 <Details />
