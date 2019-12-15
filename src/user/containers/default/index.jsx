@@ -45,10 +45,10 @@ function Default() {
             <div id="carouselExampleInterval" className="carousel slide" data-ride="carousel">
               <div className="carousel-inner">
                 <div className="carousel-item active" data-interval="10000">
-                  <img src="https://i.imgur.com/zrwqsg9.png" className="d-block w-100" alt="..." />
+                  <img src="https://i.imgur.com/eKaUW8a.png" className="d-block w-100" alt="..." />
                 </div>
                 <div className="carousel-item" data-interval="2000">
-                  <img src="https://i.imgur.com/zrwqsg9.png" className="d-block w-100" alt="..." />
+                  <img src="https://i.imgur.com/EzzpY10.png" className="d-block w-100" alt="..." />
                 </div>
               </div>
               <a className="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
@@ -63,10 +63,10 @@ function Default() {
           </div>
           <div className="col-4 flex-column main-container--banners--right">
             <div className="main-container--banners--right--top">
-              <img src="https://melkdesign.staticscdn.com/wp-content/uploads/2018/02/DCo_Horizontal_Book_Mockup_2.jpg" alt=""/>
+              <img src="https://i.imgur.com/2lzmtwn.png" alt=""/>
             </div>
             <div className="main-container--banners--right--bottom">
-              <img src="https://melkdesign.staticscdn.com/wp-content/uploads/2018/02/DCo_Horizontal_Book_Mockup_2.jpg" alt=""/>
+              <img src="https://i.imgur.com/ACN211V.png" alt=""/>
             </div>
           </div>
         </div>
