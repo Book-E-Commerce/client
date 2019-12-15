@@ -10,6 +10,7 @@ import Sidebar from '../../components/sidebar'
 import Default from '../default'
 import Details from '../details'
 import Cart from '../cart'
+import DisplayByCategory from '../displaybycategory'
 
 function Main() {
   return (
@@ -17,23 +18,24 @@ function Main() {
       <MainNavbar />
       <div className="container main-container">
         <div className="row">
-          <div className="col-2 main-container--sidebar">
+          <div className="col-3 main-container--sidebar">
             <Sidebar />
           </div>
-          <div className="col-10">
-            <Router>
-              <Switch>
-                <Route exact path="/home">
-                  <Default />
-                </Route>
-                <Route exact path="/home/details">
-                  <Details />
-                </Route>
-                <Route exact path="/home/cart">
-                  <Cart />
-                </Route>
-              </Switch>
-            </Router>
+          <div className="col-9">
+            <Switch>
+              <Route exact path="/home/details">
+                <Details />
+              </Route>
+              <Route exact path="/home/cart">
+                <Cart />
+              </Route>
+              <Route exact path="/home/categories">
+                <DisplayByCategory />
+              </Route>
+              <Route exact path="/home">
+                <Default />
+              </Route>
+            </Switch>
           </div>
         </div>
       </div>

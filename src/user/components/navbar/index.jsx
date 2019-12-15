@@ -5,7 +5,7 @@ function Navbar() {
   return(
     <>
       <nav className="navbar">
-        <img id="navbar-logo" src="https://i.imgur.com/kudvMWt.png" />
+        <img id="navbar-logo" src="https://i.imgur.com/kudvMWt.png" alt="HackBookLogo" />
       </nav>
     </>
   )

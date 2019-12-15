@@ -15,13 +15,13 @@ function Details() {
     <div className="details-container">
       <div class="card details-container--card" style={{width: '18rem'}}>
         <img src="https://hpmedia.bloomsbury.com/rep/s/9781408855898_309038.jpeg" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">{title}</p>
-          <p>{author}</p>
-          <div className="details-container--card--categories">
+        <div class="card-body details-container--card--body">
+          <p class="card-text details-container--card--body--main-info">{title}</p>
+          <p class="card-text details-container--card--body--main-info">Author: {author}</p>
+          <div className="details-container--card--body--categories">
           {
             categories.map((category, i) => {
-              return <span key={i} style={{marginLeft: '7px'}} class="badge badge-warning">{category}</span>
+              return <span key={i} style={{marginLeft: '7px'}} class="badge details-container--card--body--categories--category">{category}</span>
             })
           }
           </div>
@@ -34,14 +34,14 @@ function Details() {
           </p>
         </div>
         <div className="details-container--information--extra">
-          <p style={{marginLeft: '10px', marginTop: '10px'}}>Stock: 100</p>
-          <p style={{marginLeft: '10px'}}>Price: Rp.{price}</p>
-          <p style={{marginLeft: '10px'}}>Rating: {rating}</p>
+          <p className="details-container--information--extra--info" style={{marginLeft: '10px', marginTop: '10px'}}>Stock: 100</p>
+          <p className="details-container--information--extra--info" style={{marginLeft: '10px'}}>Price: Rp.{price}</p>
+          <p className="details-container--information--extra--info" style={{marginLeft: '10px'}}><i style={{marginRight: '8px'}} className="far fa-star"></i> {rating}</p>
           <div className="details-container--information--extra--buy">
             <div className="col-sm-3">
               <input className="form-control" type="number" value="0" id="input-stock" />
             </div>
-            <button type="button" className="btn btn-outline-dark">Buy</button>
+            <button type="button" className="btn details-container--information--extra--buy--btn"><i style={{marginRight: '5px'}} className="fas fa-shopping-cart"></i> Add to Cart</button>
           </div>
         </div>
       </div>

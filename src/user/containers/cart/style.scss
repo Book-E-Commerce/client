@@ -1,17 +1,22 @@
+$main-color: #006266;
+
 .cart-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  border: 2px solid black;
-  height: 500px;
 
   &--title {
     font-weight: bold;
-    height: 40px;
-    border: 2px solid black;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 60%;
+    }
   }
 
   &--contents {
@@ -19,13 +24,15 @@
     &--products {
       display: flex;
       flex-direction: column;
-      height: 200px;
-      width: 500px;
-      border: 2px solid black;
-      margin-right: 40px;
   
       &--product {
         display: flex;
+        height: 200px;
+        width: 500px;
+        margin-bottom: 10px;
+        border-radius: 3px;
+        border: 2px solid black;
+        margin-right: 40px;
 
         img {
           height: 180px;
@@ -33,10 +40,26 @@
           margin: 10px;
         }
   
-        &--info {
+        &--infos {
           display: flex;
           flex-direction: column;
+          justify-content: center;
+          align-items: center;
           margin: 10px;
+          width: 66%;
+          height: 100%;
+
+          &--info {
+            display: flex;
+            font-weight: bold;
+            color: white;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            width: 100%;
+            background-color: $main-color;
+            border-radius: 2px;
+          }
         }
       }
     }
@@ -44,7 +67,26 @@
     &--checkout {
       height: 200px;
       width: 300px;
-      border: 2px solid black;
+
+      &--pay {
+        height: 200px;
+        width: 280px;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+
+        &--total {
+          background-color: #C44569;
+          color: white;
+          font-weight: bold;
+        }
+
+        &--checkout {
+          background-color: #16A085;
+          color: white;
+          font-weight: bold;
+        }
+      }
     }
   }
 

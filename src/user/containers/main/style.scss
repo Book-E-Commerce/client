@@ -8,12 +8,21 @@ $main-color: #006266;
     align-items: center;
     border-radius: 10px;
     background-color: $main-color;
-    color: white;
+    color: rgb(213, 219, 202);
     padding: 25px;
 
     &--btns {
       margin: 5px;
-      width: 150px;
+      width: 200px;
+      background-color: #f0f1dc;
+      color: $main-color;
+      font-weight: bold;
+
+      &:hover {
+        background-color: #f0f1dc;
+        color: $main-color;
+        font-weight: bold;
+      }
     }
   }
 
@@ -23,7 +32,6 @@ $main-color: #006266;
     justify-content: center;
     align-items: center;
 
-
     &--carousel {
       height: 450px;
       width: 100%;
@@ -31,103 +39,75 @@ $main-color: #006266;
       margin-left: 20px;
       margin-bottom: 15px;
 
-
       img {
         border-radius: 20px;
-        // margin-top: 0;
       }
     }
 
     &--hotitems {
       display: flex;
-      height: 400px;
+      flex-direction: column;
+      height: 650px;
       justify-content: center;
+      align-items: center;
       width: 100%;
       margin: 10px;
       margin-bottom: 30px;
       border-radius: 20px;
-      background-color: #b71540;
-      
-      &--item {
-        margin: 30px;
+      background-color:#f0f1dc;
+      border: 5px solid $main-color;
+
+      &--items {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-        img {
-          height: 180px;
-          width: 140px;
-          margin-top: 0;
-          border-top-left-radius: 10px;
-          border-top-right-radius: 10px;
-        }
-
-        &--bottom-container {
+        margin-left: 15px;
+        &--item {
+          margin: 30px;
           display: flex;
           justify-content: center;
           align-items: center;
           flex-direction: column;
-          background-color: white;
-          width: 140px;
-          height: 1200px;
-          border-bottom-left-radius: 10px;
-          border-bottom-right-radius: 10px;
-
-          &--title {
-            font-weight: bold;
+          border-radius: 12px;
+  
+          img {
+            height: 210px;
+            width: 170px;
+            margin-top: 0;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
           }
 
-          &--buy {
-            background-color: #C9356E;
-            color: white;
-            font-weight: bold;
+          &--bottom-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: white;
+            width: 170px;
+            height: 170px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+  
+            &--title {
+              font-weight: bold;
+            }
+  
+            &--buy {
+              background-color: #C9356E;
+              color: white;
+              font-weight: bold;
+            }
           }
         }
       }
-      
     }
 
-    &--saleitems {
+    &--reg-products {
       display: flex;
-      height: 400px;
+      flex-wrap: wrap;
       justify-content: center;
+      align-items: center;
       width: 100%;
-      margin: 10px;
-      border-radius: 20px;
-      background-color: #0a3d62;
-      
-      &--item {
-        margin: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-        img {
-          height: 180px;
-          width: 140px;
-          margin-top: 0;
-          border-top-left-radius: 10px;
-          border-top-right-radius: 10px;
-        }
-
-        &--bottom-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          background-color: white;
-          width: 140px;
-          height: 1200px;
-          border-bottom-left-radius: 10px;
-          border-bottom-right-radius: 10px;
-
-          &--title {
-            font-weight: bold;
-          }
-        }
-      }
+      height: 0;
     }
   }
 }
@@ -139,7 +119,7 @@ $main-color: #006266;
 
 
 .main-products-text-container {
-  margin-top: 0;
-  height: 100px;
-  width: 300px;
+  margin-top: 25px;
+  height: 160px;
+  width: 460px;
 }
