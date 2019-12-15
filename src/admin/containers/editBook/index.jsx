@@ -135,7 +135,7 @@ function EditBook (props) {
           <input value={rating} onChange={ (e) => setRating(e.target.value)} className="form-control" type="number" placeholder="Rating max 5.0"/>
         </div>
         <div className="form-group">
-          <input value={price} onChange={ (e) => setPrice(e.target.value)} className="form-control" type="number" placeholder="Price"/>
+          <input value={price} onChange={ (e) => setPrice(e.target.value)} className="form-control" type="number" min="1" step="1" placeholder="Price"/>
         </div>
         <div className="form-group">
           <input value={stock} onChange={ (e) => setStock(e.target.value)} className="form-control" type="number" placeholder="Stock"/>

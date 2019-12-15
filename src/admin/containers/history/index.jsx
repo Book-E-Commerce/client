@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Axios from '../../../api/axios'
+import Moment from 'moment'
 import './style.scss'
 
 import {
@@ -33,50 +34,59 @@ const data = [
 function History (props) {
 
   const [chartData, setChartData] = useState([])
-  const [popularBook, setPopularBook] = useState([])
   const [historyData, setHistoryData] = useState([])
 
-  // async function fetchChartData () {
-  //   try{
-  //     const { data } = await Axios({
-  //       method: 'get',
-  //       url: '/'
-  //     })
-  //     console.log(data)
-  //     setChartData(data)
-  //   }
-  //   catch(err){
-  //     console.log(err.response)
-  //   }
-  // }
+  async function fetchChartData () {
+    try{
+      const { data } = await Axios({
+        method: 'get',
+        url: '/transactions/weekly-report',
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
+      let finalData = data.reverse()
+      console.log(finalData)
+      setChartData(finalData)
+    }
+    catch(err){
+      console.log(err.response)
+    }
+  }
 
-  // async function fetchPopularBook () {
-  //   try{
-  //     const { data } = await Axios({
-  //       method: 'get',
-  //       url: '/'
-  //     })
-  //     console.log(data)
-  //     setPopularBook(data)
-  //   }
-  //   catch(err){
-  //     console.log(err.response)
-  //   }
-  // }
+  async function fetchHistoryData () {
+    try{
+      const { data } = await Axios({
+        method: 'get',
+        url: '/transactions/all',
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
+      // console.log(data.transactions)
 
-  // async function fetchHistoryData () {
-  //   try{
-  //     const { data } = await Axios({
-  //       method: 'get',
-  //       url: '/'
-  //     })
-  //     console.log(data)
-  //     setHistoryData(data)
-  //   }
-  //   catch(err){
-  //     console.log(err.response)
-  //   }
-  // }
+      data.transactions.forEach(data => {
+        let tempFinal = []
+        let totalPrice = {
+          qty: 0,
+          price: 0
+        }
+        data.cart.forEach(data => {
+          tempFinal.push({qty:data.qty, price:data.bookId.price})
+        })
+        tempFinal.forEach(data => {
+          totalPrice.price += data.price
+          totalPrice.qty += data.qty
+        })
+        data.totalTransactions = totalPrice
+      })
+      setHistoryData(data.transactions)
+      // console.log(data.transactions)
+    }
+    catch(err){
+      console.log(err.response)
+    }
+  }
 
   function topFunction() {
     document.body.scrollTop = 0; // For Safari
@@ -84,9 +94,8 @@ function History (props) {
   }
 
   useEffect(() => {
-    // fetchChartData()
-    // fetchHistoryData()
-    // fetchPopularBook()
+    fetchChartData()
+    fetchHistoryData()
     topFunction()
   },[])
 
@@ -94,12 +103,12 @@ function History (props) {
     <div>
       <div className="row justify-content-between">
         <p className="chart-container--title">Sales Chart</p>
-        <p className="chart-container--date">Wednesday, 20 December 2019</p>
+        <p className="chart-container--date">{Moment(new Date()).format("dddd, MMMM Do YYYY")}</p>
       </div>
       <div className="chart-container">
       
       <ResponsiveContainer>
-      <AreaChart width={730} height={250} data={data}
+      <AreaChart width="100%" height={250} data={chartData}
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -111,11 +120,11 @@ function History (props) {
             <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
           </linearGradient>
         </defs>
-        <XAxis dataKey="name" />
-        <YAxis />
+        <XAxis dataKey="_id.Date" />
+        <YAxis dataKey="count" />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
-        <Area type="monotone" dataKey="selling" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+        <Area type="monotone" dataKey="count" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
         <Area type="monotone" dataKey="books sold" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
       </AreaChart>
       </ResponsiveContainer>
@@ -135,30 +144,22 @@ function History (props) {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Tuesday, 20 June 2019</td>
-              <td>alsdkladks1332llk1lk2l12k</td>
-              <td>30</td>
-              <td>80.000</td>
-              <td>dipadana</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Tuesday, 20 June 2019</td>
-              <td>alsdkladks1332llk1lk2l12k</td>
-              <td>30</td>
-              <td>80.000</td>
-              <td>dipadana</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Tuesday, 20 June 2019</td>
-              <td>alsdkladks1332llk1lk2l12k</td>
-              <td>30</td>
-              <td>80.000</td>
-              <td>dipadana</td>
-            </tr>
+            {
+              historyData.length == 0
+              ?
+              <tr></tr>
+              :
+              historyData.map((data,i) => 
+                <tr key={i}>
+                  <th scope="row">{i+1}</th>
+                  <td>{Moment(String(new Date(data.createdAt))).format("MMMM Do YYYY")}</td>
+                  <td>{data._id}</td>
+                  <td>{data.totalTransactions.qty}</td>
+                  <td>{data.totalTransactions.price}</td>
+                  <td>{data.userId.username}</td>
+                </tr>
+              )
+            }
           </tbody>
         </table>
       </div>
