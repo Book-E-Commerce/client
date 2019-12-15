@@ -71,13 +71,6 @@ function Default() {
             </div>
           </div>
         </div>
-
-        {/* <div className="main-container--products--reg-products">
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-        </div> */}
       </div>
     </>
   )

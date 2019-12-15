@@ -18,10 +18,7 @@ function Main() {
       <MainNavbar />
       <div className="container main-container">
         <div className="row">
-          <div className="col-3 main-container--sidebar">
-            <Sidebar />
-          </div>
-          <div className="col-9">
+          <div className="col-12">
             <Switch>
               <Route exact path="/home/details">
                 <Details />
