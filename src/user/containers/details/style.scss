@@ -59,8 +59,8 @@ $main-color: #006266;
     border-radius: 20px;
 
     &--overview {
-      height: 280px;
-      width: 360px;
+      height: 320px;
+      width: 100%;
       border: 2px solid $main-color;
       background-color: #f5dea3;
       border-radius: 10px;
@@ -76,8 +76,8 @@ $main-color: #006266;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 240px;
-      width: 360px;
+      height: 280px;
+      width: 100%;
       border: 2px solid $main-color;
       border-radius: 10px;
 
