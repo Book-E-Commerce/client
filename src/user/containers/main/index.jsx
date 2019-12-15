@@ -11,6 +11,7 @@ import Default from '../default'
 import Details from '../details'
 import Cart from '../cart'
 import DisplayByCategory from '../displaybycategory'
+import History from '../history'
 
 function Main() {
   return (
@@ -25,6 +26,9 @@ function Main() {
               </Route>
               <Route exact path="/home/cart">
                 <Cart />
+              </Route>
+              <Route exact path="/home/history">
+                <History />
               </Route>
               <Route exact path="/home/categories">
                 <DisplayByCategory />

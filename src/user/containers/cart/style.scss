@@ -1,6 +1,9 @@
 .cart-title {
   font-size: 20px;
   margin-bottom: 40px;
+  margin-top: 20px;
+  color: #006266;
+  // font-weight: bold;
 }
 
 .cartContainer {
@@ -19,6 +22,21 @@
       color: grey;
     }
 
+    &--book-title {
+      color: #006266;
+      font-weight: bold;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance:textfield;
+    }
+
     &--number-input {
       width: 50px;
       border: none;
@@ -33,10 +51,12 @@
     &--subtotal-text {
       text-align: right;
       margin-bottom: 0;
+      font-weight: bold;
     }
 
     &--subtotal-number {
       text-align: right;
+      color: #006266;
     }
   }
 }
@@ -48,9 +68,17 @@
   &--total-price {
     text-align: center;
     font-size: 30px;
+    color: #006266;
   }
 
   &--button {
     width: 100%;
+    background-color: #383838;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 17px;
+    color: white;
+    padding: 10px 0;
   }
 }
