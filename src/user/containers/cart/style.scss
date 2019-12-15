@@ -9,7 +9,14 @@ $main-color: #006266;
 
   &--title {
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 60%;
+    }
   }
 
   &--contents {

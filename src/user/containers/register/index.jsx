@@ -1,11 +1,28 @@
 import React, { useState } from 'react';
 import './style.scss'
 import { useHistory, Link } from "react-router-dom";
+import axios from '../../../api/axios'
+import Swal from 'sweetalert2'
 
 function Register() {
+  const history = useHistory()
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
-  const [ name, setName ] = useState('')
+  const [ username, setUsername ] = useState('')
+
+  const registerUser = () => {
+    axios.post('/users/register', {
+      email, password, username
+    })
+      .then(({data}) => {
+        Swal.fire(
+          'Registered',
+          'Success',
+          'success'
+        )
+        history.push('/login')
+      })
+  }
 
   return (
     <div className="register-container">
@@ -19,7 +36,7 @@ function Register() {
           </div>
           <div className="form-group register-container--right--registerbox--form">
             <label for="exampleInputEmail1">Full Name</label>
-            <input value={name} onChange={event => setName(event.target.value)} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            <input value={username} onChange={event => setUsername(event.target.value)} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
           </div>
           <div className="form-group register-container--right--registerbox--form">
             <label for="exampleInputEmail1">Email address</label>
@@ -31,7 +48,7 @@ function Register() {
             <input value={password} onChange={event => setPassword(event.target.value)} type="password" className="form-control" id="exampleInputPassword1" />
           </div>
           <div className="register-container--right--registerbox--register-btn-container">
-            <button type="submit" className="btn register-container--right--registerbox--register-btn">Register</button>
+            <button onClick={registerUser} type="submit" className="btn register-container--right--registerbox--register-btn">Register</button>
           </div>  
           <div className="register-container--right--registerbox--login-btn-container">
             <Link to ="/login">

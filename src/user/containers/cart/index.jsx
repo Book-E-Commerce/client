@@ -6,7 +6,7 @@ function Cart() {
   return (
     <div className="cart-container">
       <div className="cart-container--title">
-        <h1 style={{padding: '15px'}}>Cart</h1>
+        <img src="https://i.imgur.com/4tCXSPV.png" alt="..."/>
       </div>
       <div className="cart-container--contents">
         <div className="cart-container--contents--products">

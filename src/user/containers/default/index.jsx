@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory, Link } from "react-router-dom";
+import Product from '../../components/product'
 
 function Default() {
   const history = useHistory()
@@ -12,10 +13,10 @@ function Default() {
       <div id="carouselExampleInterval" className="carousel slide main-container--products" data-ride="carousel">
         <div className="carousel-inner main-container--products--carousel">
           <div className="carousel-item active" data-interval="10000">
-            <img src="https://images2.alphacoders.com/261/thumb-1920-26102.jpg" className="d-block w-100" alt="..." />
+            <img src="https://i.imgur.com/zrwqsg9.png" className="d-block w-100" alt="..." />
           </div>
           <div className="carousel-item" data-interval="2000">
-            <img src="https://images2.alphacoders.com/261/thumb-1920-26102.jpg" className="d-block w-100" alt="..." />
+            <img src="https://i.imgur.com/zrwqsg9.png" className="d-block w-100" alt="..." />
           </div>
         </div>
         <a className="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
@@ -74,6 +75,13 @@ function Default() {
             </div>
           </div>
         </div>
+
+        {/* <div className="main-container--products--reg-products">
+          <Product />
+          <Product />
+          <Product />
+          <Product />
+        </div> */}
       </div>
     </>
   )

@@ -1,11 +1,14 @@
 import React from 'react';
+import { useHistory, Link } from "react-router-dom";
 
 function Sidebar() {
+  const history = useHistory()
+
   return (
     <div>
       <center>
-        <h6 id="categories-title">Categories</h6>
-        <button type="button" className="btn main-container--sidebar--btns">Action</button>
+        <h5 id="categories-title">Categories</h5>
+        <button onClick={() => history.push('/home/categories')} type="button" className="btn main-container--sidebar--btns">Action</button>
         <button type="button" className="btn main-container--sidebar--btns">Adventure</button>
         <button type="button" className="btn main-container--sidebar--btns">Comedy</button>
         <button type="button" className="btn main-container--sidebar--btns">Drama</button>

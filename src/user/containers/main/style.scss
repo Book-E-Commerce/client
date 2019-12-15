@@ -14,13 +14,12 @@ $main-color: #006266;
     &--btns {
       margin: 5px;
       width: 120px;
-      background-color: #f5dea3;
+      background-color: #f0f1dc;
       color: $main-color;
       font-weight: bold;
-      border: 2px solid #596b6e;
 
       &:hover {
-        background-color: #f5dea3;
+        background-color: #f0f1dc;
         color: $main-color;
         font-weight: bold;
       }
@@ -101,49 +100,15 @@ $main-color: #006266;
           }
         }
       }
-      
     }
 
-    &--saleitems {
+    &--reg-products {
       display: flex;
-      height: 400px;
+      flex-wrap: wrap;
       justify-content: center;
+      align-items: center;
       width: 100%;
-      margin: 10px;
-      border-radius: 20px;
-      background-color: #0a3d62;
-      
-      &--item {
-        margin: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-        img {
-          height: 180px;
-          width: 140px;
-          margin-top: 0;
-          border-top-left-radius: 10px;
-          border-top-right-radius: 10px;
-        }
-
-        &--bottom-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          background-color: white;
-          width: 140px;
-          height: 1200px;
-          border-bottom-left-radius: 10px;
-          border-bottom-right-radius: 10px;
-
-          &--title {
-            font-weight: bold;
-          }
-        }
-      }
+      height: 0;
     }
   }
 }

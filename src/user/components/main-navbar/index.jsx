@@ -8,10 +8,6 @@ function MainNavbar() {
     history.push('/')
   }
 
-  const toCart = () => {
-    history.push('/home/cart')
-  }
-
   return (
     <div>
       <nav className="navbar main-navbar">
@@ -28,8 +24,8 @@ function MainNavbar() {
               <i className="fas fa-user-md"></i>
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a onClick={toCart} className="dropdown-item" href="#"><i style={{marginRight: '4px'}} className="fas fa-shopping-cart"></i> Cart</a>
-              <a className="dropdown-item" href="#"><i style={{marginRight: '4px'}} className="far fa-newspaper"></i> Transaction</a>
+              <button type="button" onClick={() => history.push('/home/cart')} className="dropdown-item"><i style={{marginRight: '4px'}} className="fas fa-shopping-cart"></i> Cart</button>
+              <a className="dropdown-item"><i style={{marginRight: '4px'}} className="far fa-newspaper"></i> Transaction</a>
             </div>
           </div>
           <button onClick={logout} style={{marginRight: '70px'}} type="button" className="btn btn-outline-light"><i className="fas fa-power-off"></i></button>
