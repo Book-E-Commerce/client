@@ -38,7 +38,7 @@ function MainNavbar() {
                     <a className="dropdown-item"><i style={{marginRight: '4px'}} className="far fa-newspaper"></i> Transaction</a>
                   </div>
                 </div>
-                <button onClick={logouts} style={{marginRight: '50px'}} type="button" className="btn btn-outline-light"><i className="fas fa-power-off"></i></button>
+                <button onClick={logouts} style={{marginRight: '50px'}} type="button" className="btn btn-jalapeno"><i className="fas fa-sign-out-alt"></i></button>
               </>
             ) : 
             (
