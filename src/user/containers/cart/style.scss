@@ -1,5 +1,5 @@
 .cart-title {
-  font-size: 20px;
+  font-size: 24px;
   margin-bottom: 40px;
   margin-top: 20px;
   color: #006266;
@@ -11,6 +11,8 @@
   &--cartItem {
     border: 0;
     margin-bottom: 20px;
+    padding-bottom: 25px;
+    border-bottom: solid 1px lightgrey;
     
     &--image {
       background-color: lightgrey;
@@ -19,7 +21,7 @@
     }
 
     &--author {
-      color: grey;
+      color: darkgrey;
     }
 
     &--book-title {
@@ -50,13 +52,20 @@
 
     &--subtotal-text {
       text-align: right;
-      margin-bottom: 0;
+      margin-bottom: 5px;
       font-weight: bold;
     }
 
     &--subtotal-number {
       text-align: right;
       color: #006266;
+    }
+
+    &--delete {
+      color: grey;
+      text-align: right;
+      margin-top: 80px;
+      cursor: pointer;
     }
   }
 }
