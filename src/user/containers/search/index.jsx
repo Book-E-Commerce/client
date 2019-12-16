@@ -51,7 +51,7 @@ export default function Search (props) {
               {
                 searchResultData.length === 0
                 ?
-                <p>No Data</p>
+                  <p></p>
                 :
                 searchResultData.map((data,i) =>   
                   <div className="col-3" onClick={ () => history.push(`/home/products/${data._id}`) }>
@@ -59,7 +59,7 @@ export default function Search (props) {
                       <img width="100%" src={data.image} alt=""/>
                       <div className="book-item--info">
                         <p className="mb-0 book-item--info--title text-truncate">{data.title}</p>
-                        <p className="mb-0 book-item--info--author">{data.author[0]}</p>
+                        <p className="text-truncate mb-0 book-item--info--author">{data.author[0]}</p>
                         <p className="mb-0 book-item--info--price">Rp {data.price}</p>
                       </div>
                     </div>
