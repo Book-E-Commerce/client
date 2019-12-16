@@ -130,7 +130,7 @@ function Cart() {
               {
                 cartData.length === 0
                 ?
-                <p>No Data</p>
+                <p className="no-data">You have 0 item in your cart</p>
                 :
                 cartData.map((data,i) => 
                   <div key={i} className="row cartContainer--cartItem row no-gutters">

@@ -23,6 +23,13 @@ function Register() {
         )
         history.push('/login')
       })
+      .catch(err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'You need to fill all required data',
+        })
+      })
   }
 
   return (
@@ -32,21 +39,21 @@ function Register() {
       </div>
       <div className="register-container--right">
         <div className="register-container--right--registerbox">
-          <div className="register-container--right--registerbox--header">
-            <img src="https://i.imgur.com/rIDjqeJ.png" alt="Icon"/>
+          <div onClick={() => history.push('/home')} className="register-container--right--registerbox--header">
+            <img src="https://i.imgur.com/RD45MWB.png" alt="Icon"/>
           </div>
           <form onSubmit={registerUser}>
             <div className="form-group register-container--right--registerbox--form">
-              <label for="exampleInputEmail1">Full Name</label>
+              <label for="exampleInputEmail1">Full Name<strong><label style={{color: '#C3113F', margin: 0}}>*</label></strong></label>
               <input value={username} onChange={event => setUsername(event.target.value)} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
             </div>
             <div className="form-group register-container--right--registerbox--form">
-              <label for="exampleInputEmail1">Email address</label>
+              <label for="exampleInputEmail1">Email address<strong><label style={{color: '#C3113F', margin: 0}}>*</label></strong></label>
               <input value={email} onChange={event => setEmail(event.target.value)} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
               <small id="emailHelp" className="form-text text-muted">Please input verified email.</small>
             </div>
             <div style={{marginBottom: '15px'}} className="form-group register-container--right--registerbox--form">
-              <label for="exampleInputPassword1">Password</label>
+              <label for="exampleInputPassword1">Password<strong><label style={{color: '#C3113F', margin: 0}}>*</label></strong></label>
               <input value={password} onChange={event => setPassword(event.target.value)} type="password" className="form-control" id="exampleInputPassword1" />
             </div>
             <div className="register-container--right--registerbox--register-btn-container">

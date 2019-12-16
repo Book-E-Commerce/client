@@ -6,8 +6,10 @@ import './style.scss'
 export default function History (props) {
 
   const [historyData, setHistoryData] = useState([])
+  const [ loading, setLoading ] = useState(false)
 
   async function fetchHistoryData () {
+    setLoading(true)
     try{
       const {data} = await Axios({
         method: 'get',
@@ -35,6 +37,7 @@ export default function History (props) {
       })
       console.log(data)
       setHistoryData(data)
+      setLoading(false)
     }
     catch(err){
       console.log(err.response)
@@ -45,6 +48,13 @@ export default function History (props) {
     fetchHistoryData()
   },[])
 
+  if (loading) return (
+    <div className="loading-container">
+      <div className="lds-circle d-flex justify-content-center align-items-center mx-auto"><div></div></div>
+      <h6 style={{fontWeight: 'bold'}}>Loading . . . </h6>
+    </div>
+  )
+
   return (
     <div>
       <p className="transaction-main-title">Transaction History</p>
@@ -52,7 +62,7 @@ export default function History (props) {
       {
         historyData.length === 0
         ?
-        <p>No Data</p>
+        <p className="no-data">You have 0 transaction</p>
         :
         historyData.map((data,i) => 
           <div className="transaction-container">

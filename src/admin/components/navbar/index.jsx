@@ -2,8 +2,17 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import './style.scss'
 import logoImg from '../../../image/logo_only.png'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout } from '../../../store/actions/authenthication'
 
 const Navbar = () => {
+  const history = useHistory()
+  const dispatch = useDispatch()
+  const logouts = () => {
+    localStorage.removeItem('token')
+    history.push('/')
+    dispatch(logout())
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-green sticky-top">
@@ -19,7 +28,7 @@ const Navbar = () => {
           
         </ul>
         <form className="form-inline my-2 my-lg-0" style={{ marginRight: 50 }}>
-          <button className="btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
+        <button onClick={logouts} style={{marginRight: '50px'}} type="button" className="btn btn-jalapeno"><i className="fas fa-sign-out-alt"></i></button>
         </form>
       </div>
     </nav>

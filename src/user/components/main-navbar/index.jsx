@@ -20,13 +20,14 @@ function MainNavbar() {
   function handleSubmit (e) {
     e.preventDefault()
     history.push(`/home/search/${ keyword }`)
+    setKeyword('')
   }
 
   return (
     <div>
       <nav className="navbar main-navbar">
       <Link to="/home">
-        <img id="main-navbar-logo" src="https://i.imgur.com/kudvMWt.png" alt="HackBookLogo" />
+        <img id="main-navbar-logo" src="https://i.imgur.com/kudvMWt.png" alt="" />
       </Link>
         <div className="main-navbar--menu">
           <form className="form-inline" onSubmit={ (e) => handleSubmit(e) } >
