@@ -23,16 +23,16 @@ function Main() {
         <div className="row">
           <div className="col-12">
             <Switch>
-              <Route exact path="/home/:id">
+              <Route path="/home/products/:id">
                 <Details />
               </Route>
-              <Route exact path="/home/cart">
+              <Route path="/home/cart">
                 <Cart />
               </Route>
-              <Route exact path="/home/categories">
+              <Route path="/home/categories">
                 <DisplayByCategory />
               </Route>
-              <Route exact path="/home">
+              <Route path="/home">
                 <Default />
               </Route>
             </Switch>

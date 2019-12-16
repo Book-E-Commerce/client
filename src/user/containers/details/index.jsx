@@ -48,8 +48,7 @@ function Details(props) {
   return (
     <div className="container details-container">
       <div className="row">
-        <div className="col-3">
-          <div className="card details-container--card" style={{width: '17rem'}}>
+        <div className="col-3 card details-container--card" style={{width: '17rem'}}>
           <img src={image} className="card-img-top" alt="..." />
           <div className="card-body details-container--card--body">
             <p className="card-text details-container--card--body--main-info">{title}</p>
@@ -63,24 +62,23 @@ function Details(props) {
             </div>
           </div>
         </div>
-        </div>
-        <div className="col-9">
-          <div className="details-container--information">
-            <div className="details-container--information--overview">
-              <p style={{margin: '10px'}}>
-                {description}
-              </p>
-            </div>
-            <div className="details-container--information--extra">
-              <p className="details-container--information--extra--info" style={{marginLeft: '10px', marginTop: '10px'}}>Stock: {stock}</p>
-              <p className="details-container--information--extra--info" style={{marginLeft: '10px'}}>Price: Rp.{price}</p>
-              <p className="details-container--information--extra--info" style={{marginLeft: '10px'}}><i style={{marginRight: '8px'}} className="far fa-star"></i> {rating}</p>
-              <div className="details-container--information--extra--buy">
-                <div className="col-sm-3">
-                  <input className="form-control" type="number" value={qty} onChange={event => setQty(event.target.value)} id="input-stock" />
-                </div>
-                <button onClick={addToCart} type="button" className="btn details-container--information--extra--buy--btn"><i style={{marginRight: '5px'}} className="fas fa-shopping-cart"></i> Add to Cart</button>
+
+        <div className="col-8 details-container--information">
+          <div className="details-container--information--overview">
+            <h5 style={{marginTop: '8px', fontWeight: 'bold'}}>Overview: </h5>
+            <p style={{margin: '7px'}}>
+              {description}
+            </p>
+          </div>
+          <div className="details-container--information--extra">
+            <p className="details-container--information--extra--info" style={{marginLeft: '10px', marginTop: '10px'}}>Stock: {stock}</p>
+            <p className="details-container--information--extra--info" style={{marginLeft: '10px'}}>Price: Rp.{price}</p>
+            <p className="details-container--information--extra--info" style={{marginLeft: '10px', marginBottom: '7px'}}><i style={{marginRight: '8px'}} className="far fa-star"></i> {rating}</p>
+            <div className="details-container--information--extra--buy">
+              <div className="col-sm-3">
+                <input className="form-control" type="number" value={qty} onChange={event => setQty(event.target.value)} id="input-stock" />
               </div>
+              <button onClick={addToCart} type="button" className="btn details-container--information--extra--buy--btn"><i style={{marginRight: '5px'}} className="fas fa-shopping-cart"></i> Add to Cart</button>
             </div>
           </div>
         </div>

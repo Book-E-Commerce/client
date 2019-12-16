@@ -25,7 +25,7 @@ function Default() {
   }
 
   const toDetails = (id) => {
-    history.push(`/home/${id}`)
+    history.push(`/home/products/${id}`)
   }
 
   return (
@@ -84,9 +84,9 @@ function Default() {
             {
               popularProducts.map((product, i) => {
                 return (
-                  <div onClick={() => toDetails(product._id)} className="col-2 main-container--popular-products--listproducts--product flex-column">
+                  <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--popular-products--listproducts--product d-block text-truncate">
                     <img src={product.image} alt=""/>
-                    <div className="flex-column main-container--popular-products--listproducts--product--info">
+                    <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
                       <p className="main-container--popular-products--listproducts--product--info--title">{product.title}</p>
                       <p className="main-container--popular-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
                       <p className="main-container--popular-products--listproducts--product--info--price">Rp. {product.price}</p>
@@ -105,11 +105,13 @@ function Default() {
             {
               popularProducts.map((product, i) => {
                 return (
-                  <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-1-products--listproducts--product flex-column">
+                  <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-1-products--listproducts--product d-block text-truncate">
                     <img src={product.image} alt=""/>
-                    <p className="main-container--genre-1-products--listproducts--product--info--title">{product.title}</p>
-                    <p className="main-container--genre-1-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
-                    <p className="main-container--genre-1-products--listproducts--product--info--price">Rp. {product.price}</p>
+                    <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
+                      <p className="main-container--genre-1-products--listproducts--product--info--title">{product.title}</p>
+                      <p className="main-container--genre-1-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
+                      <p className="main-container--genre-1-products--listproducts--product--info--price">Rp. {product.price}</p>
+                    </div>
                   </div>
                 )
               })
@@ -124,11 +126,13 @@ function Default() {
             {
               popularProducts.map((product, i) => {
                 return (
-                  <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-2-products--listproducts--product flex-column">
+                  <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-2-products--listproducts--product d-block text-truncate">
                     <img src={product.image} alt=""/>
-                    <p className="main-container--genre-2-products--listproducts--product--info--title">{product.title}</p>
-                    <p className="main-container--genre-2-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
-                    <p className="main-container--genre-2-products--listproducts--product--info--price">Rp. {product.price}</p>
+                    <div className="d-block text-truncate main-container--genre-2-products--listproducts--product--info">
+                      <p className="main-container--genre-2-products--listproducts--product--info--title">{product.title}</p>
+                      <p className="main-container--genre-2-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
+                      <p className="main-container--genre-2-products--listproducts--product--info--price">Rp. {product.price}</p>
+                    </div>
                   </div>
                 )
               })
