@@ -99,6 +99,7 @@ $main-color: #006266;
     &--contents {
       margin: 7px;
       text-align: justify;
+      margin-bottom: 50px;
     }
   }
 }
@@ -166,6 +167,10 @@ $main-color: #006266;
   align-items: center;
   flex-direction: column;
   margin-top: 200px;
+
+  &--for-search {
+    margin-left: 300px;
+  }
 }
 
 // .details-container {

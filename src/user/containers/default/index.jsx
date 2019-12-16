@@ -45,6 +45,20 @@ function Default() {
     },
   ])
   const [ popularProducts, setPopularProducts ] = useState([])
+  const [ businessProducts, setBusinessProducts ] = useState([])
+  const [ techProducts, setTechProducts ] = useState([])
+
+  useEffect(() => {
+    getPopularProducts()
+  }, []);
+
+  useEffect(() => {
+    getBusinessProducts()
+  }, []);
+
+  useEffect(() => {
+    getTechProducts()
+  }, []);
 
   const getPopularProducts = () => {
     axios.get('/books/popular')
@@ -57,8 +71,46 @@ function Default() {
       })
   }
 
+  const getBusinessProducts = async () => {
+    try{
+      const { data } = await axios({
+        method: 'get',
+        url: `/books/search?keyword=business`
+      })
+      let temp = []
+      for (let i = 0; i < 5; i++) {
+        temp.push(data[i])
+      }
+      setBusinessProducts(temp)
+    }
+    catch(err){
+      console.log(err.response)
+    }
+  }
+
+  const getTechProducts = async () => {
+    try{
+      const { data } = await axios({
+        method: 'get',
+        url: `/books/search?keyword=computer`
+      })
+      let temp = []
+      for (let i = 0; i < 5; i++) {
+        temp.push(data[i])
+      }
+      setTechProducts(temp)
+    }
+    catch(err){
+      console.log(err.response)
+    }
+  }
+
   const toDetails = (id) => {
     history.push(`/home/products/${id}`)
+  }
+
+  const displayByCategory = (name) => {
+    history.push(`/home/search/${name}`)
   }
 
   if (!popularProducts) return (
@@ -107,7 +159,7 @@ function Default() {
             {
               categories.map((category, i) => {
                 return (
-                  <div className="main-container--categories--category flex-column">
+                  <div key={i} onClick={() => displayByCategory(category.name)} className="main-container--categories--category flex-column">
                     <div className="main-container--categories--category--img">
                       <img src={category.img} alt=""/>
                     </div>
@@ -153,7 +205,7 @@ function Default() {
           </div>
           <div className="col-10 main-container--genre-1-products--listproducts">
             {
-              popularProducts.map((product, i) => {
+              techProducts.map((product, i) => {
                 return (
                   <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-1-products--listproducts--product d-block text-truncate">
                     <img src={product.image} alt=""/>
@@ -178,7 +230,7 @@ function Default() {
           </div>
           <div className="col-10 main-container--genre-2-products--listproducts">
             {
-              popularProducts.map((product, i) => {
+              businessProducts.map((product, i) => {
                 return (
                   <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-2-products--listproducts--product d-block text-truncate">
                     <img src={product.image} alt=""/>

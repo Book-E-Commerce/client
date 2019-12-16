@@ -39,7 +39,8 @@ function Cart() {
         }
       })
       console.log(data)
-      fetchCartData()
+      // fetchCartData()
+      setCartData(data)
     }
     catch(err){
       console.log(err.response)
@@ -63,7 +64,8 @@ function Cart() {
           }
         })
         console.log(data)
-        fetchCartData()
+        // fetchCartData()
+        setCartData(data)
       }
       catch(err){
         console.log(err.response)
