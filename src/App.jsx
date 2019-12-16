@@ -45,7 +45,7 @@ function App() {
         <Route path="/home">
           <Main />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <User />
         </Route>
       </Switch>

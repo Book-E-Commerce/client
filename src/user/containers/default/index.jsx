@@ -2,39 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from "react-router-dom";
 import Product from '../../components/product'
 import './style.scss'
+import axios from '../../../api/axios'
 
 function Default() {
   const history = useHistory()
   const [ categories, setCategories ] = useState(['Action', 'Adventure', 'Comedy', 'Drama', 'Game', 'Romance', 'Sci-Fi', 'Sports', 'Supernatural'])
-  const [ popularProducts, setPopularProducts ] = useState([
-    {
-      title: 'Harry Potter',
-      author: 'J.K. Rowlings',
-      price: '50000'
-    },
-    {
-      title: 'Harry Potter',
-      author: 'J.K. Rowlings',
-      price: '50000'
-    },
-    {
-      title: 'Harry Potter',
-      author: 'J.K. Rowlings',
-      price: '50000'
-    },
-    {
-      title: 'Harry Potter',
-      author: 'J.K. Rowlings',
-      price: '50000'
-    },
-    {
-      title: 'Harry Potter',
-      author: 'J.K. Rowlings',
-      price: '50000'
-    }
-  ])
-  const toDetails = () => {
-    history.push('/home/details')
+  const [ popularProducts, setPopularProducts ] = useState([])
+
+  useEffect(() => {
+    getPopularProducts()
+  }, [])
+
+  const getPopularProducts = () => {
+    axios.get('/books/popular')
+      .then(({data}) => {
+        let temp = []
+        for (let i = 0; i < 5; i++) {
+          temp.push(data[i])
+        }
+        setPopularProducts(temp)
+      })
+  }
+
+  const toDetails = (id) => {
+    history.push(`/home/products/${id}`)
   }
 
   return (
@@ -45,10 +36,10 @@ function Default() {
             <div id="carouselExampleInterval" className="carousel slide" data-ride="carousel">
               <div className="carousel-inner">
                 <div className="carousel-item active" data-interval="10000">
-                  <img src="https://i.imgur.com/zrwqsg9.png" className="d-block w-100" alt="..." />
+                  <img src="https://i.imgur.com/eKaUW8a.png" className="d-block w-100" alt="..." />
                 </div>
                 <div className="carousel-item" data-interval="2000">
-                  <img src="https://i.imgur.com/zrwqsg9.png" className="d-block w-100" alt="..." />
+                  <img src="https://i.imgur.com/EzzpY10.png" className="d-block w-100" alt="..." />
                 </div>
               </div>
               <a className="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
@@ -63,10 +54,10 @@ function Default() {
           </div>
           <div className="col-4 flex-column main-container--banners--right">
             <div className="main-container--banners--right--top">
-              <img src="https://melkdesign.staticscdn.com/wp-content/uploads/2018/02/DCo_Horizontal_Book_Mockup_2.jpg" alt=""/>
+              <img src="https://i.imgur.com/2lzmtwn.png" alt=""/>
             </div>
             <div className="main-container--banners--right--bottom">
-              <img src="https://melkdesign.staticscdn.com/wp-content/uploads/2018/02/DCo_Horizontal_Book_Mockup_2.jpg" alt=""/>
+              <img src="https://i.imgur.com/ACN211V.png" alt=""/>
             </div>
           </div>
         </div>
@@ -93,9 +84,9 @@ function Default() {
             {
               popularProducts.map((product, i) => {
                 return (
-                  <div onClick={toDetails} className="col-2 main-container--popular-products--listproducts--product flex-column">
-                    <img src="http://books.google.com/books/content?id=kztrAwAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE71WwjdniapJBEWl3Q0tTYm0Sh_dbGyY-TReSX-FaZnLx2wNDsv7UnmUkPfTFALS2GplAZ1GO5Ajlzsd2rrJF6IyS8g3mmEFLMwCnpHMDPt2MW7KsAt9649hHq6ezl569JzO9ooK&source=gbs_api" alt=""/>
-                    <div className="flex-column main-container--popular-products--listproducts--product--info">
+                  <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--popular-products--listproducts--product d-block text-truncate">
+                    <img src={product.image} alt=""/>
+                    <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
                       <p className="main-container--popular-products--listproducts--product--info--title">{product.title}</p>
                       <p className="main-container--popular-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
                       <p className="main-container--popular-products--listproducts--product--info--price">Rp. {product.price}</p>
@@ -114,11 +105,13 @@ function Default() {
             {
               popularProducts.map((product, i) => {
                 return (
-                  <div onClick={toDetails} key={i} className="col-2 main-container--genre-1-products--listproducts--product flex-column">
-                    <img src="http://books.google.com/books/content?id=kztrAwAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE71WwjdniapJBEWl3Q0tTYm0Sh_dbGyY-TReSX-FaZnLx2wNDsv7UnmUkPfTFALS2GplAZ1GO5Ajlzsd2rrJF6IyS8g3mmEFLMwCnpHMDPt2MW7KsAt9649hHq6ezl569JzO9ooK&source=gbs_api" alt=""/>
-                    <p className="main-container--genre-1-products--listproducts--product--info--title">{product.title}</p>
-                    <p className="main-container--genre-1-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
-                    <p className="main-container--genre-1-products--listproducts--product--info--price">Rp. {product.price}</p>
+                  <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-1-products--listproducts--product d-block text-truncate">
+                    <img src={product.image} alt=""/>
+                    <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
+                      <p className="main-container--genre-1-products--listproducts--product--info--title">{product.title}</p>
+                      <p className="main-container--genre-1-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
+                      <p className="main-container--genre-1-products--listproducts--product--info--price">Rp. {product.price}</p>
+                    </div>
                   </div>
                 )
               })
@@ -133,11 +126,13 @@ function Default() {
             {
               popularProducts.map((product, i) => {
                 return (
-                  <div onClick={toDetails} key={i} className="col-2 main-container--genre-2-products--listproducts--product flex-column">
-                    <img src="http://books.google.com/books/content?id=kztrAwAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE71WwjdniapJBEWl3Q0tTYm0Sh_dbGyY-TReSX-FaZnLx2wNDsv7UnmUkPfTFALS2GplAZ1GO5Ajlzsd2rrJF6IyS8g3mmEFLMwCnpHMDPt2MW7KsAt9649hHq6ezl569JzO9ooK&source=gbs_api" alt=""/>
-                    <p className="main-container--genre-2-products--listproducts--product--info--title">{product.title}</p>
-                    <p className="main-container--genre-2-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
-                    <p className="main-container--genre-2-products--listproducts--product--info--price">Rp. {product.price}</p>
+                  <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-2-products--listproducts--product d-block text-truncate">
+                    <img src={product.image} alt=""/>
+                    <div className="d-block text-truncate main-container--genre-2-products--listproducts--product--info">
+                      <p className="main-container--genre-2-products--listproducts--product--info--title">{product.title}</p>
+                      <p className="main-container--genre-2-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
+                      <p className="main-container--genre-2-products--listproducts--product--info--price">Rp. {product.price}</p>
+                    </div>
                   </div>
                 )
               })
