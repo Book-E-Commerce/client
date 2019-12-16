@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import './style.scss'
 import { logout } from '../../../store/actions/authenthication'
@@ -9,10 +9,17 @@ function MainNavbar() {
   const dispatch = useDispatch()
   const isLogin = useSelector(state => state.LoggedUser.isLogin)
 
+  const [keyword, setKeyword] = useState('')
+
   const logouts = () => {
     localStorage.removeItem('token')
     history.push('/')
     dispatch(logout())
+  }
+
+  function handleSubmit (e) {
+    e.preventDefault()
+    history.push(`/home/search/${ keyword }`)
   }
 
   return (
@@ -22,8 +29,8 @@ function MainNavbar() {
         <img id="main-navbar-logo" src="https://i.imgur.com/kudvMWt.png" alt="HackBookLogo" />
       </Link>
         <div className="main-navbar--menu">
-          <form className="form-inline">
-            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+          <form className="form-inline" onSubmit={ (e) => handleSubmit(e) } >
+            <input value={ keyword } onChange={ (e) => setKeyword(e.target.value) } className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
             <button style={{fontWeight: 'bold'}} className="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
           </form>
           {
@@ -35,7 +42,7 @@ function MainNavbar() {
                   </button>
                   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <button type="button" onClick={() => history.push('/home/cart')} className="dropdown-item"><i style={{marginRight: '4px'}} className="fas fa-shopping-cart"></i> Cart</button>
-                    <a className="dropdown-item"><i style={{marginRight: '4px'}} className="far fa-newspaper"></i> Transaction</a>
+                    <a onClick={() => history.push('/home/history')} className="dropdown-item"><i style={{marginRight: '4px'}} className="far fa-newspaper"></i> Transaction</a>
                   </div>
                 </div>
                 <button onClick={logouts} style={{marginRight: '50px'}} type="button" className="btn btn-outline-light"><i className="fas fa-power-off"></i></button>

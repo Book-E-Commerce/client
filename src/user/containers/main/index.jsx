@@ -31,7 +31,7 @@ function Main() {
               <Route path="/home/cart">
                 <Cart />
               </Route>
-              <Route exact path="/home/search">
+              <Route exact path="/home/search/:keyword">
                 <Search />
               </Route>
               <Route exact path="/home/history">
