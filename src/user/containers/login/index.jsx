@@ -17,7 +17,7 @@ function Login() {
     if (isLogin) {
       history.push('/home')
     }
-  })
+  }, [])
 
   const logins = () => {
     axios.post('/users/login', {
@@ -26,7 +26,7 @@ function Login() {
     .then(({data}) => {
       dispatch(login())
       Swal.fire(
-        'Registered',
+        'Logged In',
         'Success',
         'success'
       )

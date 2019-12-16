@@ -2,39 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from "react-router-dom";
 import Product from '../../components/product'
 import './style.scss'
+import axios from '../../../api/axios'
 
 function Default() {
   const history = useHistory()
   const [ categories, setCategories ] = useState(['Action', 'Adventure', 'Comedy', 'Drama', 'Game', 'Romance', 'Sci-Fi', 'Sports', 'Supernatural'])
-  const [ popularProducts, setPopularProducts ] = useState([
-    {
-      title: 'Harry Potter',
-      author: 'J.K. Rowlings',
-      price: '50000'
-    },
-    {
-      title: 'Harry Potter',
-      author: 'J.K. Rowlings',
-      price: '50000'
-    },
-    {
-      title: 'Harry Potter',
-      author: 'J.K. Rowlings',
-      price: '50000'
-    },
-    {
-      title: 'Harry Potter',
-      author: 'J.K. Rowlings',
-      price: '50000'
-    },
-    {
-      title: 'Harry Potter',
-      author: 'J.K. Rowlings',
-      price: '50000'
-    }
-  ])
-  const toDetails = () => {
-    history.push('/home/details')
+  const [ popularProducts, setPopularProducts ] = useState([])
+
+  useEffect(() => {
+    getPopularProducts()
+  }, [])
+
+  const getPopularProducts = () => {
+    axios.get('/books/popular')
+      .then(({data}) => {
+        let temp = []
+        for (let i = 0; i < 5; i++) {
+          temp.push(data[i])
+        }
+        setPopularProducts(temp)
+      })
+  }
+
+  const toDetails = (id) => {
+    history.push(`/home/${id}`)
   }
 
   return (
@@ -93,8 +84,8 @@ function Default() {
             {
               popularProducts.map((product, i) => {
                 return (
-                  <div onClick={toDetails} className="col-2 main-container--popular-products--listproducts--product flex-column">
-                    <img src="http://books.google.com/books/content?id=kztrAwAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE71WwjdniapJBEWl3Q0tTYm0Sh_dbGyY-TReSX-FaZnLx2wNDsv7UnmUkPfTFALS2GplAZ1GO5Ajlzsd2rrJF6IyS8g3mmEFLMwCnpHMDPt2MW7KsAt9649hHq6ezl569JzO9ooK&source=gbs_api" alt=""/>
+                  <div onClick={() => toDetails(product._id)} className="col-2 main-container--popular-products--listproducts--product flex-column">
+                    <img src={product.image} alt=""/>
                     <div className="flex-column main-container--popular-products--listproducts--product--info">
                       <p className="main-container--popular-products--listproducts--product--info--title">{product.title}</p>
                       <p className="main-container--popular-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
@@ -114,8 +105,8 @@ function Default() {
             {
               popularProducts.map((product, i) => {
                 return (
-                  <div onClick={toDetails} key={i} className="col-2 main-container--genre-1-products--listproducts--product flex-column">
-                    <img src="http://books.google.com/books/content?id=kztrAwAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE71WwjdniapJBEWl3Q0tTYm0Sh_dbGyY-TReSX-FaZnLx2wNDsv7UnmUkPfTFALS2GplAZ1GO5Ajlzsd2rrJF6IyS8g3mmEFLMwCnpHMDPt2MW7KsAt9649hHq6ezl569JzO9ooK&source=gbs_api" alt=""/>
+                  <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-1-products--listproducts--product flex-column">
+                    <img src={product.image} alt=""/>
                     <p className="main-container--genre-1-products--listproducts--product--info--title">{product.title}</p>
                     <p className="main-container--genre-1-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
                     <p className="main-container--genre-1-products--listproducts--product--info--price">Rp. {product.price}</p>
@@ -133,8 +124,8 @@ function Default() {
             {
               popularProducts.map((product, i) => {
                 return (
-                  <div onClick={toDetails} key={i} className="col-2 main-container--genre-2-products--listproducts--product flex-column">
-                    <img src="http://books.google.com/books/content?id=kztrAwAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE71WwjdniapJBEWl3Q0tTYm0Sh_dbGyY-TReSX-FaZnLx2wNDsv7UnmUkPfTFALS2GplAZ1GO5Ajlzsd2rrJF6IyS8g3mmEFLMwCnpHMDPt2MW7KsAt9649hHq6ezl569JzO9ooK&source=gbs_api" alt=""/>
+                  <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-2-products--listproducts--product flex-column">
+                    <img src={product.image} alt=""/>
                     <p className="main-container--genre-2-products--listproducts--product--info--title">{product.title}</p>
                     <p className="main-container--genre-2-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
                     <p className="main-container--genre-2-products--listproducts--product--info--price">Rp. {product.price}</p>

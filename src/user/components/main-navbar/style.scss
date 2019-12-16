@@ -35,6 +35,16 @@ $main-color: #006266;
         }
       }
     }
+    
+    &--login {
+      margin-left: 15px;
+      margin-right: 15px;
+      font-weight: bold;
+    }
+
+    &--register {
+      font-weight: bold;
+    }
   }
 }
 
