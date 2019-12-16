@@ -37,13 +37,25 @@ function Details(props) {
   }
 
   const addToCart = () => {
-    axios.post(`/carts/${id}/add-to-cart`, { qty })
+    axios({
+      method: 'post',
+      url: `/carts/${id}/add-to-cart`,
+      headers: {
+        token: localStorage.getItem('token')
+      },
+      data: {
+        qty
+      }
+    })
       .then(({data}) => {
         Swal.fire(
           'Added to the cart!',
           'Success',
           'success'
         )
+      })
+      .catch(err => {
+        console.log(err.response)
       })
   }
 

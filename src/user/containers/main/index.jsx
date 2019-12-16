@@ -15,6 +15,7 @@ import Details from '../details'
 import Cart from '../cart'
 import DisplayByCategory from '../displaybycategory'
 import History from '../history'
+import Search from '../search'
 
 function Main() {
   const [ loading, setLoading ] = useState(true)
@@ -43,6 +44,9 @@ function Main() {
               </Route>
               <Route path="/home/cart">
                 <Cart />
+              </Route>
+              <Route exact path="/home/search/:keyword">
+                <Search />
               </Route>
               <Route exact path="/home/history">
                 <History />
