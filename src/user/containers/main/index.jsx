@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux'
 import MainNavbar from '../../components/main-navbar'
 import {
@@ -17,6 +17,20 @@ import DisplayByCategory from '../displaybycategory'
 import History from '../history'
 
 function Main() {
+  const [ loading, setLoading ] = useState(true)
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+  }, []);
+
+  if (loading) return (
+    <div className="loading-container">
+      <div className="lds-circle d-flex justify-content-center align-items-center mx-auto"><div></div></div>
+      <h6 style={{fontWeight: 'bold'}}>Loading . . . </h6>
+    </div>
+  )
+
   return (
     <div>
       <MainNavbar />

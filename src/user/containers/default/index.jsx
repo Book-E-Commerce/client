@@ -6,12 +6,45 @@ import axios from '../../../api/axios'
 
 function Default() {
   const history = useHistory()
-  const [ categories, setCategories ] = useState(['Action', 'Adventure', 'Comedy', 'Drama', 'Game', 'Romance', 'Sci-Fi', 'Sports', 'Supernatural'])
+  const [ categories, setCategories ] = useState([
+    {
+      name: 'Business',
+      img: 'https://i.imgur.com/Uxg8oOk.png'
+    },
+    {
+      name: 'Children',
+      img: 'https://i.imgur.com/bdOETVy.png'
+    },
+    {
+      name: 'Computer',
+      img: 'https://i.imgur.com/48Sc7f8.png'
+    },
+    {
+      name: 'Cooking',
+      img: 'https://i.imgur.com/r9TJ7qX.png'
+    },
+    {
+      name: 'Fiction',
+      img: 'https://i.imgur.com/iqtfOws.png'
+    },
+    {
+      name: 'Health',
+      img: 'https://i.imgur.com/IWQi2zG.png'
+    },
+    {
+      name: 'History',
+      img: 'https://i.imgur.com/QofPdYo.png'
+    },
+    {
+      name: 'Parenting',
+      img: 'https://i.imgur.com/quDAxSe.png'
+    },
+    {
+      name: 'Science',
+      img: 'https://i.imgur.com/q92uJ41.png'
+    },
+  ])
   const [ popularProducts, setPopularProducts ] = useState([])
-
-  useEffect(() => {
-    getPopularProducts()
-  }, [])
 
   const getPopularProducts = () => {
     axios.get('/books/popular')
@@ -27,6 +60,13 @@ function Default() {
   const toDetails = (id) => {
     history.push(`/home/products/${id}`)
   }
+
+  if (!popularProducts) return (
+    <div className="loading-container">
+      <div className="lds-circle d-flex justify-content-center align-items-center mx-auto"><div></div></div>
+      <h6 style={{fontWeight: 'bold'}}>Loading . . . </h6>
+    </div>
+  )
 
   return (
     <>
@@ -68,29 +108,10 @@ function Default() {
               categories.map((category, i) => {
                 return (
                   <div className="main-container--categories--category flex-column">
-                    <img src="https://cdn.gramedia.com/uploads/highlighted_menu/3._buku_pilihan__w200_hauto.png" alt=""/>
-                    <p>{category}</p>
-                  </div>
-                )
-              })
-            }
-          </div>
-        </div>
-
-        <div className="row main-container--popular-products">
-          <div className="col-2 main-container--popular-products--header">
-          </div>
-          <div className="col-10 main-container--popular-products--listproducts">
-            {
-              popularProducts.map((product, i) => {
-                return (
-                  <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--popular-products--listproducts--product d-block text-truncate">
-                    <img src={product.image} alt=""/>
-                    <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
-                      <p className="main-container--popular-products--listproducts--product--info--title">{product.title}</p>
-                      <p className="main-container--popular-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
-                      <p className="main-container--popular-products--listproducts--product--info--price">Rp. {product.price}</p>
+                    <div className="main-container--categories--category--img">
+                      <img src={category.img} alt=""/>
                     </div>
+                    <p>{category.name}</p>
                   </div>
                 )
               })
@@ -98,8 +119,37 @@ function Default() {
           </div>
         </div>
 
+        <div className="row">
+          <div className="col-12">
+            <div className="main-container--popular-products">
+              <div className="col-2 main-container--popular-products--header">
+              </div>
+              <div className="col-10 main-container--popular-products--listproducts">
+                {
+                  popularProducts.map((product, i) => {
+                    return (
+                      <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--popular-products--listproducts--product d-block text-truncate">
+                        <img src={product.image} alt=""/>
+                        <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
+                          <p className="d-block text-truncate main-container--popular-products--listproducts--product--info--title">{product.title}</p>
+                          <p className="main-container--popular-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
+                          <p className="main-container--popular-products--listproducts--product--info--price">Rp. {product.price}</p>
+                        </div>
+                      </div>
+                    )
+                  })
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <h4 className="genres-titles">Business & Investing</h4>
         <div className="row main-container--genre-1-products">
-          <div className="col-2 main-container--genre-1-products--header">
+          <div className="col-2">
+            <div className="main-container--genre-1-products--header">
+
+            </div>
           </div>
           <div className="col-10 main-container--genre-1-products--listproducts">
             {
@@ -108,7 +158,7 @@ function Default() {
                   <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-1-products--listproducts--product d-block text-truncate">
                     <img src={product.image} alt=""/>
                     <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
-                      <p className="main-container--genre-1-products--listproducts--product--info--title">{product.title}</p>
+                      <p className="d-block text-truncate main-container--genre-1-products--listproducts--product--info--title">{product.title}</p>
                       <p className="main-container--genre-1-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
                       <p className="main-container--genre-1-products--listproducts--product--info--price">Rp. {product.price}</p>
                     </div>
@@ -118,9 +168,13 @@ function Default() {
             }
           </div>
         </div>
-
+        
+        <h4 className="genres-titles">Computers & Technology</h4>
         <div className="row main-container--genre-2-products">
-          <div className="col-2 main-container--genre-2-products--header">
+          <div className="col-2">
+            <div className="main-container--genre-2-products--header">
+
+            </div>
           </div>
           <div className="col-10 main-container--genre-2-products--listproducts">
             {
@@ -129,7 +183,7 @@ function Default() {
                   <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-2-products--listproducts--product d-block text-truncate">
                     <img src={product.image} alt=""/>
                     <div className="d-block text-truncate main-container--genre-2-products--listproducts--product--info">
-                      <p className="main-container--genre-2-products--listproducts--product--info--title">{product.title}</p>
+                      <p className="d-block text-truncate main-container--genre-2-products--listproducts--product--info--title">{product.title}</p>
                       <p className="main-container--genre-2-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
                       <p className="main-container--genre-2-products--listproducts--product--info--price">Rp. {product.price}</p>
                     </div>
