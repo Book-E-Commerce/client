@@ -38,13 +38,13 @@ function MainNavbar() {
                     <a className="dropdown-item"><i style={{marginRight: '4px'}} className="far fa-newspaper"></i> Transaction</a>
                   </div>
                 </div>
-                <button onClick={logouts} style={{marginRight: '70px'}} type="button" className="btn btn-outline-light"><i className="fas fa-power-off"></i></button>
+                <button onClick={logouts} style={{marginRight: '50px'}} type="button" className="btn btn-outline-light"><i className="fas fa-power-off"></i></button>
               </>
             ) : 
             (
               <>
                 <button onClick={() => history.push('/login')} type="button" class="main-navbar--menu--login btn btn-outline-light"><i style={{marginRight: '5px'}} className="fas fa-sign-in-alt"></i> Login</button>
-                <button onClick={() => history.push('/register')} type="button" class="main-navbar--menu--register btn btn-outline-light"><i style={{marginRight: '5px'}} className="fas fa-user-plus"></i> Register</button>
+                <button onClick={() => history.push('/register')} style={{marginRight: '50px'}} type="button" class="main-navbar--menu--register btn btn-outline-light"><i style={{marginRight: '5px'}} className="fas fa-user-plus"></i> Register</button>
               </>
             )
           }

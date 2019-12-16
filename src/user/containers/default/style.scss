@@ -140,7 +140,7 @@ $main-color: #006266;
     &--listproducts {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
 
       &--product {
@@ -214,7 +214,7 @@ $main-color: #006266;
     &--listproducts {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
 
       &--product {
