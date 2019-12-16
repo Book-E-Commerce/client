@@ -6,7 +6,7 @@ import axios from '../../../api/axios'
 
 function Default() {
   const history = useHistory()
-  const [categories, setCategories] = useState([
+  const [ categories, setCategories ] = useState([
     {
       name: 'Business',
       img: 'https://i.imgur.com/Uxg8oOk.png'
@@ -44,15 +44,12 @@ function Default() {
       img: 'https://i.imgur.com/q92uJ41.png'
     },
   ])
-  const [popularProducts, setPopularProducts] = useState([])
-  const [businessProducts, setBusinessProducts] = useState([])
-  const [techProducts, setTechProducts] = useState([])
-
-  const [smallPopularProducts, setSmallPopularProducts] = useState([])
+  const [ popularProducts, setPopularProducts ] = useState([])
+  const [ businessProducts, setBusinessProducts ] = useState([])
+  const [ techProducts, setTechProducts ] = useState([])
 
   useEffect(() => {
     getPopularProducts()
-    getSmallPopularProducts()
   }, []);
 
   useEffect(() => {
@@ -65,7 +62,7 @@ function Default() {
 
   const getPopularProducts = () => {
     axios.get('/books/popular')
-      .then(({ data }) => {
+      .then(({data}) => {
         let temp = []
         for (let i = 0; i < 5; i++) {
           temp.push(data[i])
@@ -74,19 +71,8 @@ function Default() {
       })
   }
 
-  const getSmallPopularProducts = () => {
-    axios.get('/books/popular')
-      .then(({ data }) => {
-        let temp = []
-        for (let i = 0; i < 10; i++) {
-          temp.push(data[i])
-        }
-        setSmallPopularProducts(temp)
-      })
-  }
-
   const getBusinessProducts = async () => {
-    try {
+    try{
       const { data } = await axios({
         method: 'get',
         url: `/books/search?keyword=business`
@@ -97,13 +83,13 @@ function Default() {
       }
       setBusinessProducts(temp)
     }
-    catch (err) {
+    catch(err){
       console.log(err.response)
     }
   }
 
   const getTechProducts = async () => {
-    try {
+    try{
       const { data } = await axios({
         method: 'get',
         url: `/books/search?keyword=computer`
@@ -114,7 +100,7 @@ function Default() {
       }
       setTechProducts(temp)
     }
-    catch (err) {
+    catch(err){
       console.log(err.response)
     }
   }
@@ -130,15 +116,15 @@ function Default() {
   if (!popularProducts) return (
     <div className="loading-container">
       <div className="lds-circle d-flex justify-content-center align-items-center mx-auto"><div></div></div>
-      <h6 style={{ fontWeight: 'bold' }}>Loading . . . </h6>
+      <h6 style={{fontWeight: 'bold'}}>Loading . . . </h6>
     </div>
   )
 
   return (
     <>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8 col-12 main-container--banners--left">
+      <div className="container main-container flex-column">
+        <div className="row main-container--banners">
+          <div className="col-8 main-container--banners--left">
             <div id="carouselExampleInterval" className="carousel slide" data-ride="carousel">
               <div className="carousel-inner">
                 <div className="carousel-item active" data-interval="10000">
@@ -158,12 +144,12 @@ function Default() {
               </a>
             </div>
           </div>
-          <div className="col-4 d-none d-sm-none d-md-block flex-column main-container--banners--right">
+          <div className="col-4 flex-column main-container--banners--right">
             <div className="main-container--banners--right--top">
-              <img src="https://i.imgur.com/2lzmtwn.png" alt="" />
+              <img src="https://i.imgur.com/2lzmtwn.png" alt=""/>
             </div>
             <div className="main-container--banners--right--bottom">
-              <img src="https://i.imgur.com/ACN211V.png" alt="" />
+              <img src="https://i.imgur.com/ACN211V.png" alt=""/>
             </div>
           </div>
         </div>
@@ -175,7 +161,7 @@ function Default() {
                 return (
                   <div key={i} onClick={() => displayByCategory(category.name)} className="main-container--categories--category flex-column">
                     <div className="main-container--categories--category--img">
-                      <img src={category.img} alt="" />
+                      <img src={category.img} alt=""/>
                     </div>
                     <p>{category.name}</p>
                   </div>
@@ -185,106 +171,80 @@ function Default() {
           </div>
         </div>
 
-        <div className="d-none d-sm-none d-md-block">
-          <div className="row">
-            <div className="col-12">
-              <div className="main-container--popular-products">
-                <div className="col-2 main-container--popular-products--header">
-                </div>
-                <div className="col-10 main-container--popular-products--listproducts">
-                  {
-                    popularProducts.map((product, i) => {
-                      return (
-                        <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--popular-products--listproducts--product d-block text-truncate">
-                          <img src={product.image} alt="" />
-                          <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
-                            <p className="d-block text-truncate main-container--popular-products--listproducts--product--info--title">{product.title}</p>
-                            <p className="main-container--popular-products--listproducts--product--info--author" style={{ marginTop: '3px' }}>{product.author}</p>
-                            <p className="main-container--popular-products--listproducts--product--info--price">Rp. {product.price}</p>
-                          </div>
-                        </div>
-                      )
-                    })
-                  }
-                </div>
+        <div className="row">
+          <div className="col-12">
+            <div className="main-container--popular-products">
+              <div className="col-2 main-container--popular-products--header">
               </div>
-            </div>
-          </div>
-          <h4 className="genres-titles">Business & Investing</h4>
-          <div className="row main-container--genre-1-products">
-            <div className="col-2">
-              <div className="main-container--genre-1-products--header">
-              </div>
-            </div>
-            <div className="col-10 main-container--genre-1-products--listproducts">
-              {
-                techProducts.map((product, i) => {
-                  return (
-                    <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-1-products--listproducts--product d-block text-truncate">
-                      <img src={product.image} alt="" />
-                      <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
-                        <p className="d-block text-truncate main-container--genre-1-products--listproducts--product--info--title">{product.title}</p>
-                        <p className="main-container--genre-1-products--listproducts--product--info--author" style={{ marginTop: '3px' }}>{product.author}</p>
-                        <p className="main-container--genre-1-products--listproducts--product--info--price">Rp. {product.price}</p>
-                      </div>
-                    </div>
-                  )
-                })
-              }
-            </div>
-          </div>
-          <h4 className="genres-titles">Computers & Technology</h4>
-          <div className="row main-container--genre-2-products">
-            <div className="col-2">
-              <div className="main-container--genre-2-products--header">
-
-              </div>
-            </div>
-            <div className="col-10 main-container--genre-2-products--listproducts">
-              {
-                businessProducts.map((product, i) => {
-                  return (
-                    <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-2-products--listproducts--product d-block text-truncate">
-                      <img src={product.image} alt="" />
-                      <div className="d-block text-truncate main-container--genre-2-products--listproducts--product--info">
-                        <p className="d-block text-truncate main-container--genre-2-products--listproducts--product--info--title">{product.title}</p>
-                        <p className="main-container--genre-2-products--listproducts--product--info--author" style={{ marginTop: '3px' }}>{product.author}</p>
-                        <p className="main-container--genre-2-products--listproducts--product--info--price">Rp. {product.price}</p>
-                      </div>
-                    </div>
-                  )
-                })
-              }
-            </div>
-          </div>
-        </div>
-
-        <div className="container">
-          <div className="row">
-            {
-              smallPopularProducts.map((product, i) => {
-                return (
-                  // <div className="p-2">
-                    <div onClick={() => toDetails(product._id)} key={i} className="col-6 p-2">
-                      <div className="main-container--popular-products--listproducts--product">
-                        <img src={product.image} alt="" />
+              <div className="col-10 main-container--popular-products--listproducts">
+                {
+                  popularProducts.map((product, i) => {
+                    return (
+                      <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--popular-products--listproducts--product d-block text-truncate">
+                        <img src={product.image} alt=""/>
                         <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
                           <p className="d-block text-truncate main-container--popular-products--listproducts--product--info--title">{product.title}</p>
-                          <p className="main-container--popular-products--listproducts--product--info--author" style={{ marginTop: '3px' }}>{product.author}</p>
+                          <p className="main-container--popular-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
                           <p className="main-container--popular-products--listproducts--product--info--price">Rp. {product.price}</p>
                         </div>
                       </div>
+                    )
+                  })
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <h4 className="genres-titles">Business & Investing</h4>
+        <div className="row main-container--genre-1-products">
+          <div className="col-2">
+            <div className="main-container--genre-1-products--header">
+
+            </div>
+          </div>
+          <div className="col-10 main-container--genre-1-products--listproducts">
+            {
+              techProducts.map((product, i) => {
+                return (
+                  <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-1-products--listproducts--product d-block text-truncate">
+                    <img src={product.image} alt=""/>
+                    <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
+                      <p className="d-block text-truncate main-container--genre-1-products--listproducts--product--info--title">{product.title}</p>
+                      <p className="main-container--genre-1-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
+                      <p className="main-container--genre-1-products--listproducts--product--info--price">Rp. {product.price}</p>
                     </div>
-                  // </div>
+                  </div>
                 )
               })
             }
           </div>
         </div>
+        
+        <h4 className="genres-titles">Computers & Technology</h4>
+        <div className="row main-container--genre-2-products">
+          <div className="col-2">
+            <div className="main-container--genre-2-products--header">
 
-
-
-
+            </div>
+          </div>
+          <div className="col-10 main-container--genre-2-products--listproducts">
+            {
+              businessProducts.map((product, i) => {
+                return (
+                  <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-2-products--listproducts--product d-block text-truncate">
+                    <img src={product.image} alt=""/>
+                    <div className="d-block text-truncate main-container--genre-2-products--listproducts--product--info">
+                      <p className="d-block text-truncate main-container--genre-2-products--listproducts--product--info--title">{product.title}</p>
+                      <p className="main-container--genre-2-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
+                      <p className="main-container--genre-2-products--listproducts--product--info--price">Rp. {product.price}</p>
+                    </div>
+                  </div>
+                )
+              })
+            }
+          </div>
+        </div>
       </div>
     </>
   )

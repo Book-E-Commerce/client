@@ -34,9 +34,9 @@ function Main() {
 
   return (
     <div>
-      <MainNavbar />
+      {/* <MainNavbar /> */}
       <div className="container main-container">
-        <div className="row">
+        <div className="row no-gutters">
           <div className="col-12">
             <Switch>
               <Route path="/home/products/:id">
