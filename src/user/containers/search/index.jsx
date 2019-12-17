@@ -10,6 +10,12 @@ export default function Search (props) {
   const [searchResultData, setSearchResultData] = useState([])
   const [ loading, setLoading ] = useState(false)
 
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+
+
   async function getQueryData () {
     setLoading(true)
     try{
@@ -27,6 +33,7 @@ export default function Search (props) {
   }
 
   useEffect(() => {
+    topFunction()
     getQueryData()
   },[keyword])
 
@@ -41,7 +48,7 @@ export default function Search (props) {
     <div>
       <div className="container mt-3">
         <div className="row">
-          <div className="col-3">
+          <div className="col-12 order-2 order-md-1 col-md-3">
             <p className="category-list">Category List</p>
             <div className="ml-2 category-list--item">
               <p onClick={ () => history.push(`/home/search/Business`) } className="category-list--item--text">Business & investing</p>
@@ -55,7 +62,7 @@ export default function Search (props) {
               <p onClick={ () => history.push(`/home/search/Science`) } className="category-list--item--text">Science & math</p>
             </div>
           </div>
-          <div className="col-9">
+          <div className="col-12 col-md-9">
             <p className="search-result-text">Search Result "{keyword}"</p>
             <div className="row">
               {
@@ -64,7 +71,7 @@ export default function Search (props) {
                   <img className="notfound-image" src="https://i.imgur.com/S85fIPC.png" alt=""/>
                 :
                 searchResultData.map((data,i) =>   
-                  <div className="col-3" onClick={ () => history.push(`/home/products/${data._id}`) }>
+                  <div className="col-6 col-md-3" onClick={ () => history.push(`/home/products/${data._id}`) }>
                     <div className="book-item">
                       <img width="100%" src={data.image} alt=""/>
                       <div className="book-item--info">
