@@ -47,6 +47,9 @@ function Cart() {
       })
       console.log(data)
       // fetchCartData()
+      for (let i = 0; i < data.length; i++) {
+        data[i].priceToDisplay = convertToRupiah(data[i].idBook.price)
+      }
       setCartData(data)
     }
     catch(err){
@@ -72,6 +75,9 @@ function Cart() {
         })
         console.log(data)
         // fetchCartData()
+        for (let i = 0; i < data.length; i++) {
+          data[i].priceToDisplay = convertToRupiah(data[i].idBook.price)
+        }
         setCartData(data)
       }
       catch(err){
