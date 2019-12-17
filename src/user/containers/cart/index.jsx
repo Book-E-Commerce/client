@@ -23,11 +23,14 @@ function Cart() {
 
   function handleDeleteCartData (id) {
     dispatch(AdeleteCartData(id))
-
   }
 
   function handleCheckout () {
     dispatch(Acheckout())
+  }
+
+  const toDetails = (id) => {
+    history.push(`/home/products/${id}`)
   }
 
   useEffect(() => {
