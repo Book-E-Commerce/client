@@ -23,6 +23,7 @@ function Cart() {
 
   function handleDeleteCartData (id) {
     dispatch(AdeleteCartData(id))
+
   }
 
   function handleCheckout () {
@@ -56,7 +57,7 @@ function Cart() {
                 <p className="no-data">You have 0 item in your cart</p>
                 :
                 cartData.map((data,i) => 
-                  <div key={i} className="row cartContainer--cartItem row no-gutters">
+                  <div onClick={() => toDetails(data.idBook._id)} key={i} className="row cartContainer--cartItem row no-gutters">
                     <div className="col-md-2 col-4">
                       <img alt="book cover" className="cartContainer--cartItem--image" src={data.idBook.image} />
                     </div>
@@ -98,3 +99,60 @@ function Cart() {
 }
 
 export default Cart;
+
+//   const toDetails = (id) => {
+//     history.push(`/home/products/${id}`)
+//   }
+
+//   async function plusCart (id, qtyNow) {
+//     try{
+//       const { data } = await Axios({
+//         method: 'patch',
+//         url: `/carts/${id}/update`,
+//         headers: {
+//           token: localStorage.getItem('token')
+//         },
+//         data: {
+//           qty: Number(qtyNow) + 1
+//         }
+//       })
+//       console.log(data)
+//       // fetchCartData()
+//       for (let i = 0; i < data.length; i++) {
+//         data[i].priceToDisplay = convertToRupiah(data[i].idBook.price)
+//       }
+//       setCartData(data)
+//     }
+//     catch(err){
+//       console.log(err.response)
+//     }
+//   }
+
+//   async function minusCart (id, qtyNow) {
+//     if(qtyNow === 1){
+//       console.log('1')
+//     }
+//     else{
+//       try{
+//         const { data } = await Axios({
+//           method: 'patch',
+//           url: `/carts/${id}/update`,
+//           headers: {
+//             token: localStorage.getItem('token')
+//           },
+//           data: {
+//             qty: Number(qtyNow) - 1
+//           }
+//         })
+//         console.log(data)
+//         // fetchCartData()
+//         for (let i = 0; i < data.length; i++) {
+//           data[i].priceToDisplay = convertToRupiah(data[i].idBook.price)
+//         }
+//         setCartData(data)
+//       }
+//       catch(err){
+//         console.log(err.response)
+//       }
+//     }
+
