@@ -259,7 +259,7 @@ function Default() {
           </div>
         </div>
 
-        <div className="container">
+        <div className="d-sm-block d-md-none container">
         <h4 className="genres-titles">Popular Book</h4>
           <div className="row">
             {
