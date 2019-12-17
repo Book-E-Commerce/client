@@ -33,6 +33,10 @@ function Cart() {
     }
   }
 
+  const toDetails = (id) => {
+    history.push(`/home/products/${id}`)
+  }
+
   async function plusCart (id, qtyNow) {
     try{
       const { data } = await Axios({
@@ -147,7 +151,7 @@ function Cart() {
                 <p className="no-data">You have 0 item in your cart</p>
                 :
                 cartData.map((data,i) => 
-                  <div key={i} className="row cartContainer--cartItem row no-gutters">
+                  <div onClick={() => toDetails(data.idBook._id)} key={i} className="row cartContainer--cartItem row no-gutters">
                     <div className="col-md-2 col-4">
                       <img alt="book cover" className="cartContainer--cartItem--image" src={data.idBook.image} />
                     </div>
