@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { AfetchCart } from '../../../store/actions/cart'
+import Product from '../../components/product'
 import axios from '../../../api/axios'
 import Swal from 'sweetalert2'
 import './style.scss'
 import convertToRupiah from '../../helpers/convertToRupiah'
 
 function Details(props) {
+  const dispatch = useDispatch()
   const [ title, setTitle ] = useState('')
   const [ author, setAuthor ] = useState('')
   const [ categories, setCategories ] = useState([])
@@ -17,10 +21,14 @@ function Details(props) {
   const [ image, setImage ] = useState('')
   const [ qty, setQty ] = useState(1)
   const [ loading, setLoading ] = useState(false)
-
+  const [ cartStatus, setCartStatus ] = useState(false)
+  const [ checkCartData, setCheckCartData] = useState(false)
+  const cartData = useSelector(state => state.Cart.cart)
   const { id } = useParams()
+
   useEffect(() => {
     getDetails()
+    inTheCart()
   }, []);
 
   useEffect(() => {
@@ -65,6 +73,7 @@ function Details(props) {
           'Success',
           'success'
         )
+        setCartStatus(true)
       })
       .catch(err => {
         Swal.fire({
@@ -74,6 +83,25 @@ function Details(props) {
         })
       })
   }
+
+  const inTheCart = () => {
+    cartData.forEach(data => {
+      console.log(data)
+      if(id == data.idBook._id){
+        setCartStatus(true)
+      }
+    })
+  }
+
+  useEffect(() => {
+    if(!checkCartData && cartData.length == 0){
+      dispatch(AfetchCart())
+      setCheckCartData(true)
+    }
+    else{
+      inTheCart()
+    }
+  },[cartData])
 
   if (loading) return (
     <div className="loading-container">
@@ -111,23 +139,30 @@ function Details(props) {
             </div>
             <p className="details-container--main--add-to-cart--extra--info">{priceToDisplay}</p>
             <div className="details-container--main--add-to-cart--extra--buy">
-              <button onClick={addToCart} type="button" className="btn details-container--main--add-to-cart--extra--buy--btn"><i style={{marginRight: '5px'}} className="fas fa-shopping-cart"></i> Add to Cart</button>
+              {
+                cartStatus
+                ?
+                <button type="button" className="btn details-container--main--add-to-cart--extra--buy--clear"><i style={{marginRight: '5px'}} className="fas fa-check"></i>This item already in your cart</button>
+                :
+                <button onClick={addToCart} type="button" className="btn details-container--main--add-to-cart--extra--buy--btn"><i style={{marginRight: '5px'}} className="fas fa-shopping-cart"></i>Add to Cart</button>
+              }
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div className="details-overview">
+    <div className="details-overview px-3">
       <h3>Overview</h3>
+      <div className="hr"></div>
     </div>
     <div className="row container details-container--overview">
-      <div className="col-12">
+      {/* <div className="col-12"> */}
         <div className="details-container--overview--contents">
           <p style={{margin: '7px'}}>
             {description}
           </p>
         </div>
-      </div>
+      {/* </div> */}
     </div>
   </div>
   )

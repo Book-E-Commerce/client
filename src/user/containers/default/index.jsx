@@ -271,24 +271,22 @@ function Default() {
         
 
 
-        <div className="d-sm-block d-md-none container">
+        <div className="d-sm-block d-md-none container px-4 mb-4">
         <h4 className="genres-titles">Popular Book</h4>
           <div className="row">
             {
               smallPopularProducts.map((product, i) => {
                 return (
-                  // <div className="p-2">
-                    <div onClick={() => toDetails(product._id)} key={i} className="col-6 p-2">
-                      <div className="main-container--popular-products--listproducts--product">
-                        <img src={product.image} alt="" />
-                        <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
-                          <p className="d-block text-truncate main-container--popular-products--listproducts--product--info--title">{product.title}</p>
-                          <p className="main-container--popular-products--listproducts--product--info--author" style={{ marginTop: '3px' }}>{product.author}</p>
-                          <p className="main-container--popular-products--listproducts--product--info--price">{product.priceToDisplay}</p>
-                        </div>
+                  <div onClick={() => toDetails(product._id)} key={i} className="col-6 p-2">
+                    <div className="main-container--popular-products--listproducts--product">
+                      <img src={product.image} alt="" />
+                      <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
+                        <p className="d-block text-truncate main-container--popular-products--listproducts--product--info--title">{product.title}</p>
+                        <p className="main-container--popular-products--listproducts--product--info--author" style={{ marginTop: '3px' }}>{product.author}</p>
+                        <p className="main-container--popular-products--listproducts--product--info--price">{product.priceToDisplay}</p>
                       </div>
                     </div>
-                  // </div>
+                  </div>
                 )
               })
             }
