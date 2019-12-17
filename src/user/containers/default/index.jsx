@@ -180,7 +180,7 @@ function Default() {
             {
               categories.map((category, i) => {
                 return (
-                  <div key={i} onClick={() => displayByCategory(category.name)} className="main-container--categories--category flex-column">
+                  <div key={i} onClick={() => displayByCategory(category.name)} className="hvr-float-shadow main-container--categories--category ">
                     <div className="main-container--categories--category--img">
                       <img src={category.img} alt="" />
                     </div>
@@ -202,7 +202,7 @@ function Default() {
                   {
                     popularProducts.map((product, i) => {
                       return (
-                        <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--popular-products--listproducts--product d-block text-truncate">
+                        <div onClick={() => toDetails(product._id)} key={i} className="hvr-grow-shadow col-2 main-container--popular-products--listproducts--product d-block text-truncate">
                           <img src={product.image} alt="" />
                           <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
                             <p className="d-block text-truncate main-container--popular-products--listproducts--product--info--title">{product.title}</p>
@@ -226,7 +226,7 @@ function Default() {
                   {
                     techProducts.map((product, i) => {
                       return (
-                        <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-1-products--listproducts--product d-block text-truncate">
+                        <div onClick={() => toDetails(product._id)} key={i} className="hvr-grow-shadow col-2 main-container--genre-1-products--listproducts--product d-block text-truncate">
                           <img src={product.image} alt=""/>
                           <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
                             <p className="d-block text-truncate main-container--genre-1-products--listproducts--product--info--title">{product.title}</p>
@@ -250,7 +250,7 @@ function Default() {
                     {
                       businessProducts.map((product, i) => {
                         return (
-                          <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-2-products--listproducts--product d-block text-truncate">
+                          <div onClick={() => toDetails(product._id)} key={i} className="hvr-grow-shadow col-2 main-container--genre-2-products--listproducts--product d-block text-truncate">
                             <img src={product.image} alt="" />
                             <div className="d-block text-truncate main-container--genre-2-products--listproducts--product--info">
                               <p className="d-block text-truncate main-container--genre-2-products--listproducts--product--info--title">{product.title}</p>
