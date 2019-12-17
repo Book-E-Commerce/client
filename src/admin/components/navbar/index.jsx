@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../../../store/actions/authenthication'
 
 const Navbar = () => {
+  const [ keyword, setKeyword ] = useState()
   const history = useHistory()
   const dispatch = useDispatch()
   const logouts = () => {
@@ -14,6 +15,7 @@ const Navbar = () => {
     history.push('/')
     dispatch(logout())
   }
+
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-green sticky-top">

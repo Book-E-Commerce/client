@@ -49,7 +49,7 @@ function MainNavbar() {
                   </button>
                   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <button type="button" onClick={() => history.push('/home/cart')} className="dropdown-item"><i style={{marginRight: '4px'}} className="fas fa-shopping-cart"></i> Cart</button>
-                    <a onClick={() => history.push('/home/history')} className="dropdown-item"><i style={{marginRight: '4px'}} className="far fa-newspaper"></i> Transaction</a>
+                    <button type="button" onClick={() => history.push('/home/history')} className="dropdown-item"><i style={{marginRight: '4px'}} className="far fa-newspaper"></i> Transaction</button>
                   </div>
                 </div>
                 <button onClick={logouts} style={{marginRight: '50px'}} type="button" className="btn btn-jalapeno"><i className="fas fa-sign-out-alt"></i></button>
