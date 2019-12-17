@@ -81,6 +81,7 @@ function Default() {
       .then(({ data }) => {
         let temp = []
         for (let i = 0; i < 10; i++) {
+          data[i].priceToDisplay = convertToRupiah(data[i].price)
           temp.push(data[i])
         }
         setSmallPopularProducts(temp)
@@ -162,12 +163,14 @@ function Default() {
               </a>
             </div>
           </div>
-          <div className="col-4 d-none d-sm-none d-md-block flex-column main-container--banners--right">
-            <div className="main-container--banners--right--top">
-              <img src="https://i.imgur.com/2lzmtwn.png" alt="" />
-            </div>
-            <div className="main-container--banners--right--bottom">
-              <img src="https://i.imgur.com/Y1bQlbj.png" alt=""/>
+          <div className="col-4 d-none d-sm-none d-md-block flex-column">
+            <div className="">
+              <div className="main-container--banners--right--top">
+                <img src="https://i.imgur.com/2lzmtwn.png" alt="" />
+              </div>
+              <div className="main-container--banners--right--bottom mt-2">
+                <img src="https://i.imgur.com/Y1bQlbj.png" alt=""/>
+              </div>
             </div>
           </div>
         </div>
@@ -212,60 +215,61 @@ function Default() {
                   }
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-        
-        <h4 className="genres-titles">Business & Investing</h4>
-        <div className="row main-container--genre-1-products">
-          <div className="col-2">
-            <div onClick={() => displayByCategory('Business')} className="main-container--genre-1-products--header">
-
-            </div>
-          </div>
-          <div className="col-10 main-container--genre-1-products--listproducts">
-            {
-              techProducts.map((product, i) => {
-                return (
-                  <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-1-products--listproducts--product d-block text-truncate">
-                    <img src={product.image} alt=""/>
-                    <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
-                      <p className="d-block text-truncate main-container--genre-1-products--listproducts--product--info--title">{product.title}</p>
-                      <p className="main-container--genre-1-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
-                      <p className="main-container--genre-1-products--listproducts--product--info--price">{product.priceToDisplay}</p>
-                    </div>
-                  )
-                })
-              }
-            </div>
-          </div>
-        </div>
-        
-        <h4 className="genres-titles">Computers & Technology</h4>
-        <div className="row main-container--genre-2-products">
-          <div className="col-2">
-            <div onClick={() => displayByCategory('Computer')} className="main-container--genre-2-products--header">
-
+              
+              <h4 className="genres-titles">Business & Investing</h4>
+              <div className="row main-container--genre-1-products">
+                <div className="col-2">
+                  <div onClick={() => displayByCategory('Business')} className="main-container--genre-1-products--header">
+                  </div>
+                </div>
+                <div className="col-10 main-container--genre-1-products--listproducts">
+                  {
+                    techProducts.map((product, i) => {
+                      return (
+                        <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-1-products--listproducts--product d-block text-truncate">
+                          <img src={product.image} alt=""/>
+                          <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
+                            <p className="d-block text-truncate main-container--genre-1-products--listproducts--product--info--title">{product.title}</p>
+                            <p className="main-container--genre-1-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
+                            <p className="main-container--genre-1-products--listproducts--product--info--price">{product.priceToDisplay}</p>
+                          </div>
+                        </div>
+                        )
+                      })
+                    }
+                </div>
               </div>
-            </div>
-            <div className="col-10 main-container--genre-2-products--listproducts">
-              {
-                businessProducts.map((product, i) => {
-                  return (
-                    <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-2-products--listproducts--product d-block text-truncate">
-                      <img src={product.image} alt="" />
-                      <div className="d-block text-truncate main-container--genre-2-products--listproducts--product--info">
-                        <p className="d-block text-truncate main-container--genre-2-products--listproducts--product--info--title">{product.title}</p>
-                        <p className="main-container--genre-2-products--listproducts--product--info--author" style={{ marginTop: '3px' }}>{product.author}</p>
-                        <p className="main-container--genre-2-products--listproducts--product--info--price">Rp. {product.price}</p>
-                      </div>
-                    </div>
-                  )
-                })
-              }
+              
+              <h4 className="genres-titles">Computers & Technology</h4>
+              <div className="row main-container--genre-2-products">
+                <div className="col-2">
+                  <div onClick={() => displayByCategory('Computer')} className="main-container--genre-2-products--header">
+                  </div>
+                </div>
+                  <div className="col-10 main-container--genre-2-products--listproducts">
+                    {
+                      businessProducts.map((product, i) => {
+                        return (
+                          <div onClick={() => toDetails(product._id)} key={i} className="col-2 main-container--genre-2-products--listproducts--product d-block text-truncate">
+                            <img src={product.image} alt="" />
+                            <div className="d-block text-truncate main-container--genre-2-products--listproducts--product--info">
+                              <p className="d-block text-truncate main-container--genre-2-products--listproducts--product--info--title">{product.title}</p>
+                              <p className="main-container--genre-2-products--listproducts--product--info--author" style={{ marginTop: '3px' }}>{product.author}</p>
+                              <p className="main-container--genre-2-products--listproducts--product--info--price">{product.priceToDisplay}</p>
+                            </div>
+                          </div>
+                        )
+                      })
+                    }
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
+        
+
 
         <div className="d-sm-block d-md-none container">
         <h4 className="genres-titles">Popular Book</h4>
@@ -290,11 +294,7 @@ function Default() {
             }
           </div>
         </div>
-
-
-
-
-      </div>
+      
     </>
   )
 }
