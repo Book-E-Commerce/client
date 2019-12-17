@@ -62,7 +62,7 @@ export default function Search (props) {
               <p onClick={ () => history.push(`/home/search/Science`) } className="category-list--item--text">Science & math</p>
             </div>
           </div>
-          <div className="col-12 col-md-9">
+          <div className="col-12 order-1 order-md-2 col-md-9">
             <p className="search-result-text">Search Result "{keyword}"</p>
             <div className="row">
               {

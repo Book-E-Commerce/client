@@ -58,8 +58,8 @@ export default function History (props) {
   )
 
   return (
-    <div>
-      <p className="transaction-main-title">Transaction History</p>
+    <div className="container ">
+      <p className="transaction-main-title">Transaction History</p> 
 
       {
         historyData.length === 0
@@ -69,19 +69,19 @@ export default function History (props) {
         historyData.map((data,i) => 
           <div className="transaction-container">
             <div className="row transaction-container--item">
-              <div className="col-3">
+              <div className="col-md-3 col-6 mt-md-0 mt-2">
                 <p className="mb-0 transaction-container--title">Date</p>
                 <p className="mb-0 transaction-container--text">{Moment(String(new Date(data.createdAt))).format("MMMM Do YYYY")}</p>
               </div>
-              <div className="col-3">
+              <div className="col-md-3 col-6 mt-md-0 mt-2">
                 <p className="mb-0 transaction-container--title">Order ID</p>
-                <p className="mb-0 transaction-container--text">{data._id}</p>
+                <p className="mb-0 transaction-container--text text-truncate">{data._id}</p>
               </div>
-              <div className="col-3">
+              <div className="col-md-3 col-6 mt-md-0 mt-2">
                 <p className="mb-0 transaction-container--title">Total payment</p>
                 <p className="mb-0 transaction-container--text">{data.totalTransactionsToDisplay}</p>
               </div>
-              <div className="col-3">
+              <div className="col-md-3 col-6 mt-md-0 mt-2">
                 <p className="mb-0 transaction-container--title">Status</p>
                 <p className="mb-0 transaction-container--text">Transaction Done</p>
               </div>

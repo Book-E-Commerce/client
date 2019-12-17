@@ -89,11 +89,24 @@ $main-color: #006266;
         }
 
         &--buy {
-          width: 90%;
+          width: 100%;
 
           &--btn {
             width: 100%;
             background-color: #C9356E;
+            font-weight: bold;
+            color: white;
+
+            &:hover {
+              background-color: rgb(199, 26, 92);
+              font-weight: bold;
+              color: white;
+            }
+          }
+
+          &--clear {
+            width: 100%;
+            background-color: rgb(34, 179, 46);
             font-weight: bold;
             color: white;
 
@@ -109,8 +122,8 @@ $main-color: #006266;
   }
 
   &--overview {
-    border-top: 1px solid black;
-    margin-top: 5px;
+    // border-top: 1px solid black;
+    // margin-top: 5px;
     &--contents {
       margin: 7px;
       text-align: justify;
@@ -119,11 +132,17 @@ $main-color: #006266;
   }
 }
 
+.hr {
+  background-color: #006266;
+  width: 100%;
+  height: 2px;
+}
+
 .details-overview {
   margin-top: 70px;
   width: 100%;
-  display: flex;
-  justify-content: flex-start;
+  // display: flex;
+  // justify-content: flex-start;
 
   @media only screen and (max-width: 425px) {
     margin-top: 40px;
