@@ -25,24 +25,38 @@ function Login() {
       identity, password
     })
     .then(({data}) => {
+      console.log(data)
       dispatch(login())
-      Swal.fire(
-        'Logged In',
-        'Success',
-        'success'
-      )
       setIdentity('')
       setPassword('')
-      history.push('/home')
+      if (data.role == 'admin') {
+        history.push('/admin')
+      } else {
+        history.push('/home')
+      }
       localStorage.setItem('token', data.token)
+      localStorage.setItem('role', data.role)
+    })
+    .catch(err => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Wrong email/password',
+      })
     })
   }
 
   return (
+
       <div className="row no-gutters height-div">
         <div className="col-6 d-none d-sm-none d-md-block">
-          <div className="login-container--left">
-            <img src="https://i.imgur.com/W2rzOrR.png" alt="LoginImage"/>
+      <div className="login-container--left">
+        <img src="https://i.imgur.com/W2rzOrR.png" alt="LoginImage"/>
+      </div>
+      <div className="login-container--right">
+        <div className="login-container--right--loginbox">
+          <div onClick={() => history.push('/home')} className="login-container--right--loginbox--header">
+            <img src="https://i.imgur.com/HzhZ73n.png" alt="Icon"/>
           </div>
         </div>
         <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">

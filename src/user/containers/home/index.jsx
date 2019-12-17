@@ -13,6 +13,15 @@ const trans4 = (x, y) => `translate3d(${x / 3.5}px,${y / 3.5}px,0)`
 function Home() {
   const history = useHistory()
   const [props, set] = useSpring(() => ({ xy: [0, 0], config: { mass: 10, tension: 550, friction: 140 } }))
+  const toSite = () => {
+    const role = localStorage.getItem('role')
+    if (role == 'admin') {
+      history.push('/admin')
+    } else {
+      history.push('/home')
+    }
+  }
+
   return(
     <>
       <Navbar />
@@ -22,7 +31,7 @@ function Home() {
           <h1>and life to everything</h1>
         </div>
         <div className="home-container--body">
-          <button onClick={() => history.push('/home')} type="button" style={{fontSize: '22px', fontWeight: 'bold'}} className="btn btn-outline-light home-container--body--btns">Enter</button>
+          <button onClick={toSite} type="button" style={{fontSize: '22px', fontWeight: 'bold'}} className="btn btn-outline-light home-container--body--btns">Enter</button>
         </div>
         <div className="home-container--footer">
         <div className="footer-container" onMouseMove={({ clientX: x, clientY: y }) => set({ xy: calc(x, y) })}>

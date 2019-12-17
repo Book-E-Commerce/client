@@ -14,6 +14,7 @@ function MainNavbar() {
 
   const logouts = () => {
     localStorage.removeItem('token')
+    localStorage.removeItem('role')
     history.push('/')
     dispatch(logout())
   }
@@ -21,6 +22,7 @@ function MainNavbar() {
   function handleSubmit (e) {
     e.preventDefault()
     history.push(`/home/search/${ keyword }`)
+    setKeyword('')
   }
 
   return (

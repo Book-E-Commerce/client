@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import axios from '../../../api/axios'
 import Swal from 'sweetalert2'
 import './style.scss'
+import convertToRupiah from '../../helpers/convertToRupiah'
 
 function Details(props) {
   const [ title, setTitle ] = useState('')
@@ -10,19 +11,29 @@ function Details(props) {
   const [ categories, setCategories ] = useState([])
   const [ rating, setRating ] = useState(0)
   const [ price, setPrice ] = useState(0)
+  const [ priceToDisplay, setPriceToDisplay ] = useState('')
   const [ stock, setStock ] = useState(0)
   const [ description, setDescription ] = useState('')
   const [ image, setImage ] = useState('')
   const [ qty, setQty ] = useState(1)
+  const [ loading, setLoading ] = useState(false)
 
   const { id } = useParams()
   useEffect(() => {
-    setTimeout(() => {
-      getDetails()
-    }, 2000)
+    getDetails()
   }, []);
 
+  useEffect(() => {
+    convertToRupiahs()
+  }, [price, priceToDisplay]);
+  
+  const convertToRupiahs = () => {
+    const converted = convertToRupiah(price)
+    setPriceToDisplay(converted)
+  }
+
   const getDetails = () => {
+    setLoading(true)
     axios.get(`/books/find-one/${id}`)
       .then(({data}) => {
         setTitle(data.title)
@@ -33,6 +44,7 @@ function Details(props) {
         setStock(data.stock)
         setDescription(data.description)
         setImage(data.image)
+        setLoading(false)
       })
   }
 
@@ -55,16 +67,20 @@ function Details(props) {
         )
       })
       .catch(err => {
-        console.log(err.response)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.response.data,
+        })
       })
   }
 
-  // if (!image) return (
-  //   <div className="loading-container">
-  //     <div className="lds-circle d-flex justify-content-center align-items-center mx-auto"><div></div></div>
-  //     <h6 style={{fontWeight: 'bold'}}>Loading . . . </h6>
-  //   </div>
-  // )
+  if (loading) return (
+    <div className="loading-container">
+      <div className="lds-circle d-flex justify-content-center align-items-center mx-auto"><div></div></div>
+      <h6 style={{fontWeight: 'bold'}}>Loading . . . </h6>
+    </div>
+  )
 
   return (
     <div className="container details-container">
@@ -93,7 +109,7 @@ function Details(props) {
             <div className="pricetext-container">
               <p>Price</p>
             </div>
-            <p className="details-container--main--add-to-cart--extra--info">Rp.{price}</p>
+            <p className="details-container--main--add-to-cart--extra--info">{priceToDisplay}</p>
             <div className="details-container--main--add-to-cart--extra--buy">
               <button onClick={addToCart} type="button" className="btn details-container--main--add-to-cart--extra--buy--btn"><i style={{marginRight: '5px'}} className="fas fa-shopping-cart"></i> Add to Cart</button>
             </div>

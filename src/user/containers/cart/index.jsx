@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import Axios from '../../../api/axios'
 import './style.scss'
+import convertToRupiah from '../../helpers/convertToRupiah'
 
 function Cart() {
 
   const history = useHistory()
   const [totalPrice, setTotalPrice]  = useState(0)
   const [cartData, setCartData] = useState([])
+  const [ totalPriceToDisplay, setTotalPriceToDisplay ] = useState('')
 
   async function fetchCartData () {
     try{
@@ -18,8 +20,13 @@ function Cart() {
           token: localStorage.getItem('token')
         }
       })
-      console.log(data)
-      setCartData(data)
+      let temp = []
+      for (let i = 0; i < data.length; i++) {
+        data[i].priceToDisplay = convertToRupiah(data[i].idBook.price)
+        temp.push(data[i])
+      }
+      console.log(temp)
+      setCartData(temp)
     }
     catch(err){
       console.log(err.response)
@@ -113,6 +120,7 @@ function Cart() {
       totalPrice += Number(data.idBook.price) * Number(data.qty)
     })
     setTotalPrice(totalPrice)
+    setTotalPriceToDisplay(convertToRupiah(totalPrice))
   },[cartData])
 
   useEffect(() => {
@@ -130,7 +138,7 @@ function Cart() {
               {
                 cartData.length === 0
                 ?
-                <p>No Data</p>
+                <p className="no-data">You have 0 item in your cart</p>
                 :
                 cartData.map((data,i) => 
                   <div key={i} className="row cartContainer--cartItem row no-gutters">
@@ -140,7 +148,7 @@ function Cart() {
                     <div className="col-md-5 col-3">
                       <p className="mb-0 cartContainer--cartItem--book-title">{data.idBook.title}</p>
                       <p className="cartContainer--cartItem--author"> <small>{data.idBook.author[0]}</small></p>
-                      <p><b>Rp {data.idBook.price}</b></p>
+                      <p><b>{data.priceToDisplay}</b></p>
                     </div>
                     <div className="col-3 col-md-2">
                       <div className="d-flex justify-content-end">
@@ -164,7 +172,7 @@ function Cart() {
           <div className="col-md-3 col-12">
             <div className="checkout-container">
               <p className="checkout-container--title">Total Price</p>
-              <p className="checkout-container--total-price"><b>Rp {totalPrice}</b></p>
+              <p className="checkout-container--total-price"><b>{totalPriceToDisplay}</b></p>
               <button onClick={ () => checkout() } className="checkout-container--button">Checkout</button>
             </div>
           </div>

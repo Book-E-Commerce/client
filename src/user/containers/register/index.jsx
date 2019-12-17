@@ -23,6 +23,13 @@ function Register() {
         )
         history.push('/login')
       })
+      .catch(err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'You need to fill all required data',
+        })
+      })
   }
 
   return (
@@ -33,12 +40,11 @@ function Register() {
           <img src="https://i.imgur.com/ZM6gg7V.png" alt="RegisterImage" />
         </div>
       </div>
-
       <div className="col-md-6 col-12 d-flex align-items-center justify-content-center">
         <div className="register-container--right">
           <div className="register-container--right--registerbox">
             <div className="register-container--right--registerbox--header">
-              <img src="https://i.imgur.com/rIDjqeJ.png" alt="Icon" />
+              <img src="https://i.imgur.com/RD45MWB.png" alt="Icon" />
             </div>
             <form onSubmit={registerUser}>
               <div className="form-group register-container--right--registerbox--form">

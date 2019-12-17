@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react'
 import Axios from '../../../api/axios'
 import Moment from 'moment'
 import './style.scss'
+import convertToRupiah from '../../helpers/convertToRupiah'
 
 export default function History (props) {
 
   const [historyData, setHistoryData] = useState([])
+  const [ loading, setLoading ] = useState(false)
 
   async function fetchHistoryData () {
+    setLoading(true)
     try{
       const {data} = await Axios({
         method: 'get',
@@ -32,9 +35,11 @@ export default function History (props) {
           totalPrice.qty += data.qty
         })
         data.totalTransactions = totalPrice
+        data.totalTransactionsToDisplay = convertToRupiah(totalPrice.price)
       })
       console.log(data)
       setHistoryData(data)
+      setLoading(false)
     }
     catch(err){
       console.log(err.response)
@@ -45,6 +50,13 @@ export default function History (props) {
     fetchHistoryData()
   },[])
 
+  if (loading) return (
+    <div className="loading-container">
+      <div className="lds-circle d-flex justify-content-center align-items-center mx-auto"><div></div></div>
+      <h6 style={{fontWeight: 'bold'}}>Loading . . . </h6>
+    </div>
+  )
+
   return (
     <div>
       <p className="transaction-main-title">Transaction History</p>
@@ -52,7 +64,7 @@ export default function History (props) {
       {
         historyData.length === 0
         ?
-        <p>No Data</p>
+        <p className="no-data">You have 0 transaction</p>
         :
         historyData.map((data,i) => 
           <div className="transaction-container">
@@ -67,7 +79,7 @@ export default function History (props) {
               </div>
               <div className="col-3">
                 <p className="mb-0 transaction-container--title">Total payment</p>
-                <p className="mb-0 transaction-container--text">Rp {data.totalTransactions.price}</p>
+                <p className="mb-0 transaction-container--text">{data.totalTransactionsToDisplay}</p>
               </div>
               <div className="col-3">
                 <p className="mb-0 transaction-container--title">Status</p>

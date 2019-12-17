@@ -8,6 +8,7 @@ export default function Search (props) {
   const history = useHistory()
   const { keyword } = useParams()
   const [searchResultData, setSearchResultData] = useState([])
+  const [ loading, setLoading ] = useState(false)
 
   function topFunction() {
     document.body.scrollTop = 0; // For Safari
@@ -16,6 +17,7 @@ export default function Search (props) {
 
 
   async function getQueryData () {
+    setLoading(true)
     try{
       const { data } = await Axios({
         method: 'get',
@@ -23,6 +25,7 @@ export default function Search (props) {
       })
       console.log(data)
       setSearchResultData(data)
+      setLoading(false)
     }
     catch(err){
       console.log(err.response)
@@ -34,6 +37,13 @@ export default function Search (props) {
     getQueryData()
   },[keyword])
 
+  if (loading) return (
+    <div className="loading-container">
+      <div className="lds-circle d-flex justify-content-center align-items-center mx-auto"><div></div></div>
+      <h6 style={{fontWeight: 'bold'}}>Loading . . . </h6>
+    </div>
+  )
+
   return (
     <div>
       <div className="container mt-3">
@@ -41,15 +51,15 @@ export default function Search (props) {
           <div className="col-12 order-2 order-md-1 col-md-3">
             <p className="category-list">Category List</p>
             <div className="ml-2 category-list--item">
-              <p onClick={ () => history.push(`/home/search/business`) } className="category-list--item--text">Business & investing</p>
-              <p onClick={ () => history.push(`/home/search/children`) } className="category-list--item--text">Children's books</p>
-              <p onClick={ () => history.push(`/home/search/computer`) } className="category-list--item--text">Computer & technology</p>
-              <p onClick={ () => history.push(`/home/search/cooking`) } className="category-list--item--text">Cooking & food</p>
-              <p onClick={ () => history.push(`/home/search/fiction`) } className="category-list--item--text">Fiction</p>
-              <p onClick={ () => history.push(`/home/search/health`) } className="category-list--item--text">Health, mind, & body</p>
-              <p onClick={ () => history.push(`/home/search/history`) } className="category-list--item--text">History</p>
-              <p onClick={ () => history.push(`/home/search/parenting`) } className="category-list--item--text">Parenting & families</p>
-              <p onClick={ () => history.push(`/home/search/science`) } className="category-list--item--text">Science & math</p>
+              <p onClick={ () => history.push(`/home/search/Business`) } className="category-list--item--text">Business & investing</p>
+              <p onClick={ () => history.push(`/home/search/Children`) } className="category-list--item--text">Children's books</p>
+              <p onClick={ () => history.push(`/home/search/Computer`) } className="category-list--item--text">Computer & technology</p>
+              <p onClick={ () => history.push(`/home/search/Cooking`) } className="category-list--item--text">Cooking & food</p>
+              <p onClick={ () => history.push(`/home/search/Fiction`) } className="category-list--item--text">Fiction</p>
+              <p onClick={ () => history.push(`/home/search/Health`) } className="category-list--item--text">Health, mind, & body</p>
+              <p onClick={ () => history.push(`/home/search/History`) } className="category-list--item--text">History</p>
+              <p onClick={ () => history.push(`/home/search/Parenting`) } className="category-list--item--text">Parenting & families</p>
+              <p onClick={ () => history.push(`/home/search/Science`) } className="category-list--item--text">Science & math</p>
             </div>
           </div>
           <div className="col-12 col-md-9">
@@ -58,7 +68,7 @@ export default function Search (props) {
               {
                 searchResultData.length === 0
                 ?
-                  <p></p>
+                  <img className="notfound-image" src="https://i.imgur.com/S85fIPC.png" alt=""/>
                 :
                 searchResultData.map((data,i) =>   
                   <div className="col-6 col-md-3" onClick={ () => history.push(`/home/products/${data._id}`) }>
