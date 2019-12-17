@@ -1,5 +1,5 @@
-# server
-Repositori For Client Book E-Commerce
+# client
+Repositori For Client Book E-Commerce https://hackbook.dipaproject.online/home
 
 ### Langkah sebelum kerja
 1. Fork repository ini
