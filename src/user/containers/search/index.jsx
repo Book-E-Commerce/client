@@ -61,7 +61,7 @@ export default function Search (props) {
               {
                 searchResultData.length === 0
                 ?
-                  <img className="notfound-image" src="https://i.imgur.com/S85fIPC.png" alt=""/>
+                  <p className="no-data">No data found</p>
                 :
                 searchResultData.map((data,i) =>   
                   <div className="col-3" onClick={ () => history.push(`/home/products/${data._id}`) }>
