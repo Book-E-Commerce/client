@@ -25,16 +25,24 @@ function Login() {
       identity, password
     })
     .then(({data}) => {
+      console.log(data)
       dispatch(login())
-      Swal.fire(
-        'Logged In',
-        'Success',
-        'success'
-      )
       setIdentity('')
       setPassword('')
-      history.push('/home')
+      if (data.role == 'admin') {
+        history.push('/admin')
+      } else {
+        history.push('/home')
+      }
       localStorage.setItem('token', data.token)
+      localStorage.setItem('role', data.role)
+    })
+    .catch(err => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Wrong email/password',
+      })
     })
   }
 
@@ -45,8 +53,8 @@ function Login() {
       </div>
       <div className="login-container--right">
         <div className="login-container--right--loginbox">
-          <div className="login-container--right--loginbox--header">
-            <img src="https://i.imgur.com/BYsDyrY.png" alt="Icon"/>
+          <div onClick={() => history.push('/home')} className="login-container--right--loginbox--header">
+            <img src="https://i.imgur.com/HzhZ73n.png" alt="Icon"/>
           </div>
           <form onSubmit={logins}>
             <div className="form-group login-container--right--loginbox--form">

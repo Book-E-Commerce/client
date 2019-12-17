@@ -3,6 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 import Product from '../../components/product'
 import './style.scss'
 import axios from '../../../api/axios'
+import convertToRupiah from '../../helpers/convertToRupiah'
 
 function Default() {
   const history = useHistory()
@@ -65,6 +66,7 @@ function Default() {
       .then(({data}) => {
         let temp = []
         for (let i = 0; i < 5; i++) {
+          data[i].priceToDisplay = convertToRupiah(data[i].price)
           temp.push(data[i])
         }
         setPopularProducts(temp)
@@ -79,6 +81,7 @@ function Default() {
       })
       let temp = []
       for (let i = 0; i < 5; i++) {
+        data[i].priceToDisplay = convertToRupiah(data[i].price)
         temp.push(data[i])
       }
       setBusinessProducts(temp)
@@ -96,6 +99,7 @@ function Default() {
       })
       let temp = []
       for (let i = 0; i < 5; i++) {
+        data[i].priceToDisplay = convertToRupiah(data[i].price)
         temp.push(data[i])
       }
       setTechProducts(temp)
@@ -149,7 +153,7 @@ function Default() {
               <img src="https://i.imgur.com/2lzmtwn.png" alt=""/>
             </div>
             <div className="main-container--banners--right--bottom">
-              <img src="https://i.imgur.com/ACN211V.png" alt=""/>
+              <img src="https://i.imgur.com/Y1bQlbj.png" alt=""/>
             </div>
           </div>
         </div>
@@ -185,7 +189,7 @@ function Default() {
                         <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
                           <p className="d-block text-truncate main-container--popular-products--listproducts--product--info--title">{product.title}</p>
                           <p className="main-container--popular-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
-                          <p className="main-container--popular-products--listproducts--product--info--price">Rp. {product.price}</p>
+                          <p className="main-container--popular-products--listproducts--product--info--price">{product.priceToDisplay}</p>
                         </div>
                       </div>
                     )
@@ -199,7 +203,7 @@ function Default() {
         <h4 className="genres-titles">Business & Investing</h4>
         <div className="row main-container--genre-1-products">
           <div className="col-2">
-            <div className="main-container--genre-1-products--header">
+            <div onClick={() => displayByCategory('Business')} className="main-container--genre-1-products--header">
 
             </div>
           </div>
@@ -212,7 +216,7 @@ function Default() {
                     <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
                       <p className="d-block text-truncate main-container--genre-1-products--listproducts--product--info--title">{product.title}</p>
                       <p className="main-container--genre-1-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
-                      <p className="main-container--genre-1-products--listproducts--product--info--price">Rp. {product.price}</p>
+                      <p className="main-container--genre-1-products--listproducts--product--info--price">{product.priceToDisplay}</p>
                     </div>
                   </div>
                 )
@@ -224,7 +228,7 @@ function Default() {
         <h4 className="genres-titles">Computers & Technology</h4>
         <div className="row main-container--genre-2-products">
           <div className="col-2">
-            <div className="main-container--genre-2-products--header">
+            <div onClick={() => displayByCategory('Computer')} className="main-container--genre-2-products--header">
 
             </div>
           </div>
@@ -237,7 +241,7 @@ function Default() {
                     <div className="d-block text-truncate main-container--genre-2-products--listproducts--product--info">
                       <p className="d-block text-truncate main-container--genre-2-products--listproducts--product--info--title">{product.title}</p>
                       <p className="main-container--genre-2-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
-                      <p className="main-container--genre-2-products--listproducts--product--info--price">Rp. {product.price}</p>
+                      <p className="main-container--genre-2-products--listproducts--product--info--price">{product.priceToDisplay}</p>
                     </div>
                   </div>
                 )
