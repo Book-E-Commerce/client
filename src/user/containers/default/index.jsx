@@ -260,6 +260,7 @@ function Default() {
         </div>
 
         <div className="container">
+        <h4 className="genres-titles">Popular Book</h4>
           <div className="row">
             {
               smallPopularProducts.map((product, i) => {
