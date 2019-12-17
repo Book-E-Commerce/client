@@ -59,20 +59,20 @@ function Details(props) {
       })
   }
 
-  if (!image) return (
-    <div className="loading-container">
-      <div className="lds-circle d-flex justify-content-center align-items-center mx-auto"><div></div></div>
-      <h6 style={{fontWeight: 'bold'}}>Loading . . . </h6>
-    </div>
-  )
+  // if (!image) return (
+  //   <div className="loading-container">
+  //     <div className="lds-circle d-flex justify-content-center align-items-center mx-auto"><div></div></div>
+  //     <h6 style={{fontWeight: 'bold'}}>Loading . . . </h6>
+  //   </div>
+  // )
 
   return (
     <div className="container details-container">
     <div className="row container details-container--main">
-      <div className="pr-0 col-4 container details-container--main--image">
-        <img src={image} className="card-img-top" alt="..." />
+      <div className="pr-md-0 col-md-4 col-12 container details-container--main--image">
+        <img src={image} className="" alt="..." />
       </div>
-      <div className="pl-0 col-4 container details-container--main--info">
+      <div className="pl-md-0 col-md-4 col-12 container details-container--main--info">
         <div className="details-container--main--info--prime">
           <p className="details-container--main--info--prime--title">{title}</p>
           <p className="details-container--main--info--prime--author"><strong>Author:</strong> {author}</p>
@@ -87,14 +87,16 @@ function Details(props) {
           </div>
         </div>
       </div>
-      <div className="col-4 container details-container--main--add-to-cart">
-        <div className="details-container--main--add-to-cart--extra">
-          <div className="pricetext-container">
-            <p>Price</p>
-          </div>
-          <p className="details-container--main--add-to-cart--extra--info">Rp.{price}</p>
-          <div className="details-container--main--add-to-cart--extra--buy">
-            <button onClick={addToCart} type="button" className="btn details-container--main--add-to-cart--extra--buy--btn"><i style={{marginRight: '5px'}} className="fas fa-shopping-cart"></i> Add to Cart</button>
+      <div className="col-md-4 col-12">
+        <div className="container details-container--main--add-to-cart">
+          <div className="details-container--main--add-to-cart--extra">
+            <div className="pricetext-container">
+              <p>Price</p>
+            </div>
+            <p className="details-container--main--add-to-cart--extra--info">Rp.{price}</p>
+            <div className="details-container--main--add-to-cart--extra--buy">
+              <button onClick={addToCart} type="button" className="btn details-container--main--add-to-cart--extra--buy--btn"><i style={{marginRight: '5px'}} className="fas fa-shopping-cart"></i> Add to Cart</button>
+            </div>
           </div>
         </div>
       </div>

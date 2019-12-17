@@ -124,7 +124,7 @@ function Cart() {
       <div className="container">
         <p className="cart-title">Showing <b>{cartData.length} product</b> in cart</p>
         <div className="row">
-          <div className="col-9">
+          <div className="col-md-9 col-12">
             <div className="cartContainer">
 
               {
@@ -134,15 +134,15 @@ function Cart() {
                 :
                 cartData.map((data,i) => 
                   <div key={i} className="row cartContainer--cartItem row no-gutters">
-                    <div className="col-2">
+                    <div className="col-md-2 col-4">
                       <img alt="book cover" className="cartContainer--cartItem--image" src={data.idBook.image} />
                     </div>
-                    <div className="col-5">
+                    <div className="col-md-5 col-3">
                       <p className="mb-0 cartContainer--cartItem--book-title">{data.idBook.title}</p>
                       <p className="cartContainer--cartItem--author"> <small>{data.idBook.author[0]}</small></p>
                       <p><b>Rp {data.idBook.price}</b></p>
                     </div>
-                    <div className="col-2">
+                    <div className="col-3 col-md-2">
                       <div className="d-flex justify-content-end">
                         <button onClick={ () => minusCart(data._id, data.qty) } className="cartContainer--cartItem--plus-minus-btn">-</button>
                         <input readOnly min="1" className="cartContainer--cartItem--number-input" value={data.qty} type="number"/>
@@ -161,7 +161,7 @@ function Cart() {
 
             </div>
           </div>
-          <div className="col-3">
+          <div className="col-md-3 col-12">
             <div className="checkout-container">
               <p className="checkout-container--title">Total Price</p>
               <p className="checkout-container--total-price"><b>Rp {totalPrice}</b></p>

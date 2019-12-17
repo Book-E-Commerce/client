@@ -8,11 +8,20 @@ $main-color: #006266;
   align-items: center;
   margin-top: 40px;
 
+  @media only screen and (max-width: 425px) {
+    margin-top: 10px;
+  }
+
   &--main {
     &--image {
       img {
         width: 18rem;
         border: 1px solid gray;
+
+        @media only screen and (max-width: 425px) {
+          width: 100%;
+          margin-bottom: 15px;
+        }
       }
     }
     &--info {
@@ -46,13 +55,17 @@ $main-color: #006266;
 
     &--add-to-cart {
       margin-top: 14px;
-      width: 80%;
+      width: 90%;
       height: 180px;
       border: 1px solid $main-color;
       border-radius: 5px;
       display: flex;
       justify-content: center;
       align-items: center;
+
+      @media only screen and (max-width: 425px) {
+        margin-top: 30px;
+      }
 
       &--extra {
         display: flex;
@@ -76,8 +89,10 @@ $main-color: #006266;
         }
 
         &--buy {
+          width: 90%;
+
           &--btn {
-            width: 310px;
+            width: 100%;
             background-color: #C9356E;
             font-weight: bold;
             color: white;
@@ -110,6 +125,10 @@ $main-color: #006266;
   display: flex;
   justify-content: flex-start;
 
+  @media only screen and (max-width: 425px) {
+    margin-top: 40px;
+  }
+
   h3 {
     font-family: 'Titillium Web', sans-serif;
     color: $main-color;
@@ -118,11 +137,12 @@ $main-color: #006266;
 }
 
 .pricetext-container {
-  width: 310px;
+  width: 230px;
   height: 20px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  margin-bottom: 10px;
+  // // display: flex;
+  // // justify-content: flex-start;
+  // // align-items: flex-start;
 }
 
 .lds-circle {
