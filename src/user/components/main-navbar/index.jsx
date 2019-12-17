@@ -13,6 +13,7 @@ function MainNavbar() {
 
   const logouts = () => {
     localStorage.removeItem('token')
+    localStorage.removeItem('role')
     history.push('/')
     dispatch(logout())
   }

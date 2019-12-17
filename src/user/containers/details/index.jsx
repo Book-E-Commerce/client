@@ -70,7 +70,7 @@ function Details(props) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'You need to login first',
+          text: err.response.data,
         })
       })
   }

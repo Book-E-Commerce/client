@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Axios from '../../../api/axios'
 import Moment from 'moment'
 import './style.scss'
+import convertToRupiah from '../../helpers/convertToRupiah'
 
 export default function History (props) {
 
@@ -34,6 +35,7 @@ export default function History (props) {
           totalPrice.qty += data.qty
         })
         data.totalTransactions = totalPrice
+        data.totalTransactionsToDisplay = convertToRupiah(totalPrice.price)
       })
       console.log(data)
       setHistoryData(data)
@@ -77,7 +79,7 @@ export default function History (props) {
               </div>
               <div className="col-3">
                 <p className="mb-0 transaction-container--title">Total payment</p>
-                <p className="mb-0 transaction-container--text">Rp {data.totalTransactions.price}</p>
+                <p className="mb-0 transaction-container--text">{data.totalTransactionsToDisplay}</p>
               </div>
               <div className="col-3">
                 <p className="mb-0 transaction-container--title">Status</p>
