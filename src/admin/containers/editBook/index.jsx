@@ -22,7 +22,6 @@ function EditBook (props) {
 
   async function handleSubmitEdit (e) {
     e.preventDefault()
-
     Swal.showLoading()
 
     // console.log(author)
@@ -146,7 +145,7 @@ function EditBook (props) {
           <input value={category} onChange={ (e) => setCategory(e.target.value)} className="form-control" type="text" placeholder="Category"/>
         </div>
         <div className="form-group">
-          <input value={rating} onChange={ (e) => setRating(e.target.value)} className="form-control" type="number" placeholder="Rating max 5.0"/>
+          <input value={rating} onChange={ (e) => setRating(e.target.value)} className="form-control" min="1" max="5" type="number" placeholder="Rating max 5.0"/>
         </div>
         <div className="form-group">
           <input value={price} onChange={ (e) => setPrice(e.target.value)} className="form-control" type="number" min="1" step="1" placeholder="Price"/>
@@ -164,7 +163,7 @@ function EditBook (props) {
           </div>
         </div>
         <button onClick={() => history.push('/admin/listbook')} className="mr-2 btn btn-secondary">Cancel</button>
-        <button type="submit" className="btn btn-green mr-2">Edit</button>
+        <button type="submit" className="btn btn-green mr-2">Update</button>
         <button onClick={ () => deleteBook() } className="btn btn-admin-delete mr-2">Delete</button>
       </form>
         <img alt="book" className="mt-3" width="100%" src={imageURL} />
