@@ -1,0 +1,31 @@
+.list-book-tittle {
+  font-size: 25px;
+  color: #006266;
+  font-family: 'Titillium Web';
+}
+
+.list-book-table-container {
+  border: solid 1px lightgrey;
+  margin: 20px 0;
+  border-radius: 5px;
+  padding: 15px 10px 0px;
+  transition: 0.3s ease-in;
+
+  th, td {
+    color: #006266;
+  }
+
+  tr {
+    cursor: pointer;
+  }
+
+  &:hover {
+    box-shadow: 5px 5px 10px lightgrey;
+  }
+}
+
+.search-in-admin {
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}

@@ -1,0 +1,98 @@
+.cart-title {
+  font-size: 24px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  color: #006266;
+  // font-weight: bold;
+}
+
+.cartContainer {
+
+  &--cartItem {
+    border: 0;
+    margin-bottom: 20px;
+    padding-bottom: 25px;
+    border-bottom: solid 1px lightgrey;
+    
+    &--image {
+      background-color: lightgrey;
+      width: 110px;
+      height: 170px;
+      cursor: pointer;
+    }
+
+    &--author {
+      color: darkgrey;
+    }
+
+    &--book-title {
+      color: #006266;
+      font-weight: bold;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance:textfield;
+    }
+
+    &--number-input {
+      width: 50px;
+      border: none;
+      border-bottom: solid 1px grey;
+      text-align: center;
+    }
+
+    &--plus-minus-btn {
+      width: 30px;
+    }
+
+    &--subtotal-text {
+      text-align: right;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    &--subtotal-number {
+      text-align: right;
+      color: #006266;
+    }
+
+    &--delete {
+      color: grey;
+      text-align: right;
+      margin-top: 80px;
+      cursor: pointer;
+
+      &:hover {
+        color: #025255;
+      }
+    }
+  }
+}
+
+.checkout-container {
+  border: solid lightgrey 1px;
+  padding: 15px;
+
+  &--total-price {
+    text-align: center;
+    font-size: 30px;
+    color: #006266;
+  }
+
+  &--button {
+    width: 100%;
+    background-color: #383838;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 17px;
+    color: white;
+    padding: 10px 0;
+  }
+}

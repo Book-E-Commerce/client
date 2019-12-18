@@ -1,5 +1,5 @@
 # client
-Repositori For Client Book E-Commerce https://hackbook.dipaproject.online/home
+Repositori For Client Book E-Commerce
 
 ### Langkah sebelum kerja
 1. Fork repository ini
@@ -21,11 +21,11 @@ $ git remote -v
 5. Jika sudah muncul sama seperti dibawah ini, maka sudah tersambung
 
 ```sh
-origin	https://github.com/dipadana/client.git (fetch)
-origin	https://github.com/dipadana/client.git (push)
+origin  https://github.com/dipadana/client-3.git (fetch)
+origin  https://github.com/dipadana/client-3.git (push)
 
-upstream https://github.com/Book-E-Commerce/client.git (fetch)
-upstream https://github.com/Book-E-Commerce/client.git (push)
+upstream  https://github.com/Book-E-Commerce/client.git (fetch)
+upstream  https://github.com/Book-E-Commerce/client.git (push)
 ```
 
 6. Happy Coding :)

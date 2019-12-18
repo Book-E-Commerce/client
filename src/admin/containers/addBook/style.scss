@@ -1,0 +1,20 @@
+.add-book-title {
+  font-size: 25px;
+  color: #006266;
+  font-family: 'Titillium Web';
+}
+
+.btn-green {
+  background-color: #006266;
+  color: white;
+
+  &:hover {
+    background-color: #014a4d;
+    color: white;
+  }
+}
+
+.btn-salmon {
+  background-color: salmon;
+  color: white;
+}
