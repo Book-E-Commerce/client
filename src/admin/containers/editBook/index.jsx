@@ -104,14 +104,14 @@ function EditBook (props) {
           token: localStorage.getItem('token')
         }
       })
-      Swal.fire({
-        toast: true,
-        icon: 'success',
-        title: 'Delete successfully',
-        position: 'top',
-        showConfirmButton: false,
-        timer: 3000
-      })
+      // await Swal.fire({
+      //   toast: true,
+      //   icon: 'success',
+      //   title: 'Delete successfully',
+      //   position: 'top',
+      //   showConfirmButton: false,
+      //   timer: 3000
+      // })
       history.push('/admin/listbook')
       console.log(data)
     }

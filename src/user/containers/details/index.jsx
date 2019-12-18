@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { AfetchCart } from '../../../store/actions/cart'
-import Product from '../../components/product'
 import axios from '../../../api/axios'
 import Swal from 'sweetalert2'
 import './style.scss'
 import convertToRupiah from '../../helpers/convertToRupiah'
+import { useHistory } from 'react-router-dom'
 
 function Details(props) {
   const dispatch = useDispatch()
@@ -25,6 +25,7 @@ function Details(props) {
   const [ checkCartData, setCheckCartData] = useState(false)
   const cartData = useSelector(state => state.Cart.cart)
   const { id } = useParams()
+  const history = useHistory()
 
   useEffect(() => {
     getDetails()
@@ -76,7 +77,7 @@ function Details(props) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: err.response.data,
+          text: 'You need to login first.',
         })
       })
   }
