@@ -16,7 +16,6 @@ export const AfetchCart = () => async dispatch => {
       data[i].priceToDisplay = convertToRupiah(data[i].idBook.price)
       temp.push(data[i])
     }
-    console.log(temp)
     await dispatch({
       type:'CHANGE_CART_DATA', payload: temp
     })
@@ -39,7 +38,6 @@ export const AplusCart = (id, qtyNow) => async dispatch => {
         qty: Number(qtyNow) + 1
       }
     })
-    console.log(data)
     for (let i = 0; i < data.length; i++) {
       data[i].priceToDisplay = convertToRupiah(data[i].idBook.price)
     }
@@ -70,7 +68,6 @@ export const AminusCart = (id, qtyNow) => async dispatch => {
           qty: Number(qtyNow) - 1
         }
       })
-      console.log(data)
       for (let i = 0; i < data.length; i++) {
         data[i].priceToDisplay = convertToRupiah(data[i].idBook.price)
       }
@@ -95,10 +92,6 @@ export const AdeleteCartData = (id) => async dispatch => {
         token: localStorage.getItem('token')
       }
     })
-    console.log(data)
-    // dispatch({
-    //   type:'CHANGE_CART_DATA', payload: data
-    // })
     dispatch(AfetchCart())
     Swal.fire({
       toast: true,
@@ -124,7 +117,6 @@ export const Acheckout = (history) => async dispatch => {
         token: localStorage.getItem('token')
       }
     })
-    console.log(data)
     history.push('/home/history')
     Swal.fire({
       icon: 'success',

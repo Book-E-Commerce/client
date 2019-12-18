@@ -25,7 +25,6 @@ function Login() {
       identity, password
     })
     .then(({data}) => {
-      console.log(data)
       localStorage.setItem('token', data.token)
       localStorage.setItem('role', data.role)
       dispatch(login())

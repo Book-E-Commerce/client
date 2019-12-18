@@ -37,7 +37,7 @@ function EditBook (props) {
     formData.append('title',title)
     formData.append('author',author)
     formData.append('category',category)
-    formData.append('rating',Number(rating))
+    formData.append('rating',Number(rating || 1))
     formData.append('price', Number(price))
     formData.append('stock', Number(stock))
     formData.append('description', description)
@@ -52,7 +52,6 @@ function EditBook (props) {
           token: localStorage.getItem('token')
         }
       })
-      console.log(data)
       fetchDetailData()
       Swal.fire({
         toast: true,
@@ -64,7 +63,6 @@ function EditBook (props) {
       })
     }
     catch(err){
-      console.log('masuk handle submit')
       Swal.close()
       console.log(err.response)
     }
@@ -79,7 +77,6 @@ function EditBook (props) {
           token: localStorage.getItem('token')
         }
       })
-      console.log(data)
       setTitle(data.title)
       setAuthor(data.author)
       setCategory(data.category.join(','))
@@ -107,20 +104,10 @@ function EditBook (props) {
           token: localStorage.getItem('token')
         }
       })
-      // await Swal.fire({
-      //   toast: true,
-      //   icon: 'success',
-      //   title: 'Delete successfully',
-      //   position: 'top',
-      //   showConfirmButton: false,
-      //   timer: 3000
-      // })
-      console.log(data)
       history.push('/admin/listbook')
     }
     catch(err){
       Swal.fire({
-        // toast: true,
         icon: 'error',
         position: 'top',
         title: err.response.data || 'Opps, something wrong.',
