@@ -35,6 +35,7 @@ function History (props) {
 
   const [chartData, setChartData] = useState([])
   const [historyData, setHistoryData] = useState([])
+  const [inModalData, setInModalData] = useState([])
 
   async function fetchChartData () {
     try{
@@ -52,6 +53,14 @@ function History (props) {
     catch(err){
       console.log(err.response)
     }
+  }
+
+  const getDetails = (data) => {
+    var temp = []
+    for (let i = 0; i < data.cart.length; i++) {
+      temp.push(data.cart[i])
+    }
+    setInModalData(temp)
   }
 
   async function fetchHistoryData () {
@@ -138,9 +147,10 @@ function History (props) {
               <th scope="col">#</th>
               <th scope="col">Date</th>
               <th scope="col">Transaction ID</th>
-              <th scope="col">Books Sold</th>
+              <th scope="col">Sold</th>
               <th scope="col">Total(Rp)</th>
               <th scope="col">Customer</th>
+              <th scope="col">Details</th>
             </tr>
           </thead>
           <tbody>
@@ -157,6 +167,50 @@ function History (props) {
                   <td>{data.totalTransactions.qty}</td>
                   <td>{data.totalTransactions.price}</td>
                   <td>{data.userId.username}</td>
+                  <td>
+                    <button type="button" onClick={() => getDetails(data)} class="btn admin-details-btn" data-toggle="modal" data-target="#exampleModal">
+                      Details
+                    </button>
+                  </td>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Products List</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col">No.</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Quantity</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {
+                                inModalData.map((data, i) => {
+                                  return (
+                                    <tr key={i}>
+                                      <th scope="row">{i+1}</th>
+                                      <td>{data.bookId.title}</td>
+                                      <td>{data.qty}</td>
+                                    </tr>
+                                  )
+                                })
+                              }
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </tr>
               )
             }

@@ -103,8 +103,8 @@ function AddBook (props) {
             <label className="custom-file-label" htmlFor="inputImage123">{  image.length === 0 ? 'Choose File' : image[0].name }</label>
           </div>
         </div>
+        <button onClick={() => history.push('/admin')} className="mr-2 btn btn-secondary">Cancel</button>
         <button type="submit" className="btn btn-green mr-2">Submit</button>
-        <button className="btn btn-salmon">Reset</button>
       </form>
     </div>
   )
