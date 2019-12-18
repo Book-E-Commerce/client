@@ -55,8 +55,13 @@ function AddBook (props) {
       history.push('/admin/listbook')
     }
     catch(err){
-      Swal.close()
       console.log(err.response)
+      Swal.fire({
+        toast: true,
+        icon: 'error',
+        position: 'top',
+        title: err.response.data || 'Opps, something wrong.',
+      })
     }
   }
 

@@ -26,7 +26,7 @@ function Cart() {
   }
 
   function handleCheckout () {
-    dispatch(Acheckout())
+    dispatch(Acheckout(history))
   }
 
   const toDetails = (id) => {
