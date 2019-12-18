@@ -16,8 +16,11 @@ export default function PopularBook (props) {
           token: localStorage.getItem('token')
         }
       })
-      console.log(data)
-      setPopularBook(data)
+      let temp = []
+      for (let i = 0; i < 10; i++) {
+        temp.push(data[i])
+      }
+      setPopularBook(temp)
     }
     catch(err){
       console.log(err.response)

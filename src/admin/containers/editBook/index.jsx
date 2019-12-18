@@ -149,9 +149,9 @@ function EditBook (props) {
             <label className="custom-file-label" htmlFor="inputImage123">{  image.length === 0 ? 'Choose File' : image[0].name }</label>
           </div>
         </div>
+        <button onClick={() => history.push('/admin')} className="mr-2 btn btn-secondary">Cancel</button>
         <button type="submit" className="btn btn-green mr-2">Edit</button>
-        <button onClick={ () => deleteBook() } className="btn btn-danger mr-2">Delete</button>
-        <button className="btn btn-salmon">Reset</button>
+        <button onClick={ () => deleteBook() } className="btn btn-admin-delete mr-2">Delete</button>
       </form>
         <img alt="book" className="mt-3" width="100%" src={imageURL} />
     </div>

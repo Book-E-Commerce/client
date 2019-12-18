@@ -15,9 +15,10 @@ const Navbar = () => {
     dispatch(logout())
   }
 
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-green sticky-top">
-      <a className="navbar-brand d-flex" href="/">
+      <a className="navbar-brand d-flex" style={{cursor: 'pointer'}} onClick={() => history.push('/')}>
         <span><img src={logoImg} width="35" height="35" className="ml-md-5" alt="HackBook Logo"/></span>
         <p className="mb-0 main-title ml-2 mt-1">HackBook</p>
       </a>

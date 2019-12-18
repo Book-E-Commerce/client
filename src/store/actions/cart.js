@@ -38,6 +38,9 @@ export const AplusCart = (id, qtyNow) => async dispatch => {
       }
     })
     console.log(data)
+    for (let i = 0; i < data.length; i++) {
+      data[i].priceToDisplay = convertToRupiah(data[i].idBook.price)
+    }
     dispatch({
       type:'CHANGE_CART_DATA', payload: data
     })
@@ -64,6 +67,9 @@ export const AminusCart = (id, qtyNow) => async dispatch => {
         }
       })
       console.log(data)
+      for (let i = 0; i < data.length; i++) {
+        data[i].priceToDisplay = convertToRupiah(data[i].idBook.price)
+      }
       dispatch({
         type:'CHANGE_CART_DATA', payload: data
       })

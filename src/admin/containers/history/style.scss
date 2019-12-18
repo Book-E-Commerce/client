@@ -46,3 +46,15 @@
     box-shadow: 5px 5px 10px lightgrey;
   }
 }
+
+.admin-details-btn {
+  background-color:#006266;
+  color: white;
+  font-weight: bold;
+
+  &:hover {
+    background-color:#006266;
+    color: white;
+    font-weight: bold;
+  }
+}
