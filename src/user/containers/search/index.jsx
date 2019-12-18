@@ -24,7 +24,6 @@ export default function Search (props) {
         method: 'get',
         url: `/books/search?keyword=${ keyword }`
       })
-      console.log(data)
       setSearchResultData(data)
       setLoading(false)
     }
@@ -74,7 +73,7 @@ export default function Search (props) {
                 <div className="row">
                   {
                   searchResultData.map((data,i) =>   
-                    <div className="col-6 col-md-3" onClick={ () => history.push(`/home/products/${data._id}`) }>
+                    <div key={i} className="col-6 col-md-3" onClick={ () => history.push(`/home/products/${data._id}`) }>
                       <div className="book-item">
                         <img width="100%" src={data.image} alt=""/>
                         <div className="book-item--info">

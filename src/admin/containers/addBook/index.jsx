@@ -50,9 +50,7 @@ function AddBook (props) {
           token: localStorage.getItem('token')
         }
       })
-      // Swal.close()
       history.push('/admin/listbook')
-      console.log(data)
     }
     catch(err){
       console.log(err.response)
@@ -79,22 +77,22 @@ function AddBook (props) {
       <p className="add-book-title">Add New Book</p>
       <form onSubmit={  (e) => handleSubmit(e) }>
         <div className="form-group">
-          <input value={title} onChange={ (e) => setTitle(e.target.value) } className="form-control" type="text" placeholder="Title"/>
+          <input required value={title} onChange={ (e) => setTitle(e.target.value) } className="form-control" type="text" placeholder="Title"/>
         </div>
         <div className="form-group">
-          <input value={author} onChange={ (e) => setAuthor(e.target.value) } className="form-control" type="text" placeholder="Author"/>
+          <input required value={author} onChange={ (e) => setAuthor(e.target.value) } className="form-control" type="text" placeholder="Author"/>
         </div>
         <div className="form-group">
-          <input value={category} onChange={ (e) => setCategory(e.target.value)} className="form-control" type="text" placeholder="Category"/>
+          <input required value={category} onChange={ (e) => setCategory(e.target.value)} className="form-control" type="text" placeholder="Category"/>
         </div>
         <div className="form-group">
-          <input value={rating} onChange={ (e) => setRating(e.target.value)} className="form-control" type="number" max="5" min="1" placeholder="Rating"/>
+          <input required value={rating} onChange={ (e) => setRating(e.target.value)} className="form-control" type="number" max="5" min="1" placeholder="Rating"/>
         </div>
         <div className="form-group">
-          <input value={price} onChange={ (e) => setPrice(e.target.value)} className="form-control" type="number" placeholder="Price"/>
+          <input required value={price} onChange={ (e) => setPrice(e.target.value)} className="form-control" type="number" placeholder="Price"/>
         </div>
         <div className="form-group">
-          <input value={stock} onChange={ (e) => setStock(e.target.value)} className="form-control" type="number" placeholder="Stock"/>
+          <input required value={stock} onChange={ (e) => setStock(e.target.value)} className="form-control" type="number" placeholder="Stock"/>
         </div>
         <div className="form-group">
           <textarea onChange={ (e) => setDescription(e.target.value) } className="form-control" rows="3" placeholder="Description" value={ description }>{ description }</textarea>

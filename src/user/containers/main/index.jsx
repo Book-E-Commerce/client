@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import './style.scss'
 
-// import Sidebar from '../../components/sidebar'
 import Default from '../default'
 import Details from '../details'
 import Cart from '../cart'

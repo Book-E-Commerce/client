@@ -26,7 +26,6 @@ function History (props) {
         }
       })
       let finalData = data
-      console.log(finalData)
       setChartData(finalData)
       Swal.close()
     }
@@ -52,7 +51,6 @@ function History (props) {
           token: localStorage.getItem('token')
         }
       })
-      // console.log(data.transactions)
 
       data.transactions.forEach(data => {
         let tempFinal = []
@@ -70,7 +68,6 @@ function History (props) {
         data.totalTransactions = totalPrice
       })
       setHistoryData(data.transactions)
-      // console.log(data.transactions)
     }
     catch(err){
       console.log(err.response)

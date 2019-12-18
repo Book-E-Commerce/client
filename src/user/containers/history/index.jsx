@@ -32,7 +32,6 @@ export default function History (props) {
           token: localStorage.getItem('token')
         }
       })
-      console.log(data)
 
       data.forEach(data => {
         let tempFinal = []
@@ -50,7 +49,6 @@ export default function History (props) {
         data.totalTransactions = totalPrice
         data.totalTransactionsToDisplay = convertToRupiah(totalPrice.price)
       })
-      console.log(data)
       setHistoryData(data)
       setLoading(false)
     }
@@ -99,18 +97,18 @@ export default function History (props) {
                 <p className="mb-0 transaction-container--text">Transaction Done</p>
               </div>
               <div className="col-md-3 col-6 mt-md-0 mt-2">
-                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Products List</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <div className="modal fade" id="exampleModal2" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">Products List</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
-                        <table class="table">
-                          <thead class="thead-dark">
+                      <div className="modal-body">
+                        <table className="table">
+                          <thead className="thead-dark">
                             <tr>
                               <th scope="col">No.</th>
                               <th scope="col">Title</th>
@@ -132,8 +130,8 @@ export default function History (props) {
                           </tbody>
                         </table>
                       </div>
-                      <div class="modal-footer">
-                        <button type="button" onClick={resetModal} class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <div className="modal-footer">
+                        <button type="button" onClick={resetModal} className="btn btn-secondary" data-dismiss="modal">Close</button>
                       </div>
                     </div>
                   </div>

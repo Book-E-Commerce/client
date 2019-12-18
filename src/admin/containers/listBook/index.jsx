@@ -11,7 +11,6 @@ function ListBook (props) {
   const [bookData, setBookData] = useState([])
 
   async function fetchBookData () {
-    console.log('masuk fetch')
     Swal.showLoading()
     try{
       const { data } = await Axios({
@@ -19,7 +18,6 @@ function ListBook (props) {
         url: '/books/find-all'
       })
       Swal.close()
-      console.log(data)
       setBookData(data.reverse())
     }
     catch(err){
@@ -66,7 +64,6 @@ function ListBook (props) {
         <p className="chart-container--date mr-3 mb-0">Wednesday, 20 December 2019</p>
       </div>
       <center><input onChange={e => searchByKeyword(e)} className="form-control mr-sm-2 search-in-admin" type="search" placeholder="Search books" aria-label="Search" /> </center>
-        {/* <p className="lsit-book-title">Sales Chart</p> */}
       </div>
       <div className="list-book-table-container">
         <table className="table table-hover table-borderless">
@@ -80,7 +77,7 @@ function ListBook (props) {
           </thead>
           <tbody>
             {
-              bookData.length == 0
+              bookData.length === 0
               ?
               <p></p>
               :
