@@ -17,14 +17,14 @@ import Main from './user/containers/main'
 
 function App() {
   const dispatch = useDispatch()
-  const fade = useSpring({
-    from: {
-      opacity: 0
-    },
-    to: {
-      opacity: 1
-    }
-  })
+  // const fade = useSpring({
+  //   from: {
+  //     opacity: 0.5
+  //   },
+  //   to: {
+  //     opacity: 1
+  //   }
+  // })
 
   useEffect(() => {
     checktoken()
@@ -40,27 +40,25 @@ function App() {
   }
 
   return (
-    <animated.div style={fade}>
-      <Router>
-        <Switch>
-          <Route path="/admin">
-            <Admin />
-          </Route> 
-          <Route path="/login">
-            <Login />
-          </Route> 
-          <Route path="/register">
-            <Register />
-          </Route> 
-          <Route path="/home">
-            <Main />
-          </Route>
-          <Route exact path="/">
-            <User />
-          </Route>
-        </Switch>
-      </Router>
-    </animated.div>
+    <Router>
+      <Switch>
+        <Route path="/admin">
+          <Admin />
+        </Route> 
+        <Route path="/login">
+          <Login />
+        </Route> 
+        <Route path="/register">
+          <Register />
+        </Route> 
+        <Route path="/home">
+          <Main />
+        </Route>
+        <Route exact path="/">
+          <User />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
