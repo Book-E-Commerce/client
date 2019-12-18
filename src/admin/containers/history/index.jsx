@@ -25,7 +25,7 @@ function History (props) {
           token: localStorage.getItem('token')
         }
       })
-      let finalData = data.reverse()
+      let finalData = data
       console.log(finalData)
       setChartData(finalData)
       Swal.close()
@@ -135,7 +135,7 @@ function History (props) {
           </thead>
           <tbody>
             {
-              historyData.length == 0
+              historyData.length === 0
               ?
               <tr></tr>
               :
@@ -148,22 +148,22 @@ function History (props) {
                   <td>{convertToRupiah(data.totalTransactions.price)}</td>
                   <td>{data.userId.username}</td>
                   <td>
-                    <button type="button" onClick={() => getDetails(data)} class="btn admin-details-btn" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" onClick={() => getDetails(data)} className="btn admin-details-btn" data-toggle="modal" data-target="#exampleModal">
                       Details
                     </button>
                   </td>
-                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Products List</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h5 className="modal-title" id="exampleModalLabel">Products List</h5>
+                          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        <div class="modal-body">
-                          <table class="table">
-                            <thead class="thead-dark">
+                        <div className="modal-body">
+                          <table className="table">
+                            <thead className="thead-dark">
                               <tr>
                                 <th scope="col">No.</th>
                                 <th scope="col">Title</th>
@@ -185,8 +185,8 @@ function History (props) {
                             </tbody>
                           </table>
                         </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <div className="modal-footer">
+                          <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                       </div>
                     </div>

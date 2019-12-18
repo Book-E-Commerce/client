@@ -15,8 +15,8 @@ function Home() {
   const [props, set] = useSpring(() => ({ xy: [0, 0], config: { mass: 10, tension: 550, friction: 140 } }))
   const toSite = () => {
     const role = localStorage.getItem('role')
-    if (role == 'admin') {
-      history.push('/admin')
+    if (role === 'admin') {
+      history.push('/admin/history')
     } else {
       history.push('/home')
     }

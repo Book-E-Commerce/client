@@ -75,8 +75,8 @@ function Login() {
               <button type="submit" className="btn login-container--right--loginbox--login-btn">Login</button>
             </div>  
             <div className="login-container--right--loginbox--register-btn-container">
-              <Link to ="/register">
-                <button type="button" className="btn login-container--right--loginbox--register-btn">Register</button>
+              <Link to ="/register" style={{ textDecoration: 'none' }}>
+                <button type="button" className="btn login-container--right--loginbox--register-btn"> <span style={{ textDecoration: 'none' }}>Register</span> </button>
               </Link>
             </div>
           </form>
