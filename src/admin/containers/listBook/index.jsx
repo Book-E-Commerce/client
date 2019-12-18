@@ -11,6 +11,7 @@ function ListBook (props) {
   const [bookData, setBookData] = useState([])
 
   async function fetchBookData () {
+    console.log('masuk fetch')
     Swal.showLoading()
     try{
       const { data } = await Axios({
@@ -19,7 +20,7 @@ function ListBook (props) {
       })
       Swal.close()
       console.log(data)
-      setBookData(data)
+      setBookData(data.reverse())
     }
     catch(err){
       Swal.fire({
@@ -84,7 +85,7 @@ function ListBook (props) {
               <p></p>
               :
               bookData.map((data,i) => 
-                <tr onClick={ () => history.push(`/admin/editbook/${data._id}`) }>
+                <tr key={i} onClick={ () => history.push(`/admin/editbook/${data._id}`) }>
                   <th scope="row">{i+1}</th>
                   <td>{data.title}</td>
                   <td>{data.stock}</td>

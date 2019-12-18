@@ -41,7 +41,7 @@ function EditBook (props) {
     formData.append('price', Number(price))
     formData.append('stock', Number(stock))
     formData.append('description', description)
-    formData.append('image',image)
+    formData.append('image',image[0])
 
     try{
       const { data } = await Axios({
@@ -64,6 +64,7 @@ function EditBook (props) {
       })
     }
     catch(err){
+      console.log('masuk handle submit')
       Swal.close()
       console.log(err.response)
     }
@@ -94,10 +95,12 @@ function EditBook (props) {
     }
   }
 
-  async function deleteBook () {
+  async function deleteBook (e) {
+    e.preventDefault()
+
     try{
       Swal.showLoading()
-      const { data } = Axios({
+      const { data } = await Axios({
         method: 'delete',
         url: `/books/${bookId}`,
         headers: {
@@ -112,11 +115,16 @@ function EditBook (props) {
       //   showConfirmButton: false,
       //   timer: 3000
       // })
-      history.push('/admin/listbook')
       console.log(data)
+      history.push('/admin/listbook')
     }
     catch(err){
-      Swal.close()
+      Swal.fire({
+        // toast: true,
+        icon: 'error',
+        position: 'top',
+        title: err.response.data || 'Opps, something wrong.',
+      })
       console.log(err.response)
     }
   }
@@ -134,7 +142,7 @@ function EditBook (props) {
   return (
     <div className="mb-5 mt-2">
       <p className="add-book-title">Edit Book</p>
-      <form onSubmit={ (e) => handleSubmitEdit(e) }>
+      <form>
         <div className="form-group">
           <input value={title} onChange={ (e) => setTitle(e.target.value) } className="form-control" type="text" placeholder="Title"/>
         </div>
@@ -163,8 +171,8 @@ function EditBook (props) {
           </div>
         </div>
         <button onClick={() => history.push('/admin/listbook')} className="mr-2 btn btn-secondary">Cancel</button>
-        <button type="submit" className="btn btn-green mr-2">Update</button>
-        <button onClick={ () => deleteBook() } className="btn btn-admin-delete mr-2">Delete</button>
+        <button onClick={(e) => handleSubmitEdit(e)} className="btn btn-green mr-2">Update</button>
+        <button onClick={(e) => deleteBook(e)} className="btn btn-admin-delete mr-2">Delete</button>
       </form>
         <img alt="book" className="mt-3" width="100%" src={imageURL} />
     </div>

@@ -42,7 +42,7 @@ export default function PopularBook (props) {
         </li>
         {
           popularBook.map((data,i) => 
-            <li className="list-group-item">
+            <li key={i} className="list-group-item">
               <div className="row">
                 <div className="col-10 popular-navigation-title">
                   {data.title.title}
