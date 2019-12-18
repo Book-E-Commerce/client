@@ -55,7 +55,14 @@ function EditBook (props) {
       })
       console.log(data)
       fetchDetailData()
-      Swal.close()
+      Swal.fire({
+        toast: true,
+        icon: 'success',
+        title: 'Edit successfully',
+        position: 'top',
+        showConfirmButton: false,
+        timer: 3000
+      })
     }
     catch(err){
       Swal.close()
@@ -98,7 +105,14 @@ function EditBook (props) {
           token: localStorage.getItem('token')
         }
       })
-      Swal.close()
+      Swal.fire({
+        toast: true,
+        icon: 'success',
+        title: 'Delete successfully',
+        position: 'top',
+        showConfirmButton: false,
+        timer: 3000
+      })
       history.push('/admin/listbook')
       console.log(data)
     }
