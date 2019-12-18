@@ -26,16 +26,16 @@ function Login() {
     })
     .then(({data}) => {
       console.log(data)
+      localStorage.setItem('token', data.token)
+      localStorage.setItem('role', data.role)
       dispatch(login())
       setIdentity('')
       setPassword('')
       if (data.role == 'admin') {
-        history.push('/admin')
+        history.push('/admin/history')
       } else {
         history.push('/home')
       }
-      localStorage.setItem('token', data.token)
-      localStorage.setItem('role', data.role)
     })
     .catch(err => {
       Swal.fire({

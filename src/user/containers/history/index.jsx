@@ -8,6 +8,19 @@ export default function History (props) {
 
   const [historyData, setHistoryData] = useState([])
   const [ loading, setLoading ] = useState(false)
+  const [inModalData, setInModalData] = useState([])
+
+  const getDetails = (data) => {
+    var temp = []
+    for (let i = 0; i < data.cart.length; i++) {
+      temp.push(data.cart[i])
+    }
+    setInModalData(temp)
+  }
+
+  const resetModal = () => {
+    setInModalData([])
+  }
 
   async function fetchHistoryData () {
     setLoading(true)
@@ -66,8 +79,8 @@ export default function History (props) {
         ?
         <p className="no-data">You have 0 transaction</p>
         :
-        historyData.map((data,i) => 
-          <div className="transaction-container">
+        historyData.map((data, i) => 
+          <div key={i} onClick={() => getDetails(data)} data-toggle="modal" data-target="#exampleModal2" className="transaction-container">
             <div className="row transaction-container--item">
               <div className="col-md-3 col-6 mt-md-0 mt-2">
                 <p className="mb-0 transaction-container--title">Date</p>
@@ -84,6 +97,47 @@ export default function History (props) {
               <div className="col-md-3 col-6 mt-md-0 mt-2">
                 <p className="mb-0 transaction-container--title">Status</p>
                 <p className="mb-0 transaction-container--text">Transaction Done</p>
+              </div>
+              <div className="col-md-3 col-6 mt-md-0 mt-2">
+                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Products List</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <table class="table">
+                          <thead class="thead-dark">
+                            <tr>
+                              <th scope="col">No.</th>
+                              <th scope="col">Title</th>
+                              <th scope="col">Quantity</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {
+                              inModalData.map((data, i) => {
+                                return (
+                                  <tr key={i}>
+                                    <th scope="row">{i+1}</th>
+                                    <td>{data.bookId.title}</td>
+                                    <td>{data.qty}</td>
+                                  </tr>
+                                )
+                              })
+                            }
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" onClick={resetModal} class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
