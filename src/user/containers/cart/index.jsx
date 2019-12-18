@@ -78,8 +78,8 @@ function Cart() {
                     </div>
                     <div className="col-2">
                       <p className="cartContainer--cartItem--subtotal-text">Subtotal</p>
-                      <p className="cartContainer--cartItem--subtotal-number">Rp {Number(data.idBook.price) * Number(data.qty)}</p>
-                      <p onClick={ () => handleDeleteCartData(data._id) } className="cartContainer--cartItem--delete">DELETE</p>
+                      <p className="cartContainer--cartItem--subtotal-number">{convertToRupiah(Number(data.idBook.price) * Number(data.qty))}</p>
+                      <p onClick={ () => handleDeleteCartData(data._id) } className="cartContainer--cartItem--delete"><b>REMOVE</b></p>
                     </div>
                     <div className="offset-1"></div>
                   </div>

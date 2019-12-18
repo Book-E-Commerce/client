@@ -292,7 +292,7 @@ function Default() {
             }
           </div>
         </div>
-      
+      <p className="footer-text">©2019 HackBook Team. Jakarta. All Rights Reserved</p>
     </>
   )
 }

@@ -2,35 +2,12 @@ import React, { useEffect, useState } from 'react'
 import Axios from '../../../api/axios'
 import Moment from 'moment'
 import './style.scss'
+import convertToRupiah from '../../helpers/convertToRupiah'
 
 import {
-  Area, AreaChart, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
+  Area, AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 import Swal from 'sweetalert2';
-
-const data = [
-  {
-    name: '2019-12-22', uv: 7000, selling: 2400, 'books sold': 2400,
-  },
-  {
-    name: '2019-12-22', uv: 3000, selling: 1398, 'books sold': 2210,
-  },
-  {
-    name: '2019-12-22', uv: 2000, selling: 9800, 'books sold': 2290,
-  },
-  {
-    name: '2019-12-22', uv: 2780, selling: 3908, 'books sold': 2000,
-  },
-  {
-    name: '2019-12-22', uv: 1890, selling: 4800, 'books sold': 2181,
-  },
-  {
-    name: '2019-12-22', uv: 2390, selling: 3800, 'books sold': 2500,
-  },
-  {
-    name: '2019-12-22', uv: 3490, selling: 4300, 'books sold': 2100,
-  }
-];
 
 function History (props) {
 
@@ -168,7 +145,7 @@ function History (props) {
                   <td>{Moment(String(new Date(data.createdAt))).format("MMMM Do YYYY")}</td>
                   <td>{data._id}</td>
                   <td>{data.totalTransactions.qty}</td>
-                  <td>{data.totalTransactions.price}</td>
+                  <td>{convertToRupiah(data.totalTransactions.price)}</td>
                   <td>{data.userId.username}</td>
                   <td>
                     <button type="button" onClick={() => getDetails(data)} class="btn admin-details-btn" data-toggle="modal" data-target="#exampleModal">

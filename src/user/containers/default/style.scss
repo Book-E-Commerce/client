@@ -172,7 +172,7 @@ $main-color: #006266;
       height: 400px;
       background-image: url('https://i.imgur.com/k948Idh.png');
       background-size: 180px 400px;
-      border-radius: 5px;
+      border-radius: 5px 5px 0px 5px;
       cursor: pointer;
     }
 
@@ -250,7 +250,7 @@ $main-color: #006266;
       height: 400px;
       background-image: url('https://i.imgur.com/fQ1wdCo.png');
       background-size: 180px 400px;
-      border-radius: 5px;
+      border-radius: 5px 5px 0px 5px;
       cursor: pointer;
     }
 
@@ -382,6 +382,21 @@ $main-color: #006266;
   box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
   -webkit-transform: scale(1.1);
   transform: scale(1.05);
+}
+
+.footer-text {
+  text-align: center;
+  font-family: 'Titillium Web', sans-serif;
+  // color: #fff;
+  color: #006266;
+  margin: 0;
+  padding: 10px 0px 15px;
+  font-weight: bold;
+  // position: fixed;
+  // left: 0;
+  // bottom: 0;
+  // width: 100vw;
+  // margin-top: 20px;
 }
 
 // .main-container {

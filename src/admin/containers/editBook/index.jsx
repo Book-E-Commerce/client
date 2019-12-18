@@ -134,7 +134,7 @@ function EditBook (props) {
   return (
     <div className="mb-5 mt-2">
       <p className="add-book-title">Edit Book</p>
-      <form onSubmit={  (e) => handleSubmitEdit(e) }>
+      <form onSubmit={ (e) => handleSubmitEdit(e) }>
         <div className="form-group">
           <input value={title} onChange={ (e) => setTitle(e.target.value) } className="form-control" type="text" placeholder="Title"/>
         </div>

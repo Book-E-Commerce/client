@@ -106,9 +106,16 @@ $main-color: #006266;
 
           &--clear {
             width: 100%;
-            background-color: rgb(34, 179, 46);
+            background-color: rgb(0, 158, 0);
             font-weight: bold;
             color: white;
+            cursor: default;
+
+            &:hover {
+              background-color: rgb(0, 158, 0);
+              font-weight: bold;
+              color: white;
+            }
           }
         }
       }
