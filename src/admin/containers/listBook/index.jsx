@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import Axios from '../../../api/axios'
 import './style.scss'
 import Swal from 'sweetalert2'
+import convertRupiah from '../../helpers/convertToRupiah'
 
 function ListBook (props) {
 
@@ -86,7 +87,7 @@ function ListBook (props) {
                   <th scope="row">{i+1}</th>
                   <td>{data.title}</td>
                   <td>{data.stock}</td>
-                  <td>{data.price}</td>
+                  <td>{convertRupiah(data.price)}</td>
                 </tr>
               )
             }

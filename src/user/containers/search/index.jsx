@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
+import convertToRupiah from '../../helpers/convertToRupiah'
 import Axios from '../../../api/axios'
 import './style.scss'
 
@@ -64,26 +65,30 @@ export default function Search (props) {
           </div>
           <div className="col-12 order-1 order-md-2 col-md-9">
             <p className="search-result-text">Search Result "{keyword}"</p>
-            <div className="row">
+            
               {
                 searchResultData.length === 0
                 ?
                   <p className="no-data">No data found</p>
                 :
-                searchResultData.map((data,i) =>   
-                  <div className="col-6 col-md-3" onClick={ () => history.push(`/home/products/${data._id}`) }>
-                    <div className="book-item">
-                      <img width="100%" src={data.image} alt=""/>
-                      <div className="book-item--info">
-                        <p className="mb-0 book-item--info--title text-truncate">{data.title}</p>
-                        <p className="text-truncate mb-0 book-item--info--author">{data.author[0]}</p>
-                        <p className="mb-0 book-item--info--price">Rp {data.price}</p>
+                <div className="row">
+                  {
+                  searchResultData.map((data,i) =>   
+                    <div className="col-6 col-md-3" onClick={ () => history.push(`/home/products/${data._id}`) }>
+                      <div className="book-item">
+                        <img width="100%" src={data.image} alt=""/>
+                        <div className="book-item--info">
+                          <p className="mb-0 book-item--info--title text-truncate">{data.title}</p>
+                          <p className="text-truncate mb-0 book-item--info--author">{data.author[0]}</p>
+                          <p className="mb-0 book-item--info--price">{convertToRupiah(data.price)}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )
+                  )
+                  }
+                </div>
               }
-            </div>
+            
           </div>
         </div>
       </div>

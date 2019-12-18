@@ -33,7 +33,7 @@ function Main() {
   )
 
   return (
-    <div>
+    <div className="all-div">
       <MainNavbar />
       <div className="container main-container">
         <div className="row no-gutters">

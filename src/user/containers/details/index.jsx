@@ -57,6 +57,7 @@ function Details(props) {
   }
 
   const addToCart = () => {
+    Swal.showLoading()
     axios({
       method: 'post',
       url: `/carts/${id}/add-to-cart`,
@@ -68,11 +69,7 @@ function Details(props) {
       }
     })
       .then(({data}) => {
-        Swal.fire(
-          'Added to the cart!',
-          'Success',
-          'success'
-        )
+        Swal.close()
         setCartStatus(true)
       })
       .catch(err => {
@@ -142,7 +139,7 @@ function Details(props) {
               {
                 cartStatus
                 ?
-                <button type="button" className="btn details-container--main--add-to-cart--extra--buy--clear"><i style={{marginRight: '5px'}} className="fas fa-check"></i>This item already in your cart</button>
+                <button disabled type="button" className="btn details-container--main--add-to-cart--extra--buy--clear"><i style={{marginRight: '5px'}} className="fas fa-check"></i>This item already in your cart</button>
                 :
                 <button onClick={addToCart} type="button" className="btn details-container--main--add-to-cart--extra--buy--btn"><i style={{marginRight: '5px'}} className="fas fa-shopping-cart"></i>Add to Cart</button>
               }

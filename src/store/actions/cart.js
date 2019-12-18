@@ -1,5 +1,6 @@
 import Axios from '../../api/axios'
 import convertToRupiah from '../../user/helpers/convertToRupiah'
+import Swal from 'sweetalert2'
 
 export const AfetchCart = () => async dispatch => {
   try{
@@ -26,6 +27,7 @@ export const AfetchCart = () => async dispatch => {
 }
 
 export const AplusCart = (id, qtyNow) => async dispatch => {
+  Swal.showLoading()
   try{
     const { data } = await Axios({
       method: 'patch',
@@ -44,6 +46,7 @@ export const AplusCart = (id, qtyNow) => async dispatch => {
     dispatch({
       type:'CHANGE_CART_DATA', payload: data
     })
+    Swal.close()
   }
   catch(err){
     console.log(err.response)
@@ -55,6 +58,7 @@ export const AminusCart = (id, qtyNow) => async dispatch => {
     console.log('1')
   }
   else{
+    Swal.showLoading()
     try{
       const { data } = await Axios({
         method: 'patch',
@@ -73,6 +77,7 @@ export const AminusCart = (id, qtyNow) => async dispatch => {
       dispatch({
         type:'CHANGE_CART_DATA', payload: data
       })
+      Swal.close()
     }
     catch(err){
       console.log(err.response)
@@ -81,6 +86,7 @@ export const AminusCart = (id, qtyNow) => async dispatch => {
 }
 
 export const AdeleteCartData = (id) => async dispatch => {
+  Swal.showLoading()
   try{
     const { data } = await Axios({
       method: 'delete',
@@ -94,6 +100,14 @@ export const AdeleteCartData = (id) => async dispatch => {
     //   type:'CHANGE_CART_DATA', payload: data
     // })
     dispatch(AfetchCart())
+    Swal.fire({
+      toast: true,
+      icon: 'success',
+      title: 'Delete cart success!',
+      showConfirmButton: false,
+      position: 'top',
+      timer: 2000
+    })
   }
   catch(err){
     console.log(err.response)
@@ -101,6 +115,7 @@ export const AdeleteCartData = (id) => async dispatch => {
 }
 
 export const Acheckout = (history) => async dispatch => {
+  Swal.showLoading()
   try{
     const { data } = await Axios({
       method: 'get',
@@ -111,6 +126,11 @@ export const Acheckout = (history) => async dispatch => {
     })
     console.log(data)
     history.push('/home/history')
+    Swal.fire({
+      icon: 'success',
+      title: 'Checkout success!',
+      text: 'The book wil sent in your house soon.'
+    })
   }
   catch(err){
     console.log(err.response)
