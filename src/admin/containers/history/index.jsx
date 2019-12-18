@@ -6,6 +6,7 @@ import './style.scss'
 import {
   Area, AreaChart, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
+import Swal from 'sweetalert2';
 
 const data = [
   {
@@ -38,6 +39,7 @@ function History (props) {
   const [inModalData, setInModalData] = useState([])
 
   async function fetchChartData () {
+    Swal.showLoading()
     try{
       const { data } = await Axios({
         method: 'get',
@@ -49,6 +51,7 @@ function History (props) {
       let finalData = data.reverse()
       console.log(finalData)
       setChartData(finalData)
+      Swal.close()
     }
     catch(err){
       console.log(err.response)

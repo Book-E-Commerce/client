@@ -10,6 +10,7 @@ function ListBook (props) {
   const [bookData, setBookData] = useState([])
 
   async function fetchBookData () {
+    Swal.showLoading()
     try{
       const { data } = await Axios({
         method: 'get',
