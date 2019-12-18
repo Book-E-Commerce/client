@@ -42,18 +42,20 @@ function Main() {
               <Route path="/home/products/:id">
                 <Details />
               </Route>
-              <Route path="/home/cart">
-                <Cart />
-              </Route>
               <Route exact path="/home/search/:keyword">
                 <Search />
-              </Route>
-              <Route exact path="/home/history">
-                <History />
               </Route>
               <Route exact path="/home/categories">
                 <DisplayByCategory />
               </Route>
+
+              <Route path="/home/cart">
+                <PrivateRouteCart />
+              </Route>
+              <Route exact path="/home/history">
+                <PrivateRouteHistory />
+              </Route>
+              
               <Route path="/home">
                 <Default />
               </Route>
@@ -63,6 +65,28 @@ function Main() {
       </div>
     </div>
   )
+}
+
+function PrivateRouteCart (props) {
+  const history = useHistory()
+  if(localStorage.getItem('token') && localStorage.getItem('role') === 'customer'){
+    return <Cart />
+  }
+  else{
+    history.push('/home')
+    return <Default />
+  }
+}
+
+function PrivateRouteHistory (props) {
+  const history = useHistory()
+  if(localStorage.getItem('token') && localStorage.getItem('role') === 'customer'){
+    return <History />
+  }
+  else{
+    history.push('/home')
+    return <Default />
+  }
 }
 
 export default Main;

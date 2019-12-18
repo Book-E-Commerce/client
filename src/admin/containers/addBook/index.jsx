@@ -50,9 +50,9 @@ function AddBook (props) {
           token: localStorage.getItem('token')
         }
       })
-      Swal.close()
-      console.log(data)
+      // Swal.close()
       history.push('/admin/listbook')
+      console.log(data)
     }
     catch(err){
       console.log(err.response)

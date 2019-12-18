@@ -17,9 +17,9 @@ function ListBook (props) {
         method: 'get',
         url: '/books/find-all'
       })
+      Swal.close()
       console.log(data)
       setBookData(data)
-      Swal.close()
     }
     catch(err){
       Swal.fire({
