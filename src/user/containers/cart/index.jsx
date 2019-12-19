@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AfetchCart, AplusCart, AminusCart, AdeleteCartData, Acheckout } from '../../../store/actions/cart'
 import './style.scss'
 import convertToRupiah from '../../helpers/convertToRupiah'
+import convertHttp from '../../helpers/convertHttp'
 
 function Cart() {
 
@@ -62,7 +63,7 @@ function Cart() {
                 cartData.map((data,i) => 
                   <div key={i} className="row cartContainer--cartItem row no-gutters">
                     <div className="col-md-2 col-4">
-                      <img onClick={() => toDetails(data.idBook._id)} alt="book cover" className="cartContainer--cartItem--image" src={data.idBook.image} />
+                      <img onClick={() => toDetails(data.idBook._id)} alt="book cover" className="cartContainer--cartItem--image" src={convertHttp(data.idBook.image)} />
                     </div>
                     <div className="col-md-5 col-3">
                       <p className="mb-0 cartContainer--cartItem--book-title">{data.idBook.title}</p>
