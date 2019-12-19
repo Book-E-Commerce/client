@@ -7,6 +7,7 @@ import Swal from 'sweetalert2'
 import './style.scss'
 import convertToRupiah from '../../helpers/convertToRupiah'
 import { useHistory } from 'react-router-dom'
+import convertHttp from '../../helpers/convertHttp'
 
 function Details(props) {
   const dispatch = useDispatch()
@@ -112,7 +113,7 @@ function Details(props) {
     <div className="container details-container">
     <div className="row container details-container--main">
       <div className="pr-md-0 col-md-4 col-12 container details-container--main--image">
-        <img src={image} className="" alt="..." />
+        <img src={convertHttp(image)} className="" alt="..." />
       </div>
       <div className="pl-md-0 col-md-4 col-12 container details-container--main--info">
         <div className="details-container--main--info--prime">

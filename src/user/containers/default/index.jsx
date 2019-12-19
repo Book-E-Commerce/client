@@ -4,6 +4,7 @@ import Product from '../../components/product'
 import './style.scss'
 import axios from '../../../api/axios'
 import convertToRupiah from '../../helpers/convertToRupiah'
+import convertHttp from '../../helpers/convertHttp'
 
 function Default() {
   const history = useHistory()
@@ -203,7 +204,7 @@ function Default() {
                     popularProducts.map((product, i) => {
                       return (
                         <div onClick={() => toDetails(product._id)} key={i} className="hvr-grow-shadow col-2 main-container--popular-products--listproducts--product d-block text-truncate">
-                          <img src={product.image} alt="" />
+                          <img src={convertHttp(product.image)} alt="" />
                           <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
                             <p className="d-block text-truncate main-container--popular-products--listproducts--product--info--title">{product.title}</p>
                             <p className="main-container--popular-products--listproducts--product--info--author" style={{ marginTop: '3px' }}>{product.author}</p>
@@ -227,7 +228,7 @@ function Default() {
                     techProducts.map((product, i) => {
                       return (
                         <div onClick={() => toDetails(product._id)} key={i} className="hvr-grow-shadow col-2 main-container--genre-1-products--listproducts--product d-block text-truncate">
-                          <img src={product.image} alt=""/>
+                          <img src={convertHttp(product.image)} alt=""/>
                           <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
                             <p className="d-block text-truncate main-container--genre-1-products--listproducts--product--info--title">{product.title}</p>
                             <p className="main-container--genre-1-products--listproducts--product--info--author" style={{marginTop: '3px'}}>{product.author}</p>
@@ -251,7 +252,7 @@ function Default() {
                       businessProducts.map((product, i) => {
                         return (
                           <div onClick={() => toDetails(product._id)} key={i} className="hvr-grow-shadow col-2 main-container--genre-2-products--listproducts--product d-block text-truncate">
-                            <img src={product.image} alt="" />
+                            <img src={convertHttp(product.image)} alt="" />
                             <div className="d-block text-truncate main-container--genre-2-products--listproducts--product--info">
                               <p className="d-block text-truncate main-container--genre-2-products--listproducts--product--info--title">{product.title}</p>
                               <p className="main-container--genre-2-products--listproducts--product--info--author" style={{ marginTop: '3px' }}>{product.author}</p>
@@ -279,7 +280,7 @@ function Default() {
                 return (
                   <div onClick={() => toDetails(product._id)} key={i} className="col-6 p-2">
                     <div className="main-container--popular-products--listproducts--product">
-                      <img src={product.image} alt="" />
+                      <img src={convertHttp(product.image)} alt="" />
                       <div className="d-block text-truncate main-container--popular-products--listproducts--product--info">
                         <p className="d-block text-truncate main-container--popular-products--listproducts--product--info--title">{product.title}</p>
                         <p className="main-container--popular-products--listproducts--product--info--author" style={{ marginTop: '3px' }}>{product.author}</p>
