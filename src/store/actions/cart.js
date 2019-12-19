@@ -96,7 +96,7 @@ export const AdeleteCartData = (id) => async dispatch => {
     Swal.fire({
       toast: true,
       icon: 'success',
-      title: 'Delete cart success!',
+      title: 'Remove item success!',
       showConfirmButton: false,
       position: 'top',
       timer: 2000
@@ -121,7 +121,7 @@ export const Acheckout = (history) => async dispatch => {
     Swal.fire({
       icon: 'success',
       title: 'Checkout success!',
-      text: 'The book wil sent in your house soon.'
+      text: 'Thanks for shopping with us.'
     })
   }
   catch(err){
