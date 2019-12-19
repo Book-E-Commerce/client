@@ -3,6 +3,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import Axios from '../../../api/axios'
 import './style.scss'
 import Swal from 'sweetalert2'
+import convertHttp from '../../helpers/convertHttp'
 
 function EditBook (props) {
 
@@ -161,7 +162,7 @@ function EditBook (props) {
         <button onClick={(e) => handleSubmitEdit(e)} className="btn btn-green mr-2">Update</button>
         <button onClick={(e) => deleteBook(e)} className="btn btn-admin-delete mr-2">Delete</button>
       </form>
-        <img alt="book" className="mt-3" width="100%" src={imageURL} />
+        <img alt="book" className="mt-3" width="100%" src={convertHttp(imageURL)} />
     </div>
   )
 }
